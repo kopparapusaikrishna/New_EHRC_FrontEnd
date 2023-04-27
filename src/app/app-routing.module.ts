@@ -20,6 +20,8 @@ import { DoctorauthguardGuard } from './authguards/doctorauthguard.guard';
 import { AdminauthguardGuard } from './authguards/adminauthguard.guard';
 import { DoctorPreviousAppointmentsComponent } from './components/doctor-previous-appointments/doctor-previous-appointments.component';
 import { PatientPreviousAppointmentsComponent } from './components/patient-previous-appointments/patient-previous-appointments.component';
+import { MeetingComponent } from './components/meeting/meeting.component';
+import { PrescriptionComponent } from './components/prescription/prescription.component';
 
 
 const routes: Routes = [
@@ -39,7 +41,9 @@ const routes: Routes = [
   { path:'Admin', component:AdminLoginComponent},
   { path: 'home', component: UserSelectComponent},
   { path: 'patient-prev-appointments', component: PatientPreviousAppointmentsComponent},
-  { path: 'doctor-prev-appointments', component: DoctorPreviousAppointmentsComponent}
+  { path: 'doctor-prev-appointments', component: DoctorPreviousAppointmentsComponent},
+  { path: 'meeting', component: MeetingComponent},
+  { path: 'prescription', component: PrescriptionComponent}
 ];
 
 @NgModule({

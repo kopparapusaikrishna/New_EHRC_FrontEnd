@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
+import { NgxAgoraModule, AgoraConfig } from 'ngx-agora';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AddAdminComponent } from './components/add-admin/add-admin.component';
@@ -21,6 +23,9 @@ import { ViewAdminsComponent } from './components/view-admins/view-admins.compon
 import { ViewDoctorsComponent } from './components/view-doctors/view-doctors.component';
 import { DoctorPreviousAppointmentsComponent } from './components/doctor-previous-appointments/doctor-previous-appointments.component';
 import { PatientPreviousAppointmentsComponent } from './components/patient-previous-appointments/patient-previous-appointments.component';
+import { MeetingComponent } from './components/meeting/meeting.component';
+import { PrescriptionComponent } from './components/prescription/prescription.component';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -41,13 +46,16 @@ import { PatientPreviousAppointmentsComponent } from './components/patient-previ
     ViewDoctorsComponent,
     PatientDepartmentsComponent,
     DoctorPreviousAppointmentsComponent,
-    PatientPreviousAppointmentsComponent
+    PatientPreviousAppointmentsComponent,
+    MeetingComponent,
+    PrescriptionComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgxAgoraModule.forRoot({ AppID: environment.agora.appId })
   ],
   providers: [],
   bootstrap: [AppComponent]

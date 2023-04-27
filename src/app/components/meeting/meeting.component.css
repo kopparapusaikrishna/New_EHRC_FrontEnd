@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; }
+  
+  #videos {
+    display: grid;
+    grid-template-columns: 1fr;
+    display: flex;
+    height: 100vh; }
+  
+  .video-player {
+    background-color: black;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; }
+  
+  #remote {
+    display: none; }
+  
+  .control-container {
+    display: inline; }
+  
+  .control-container img {
+    height: 30px;
+    width: 30px; }
+  
+  .meet-btn {
+    margin: 1% 1%; }
+  
+  .img-class {
+    background-color: black; }
+  
+  .buttons {
+    text-align: center; }
+  

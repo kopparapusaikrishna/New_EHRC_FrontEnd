@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Meeting Page</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+
+<body>
+    <div id="videos">
+        <div [id]="localCallId" class="video-player" id="local"></div>
+
+        <div *ngFor="let callId of remoteCalls" [id]="callId" class="video-player" id="remote"></div>
+    </div>
+
+    <div id="controls" class="buttons">
+        <div class="control-container meet-btn" id="camera-btn">
+            <button><img src="../../../assets/camera.png" class="img-class" (click)="camera()" /></button>
+        </div>
+
+        <div class="control-container meet-btn" id="mic-btn">
+            <button><img src="../../../assets/mic.png" class="img-class" (click)="mute()"  /></button>
+        </div>
+
+        <div class="control-container meet-btn" id="leave-btn">
+            <button><img src="../../../assets/phone.png" class="img-class" (click)="end()" /></button>
+        </div>
+    </div>
+</body>
+
+</html>
+  

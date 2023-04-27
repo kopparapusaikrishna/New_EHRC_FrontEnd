@@ -65,6 +65,16 @@ export class PatientDepartmentsComponent implements OnInit {
     // do your logic here...
   }
 
+  getChannelName(){
+    this.patientService.getChannelName(4,'sjb')
+    .subscribe({
+      next: (data:string) => {
+        localStorage.setItem("channel_name",data);
+      },
+      error: (e) => console.error(e)
+    });
+  }
+
 
   w3_close() {
     var box = document.getElementsByClassName("w3-sidenav") as unknown as HTMLCollectionOf<HTMLElement>;

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AvailabilityCheck } from 'src/app/models/availability-check.model';
 import { DoctorService } from 'src/app/services/doctor.service';
 import { PatientService } from 'src/app/services/patient.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-doctor-dashboard',
@@ -12,7 +13,8 @@ export class DoctorDashboardComponent implements OnInit {
   available: boolean;
   showpreviousappointments=true;
   doctor_details:any;
-  constructor(private doctorService: DoctorService,private patientservice:PatientService) { 
+  channel_name:string = '';
+  constructor(private router: Router,private doctorService: DoctorService,private patientservice:PatientService) { 
     this.available = true;
     this.toggleChange();
   }
@@ -55,6 +57,21 @@ export class DoctorDashboardComponent implements OnInit {
         // console.log(this.in_count_map);
       },
       error: (e) => console.error(e)
+    });
+  }
+
+  getChannelName(){
+    this.channel_name = 'ssss';
+    this.doctorService.getChannelName(5,'sdf')
+    .subscribe({
+      next: (data:string) => {
+        this.channel_name = data;
+        localStorage.setItem("channel_name",this.channel_name);
+        this.router.navigate(['meeting']);
+      },
+      error: (e) => {
+        console.log(e);
+      }
     });
   }
 

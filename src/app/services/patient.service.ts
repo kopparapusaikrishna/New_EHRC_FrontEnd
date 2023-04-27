@@ -32,14 +32,19 @@ export class PatientService {
     return this.http.get(`${baseUrl}/profiles/`+phone_number,{headers});
     // return "Hello";
   }
-getuserprofilepass(patient_id : number): Observable<any>{
-  const token = JSON.parse(localStorage.getItem('patient_token')!).token;
+  getuserprofilepass(patient_id : number): Observable<any>{
+    const token = JSON.parse(localStorage.getItem('patient_token')!).token;
 
-  const headers = {
-    'Content-Type': 'application/json',
-    'Authorization': `${token}`
-  };
-  return this.http.get(`${baseUrl}/profiles/pin?patient_id=${patient_id}`,{headers});
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `${token}`
+    };
+    return this.http.get(`${baseUrl}/profiles/pin?patient_id=${patient_id}`,{headers});
 
-}
+  }
+
+  getChannelName(patient_id: number, dept_name: string): Observable<string>{
+    return this.http.get(`${baseUrl}/patientChannelGlobal?department_name=${dept_name}?patient_id=${patient_id}`, {responseType: 'text'});
+  }
+
 }
