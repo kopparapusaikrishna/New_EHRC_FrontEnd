@@ -1,0 +1,19 @@
+.form-check{
+    padding-left: 40%;
+}
+
+.submit-button{
+    background-color:#4CAF50;
+    border-radius: 5px;
+    margin-left:40%;
+}
+
+.submit-button:hover{
+    background-color: #6013e5; /* Green */
+    color: white;
+}
+
+.heading{
+    margin-left: 70%;
+    font-size: 25px;
+}

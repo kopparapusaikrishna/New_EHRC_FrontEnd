@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Doctors dashboard</title>  
+
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;900&family=Ubuntu&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+
+    <!-- Bootstrap Scripts -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    
+    <style>
+        .w3-sidenav w3-white w3-card-2{
+            background-color: black !important;
+        }
+    </style>
+</head>
+<body background="../../../assets/doctorbkg.jpg" >
+
+    <div>    
+      <nav class="w3-sidenav w3-white w3-card-2" style="background-color: black; display:none; ">
+        <a href="javascript:void(0)" (click)="w3_close()" 
+        class="w3-closenav w3-large" style="float: left; "> &#9776;</a>
+        <br>
+        <br>
+        <h3 style="width: auto; height:auto; margin-left: 15px; ">Website-Name</h3>
+      
+        <hr size="3px">
+        <a href="tryit.asp-filename=tryw3css_sidenav_over.html#" style=" margin-bottom: 15px;"> Home</a>		
+        <a href="tryit.asp-filename=tryw3css_sidenav_over.html#"  style=" margin-bottom: 15px;">Records</a>		
+        <a href="tryit.asp-filename=tryw3css_sidenav_over.html#"  style=" margin-bottom: 15px;">xxxx</a>		
+        <a href="tryit.asp-filename=tryw3css_sidenav_over.html#"  style=" margin-bottom: 15px;">xxxx</a>		
+        <a href="tryit.asp-filename=tryw3css_sidenav_over.html#"  style=" margin-bottom: 15px;">SignOut</a>		
+      </nav>
+    </div>
+
+    <header class="w3-container full-header" >
+      <span class="w3-opennav w3-xlarge menu" (click)="w3_open()" style="width: 50px;">&#9776;</span>
+      <div  class="heading" style="margin-top: 0%; color: white;">{{doctor_details.doctorName}}</div>
+    </header>
+    
+   
+ 
+ 
+<!-- Default checked -->
+<div class="available-toggle-btn">
+  <p style="color: black;"> Available/Not Available</p>
+  <input type="checkbox" id="switch" class="checkbox" (change)="toggleChange()"/>
+        <label for="switch" class="toggle">
+        </label>
+</div>
+<div class="container" style="border: 1px black solid;  margin-top: 20px;margin-left: 15%; padding-bottom:2% ; padding-top:0px ; padding-right:1%; padding-left:1%; align-content: center; width:70%">
+  
+  <div>    
+   <button class="visit-patient" >Visit a patient</button>
+  </div>
+ <table style="margin-top: 5%;column-count:6; margin-left: 16%;">
+ 
+   <tr> <th><p style="font-size: medium; color: white;">My Patients : 222</p></th>
+<th><p style="font-size: medium; color: white;">All Patients : 222</p></th></tr>
+    
+   
+ 
+  
+
+</table>
+</div>
+<br>
+<button *ngIf="showpreviousappointments" class="visit-patient" style="background-color: black;" (click)="showappointments()" >Show previous Appointments</button>
+<div  *ngIf="!showpreviousappointments" style="border: 2px black solid; color: white;  width: 70%;  margin-left: 15%; margin-bottom: 5%;  background-color: #0a192f;" >
+  <p style="text-align: center; font-size: 20px; width:100%; " >Previous Appointments</p>
+  <table>
+    <thead><th></th><th>Date</th><th>Patient-name</th><th>Prescription</th><th>Follow-up(Y/N)</th><th>Send Remainder message</th><th><button class="close-button" style="background-color: black; color:white;" (click)="showappointments()" aria-label="Close alert" type="button" data-close>
+      <span aria-hidden="true">&times;</span>
+    </button></th></thead>  
+    <tr><th></th><th>1-10-11</th><th>Hitesh</th><th>X</th><th>Y</th><th>Date</th></tr>  
+    <tr><th></th><th>1-10-11</th><th>Hitesh</th><th>X</th><th>Y</th><th>Date</th></tr>  
+    <tr><th></th><th>1-10-11</th><th>Hitesh</th><th>X</th><th>Y</th><th>Date</th></tr>  
+    <tr><th></th><th>1-10-11</th><th>Hitesh</th><th>X</th><th>Y</th><th>Date</th></tr>  
+  </table>
+</div>
+<!--
+<p style="margin-right: 15%; margin-left: 25px; flex:1; display: inline-block;">Date</p>
+<p style="margin-right: 15%;flex:2;display: inline-block; ">Patient-name</p>
+<p style="margin-right: 10%; flex: 4;display: inline-block;">Priscription</p>
+<p style="margin-right: 10%; flex:5;display: inline-block;">Follow-up(Y/N)</p>
+<p style="margin-right: 10%; flex:6;display: inline-block;">Send Remainder message</p>
+
+<hr size="4" width="97%" color="red"> 
+<p style="margin-right: 15%; margin-left: 15px; flex:1; display: inline-block;">1-11-23</p>
+<p style="margin-right: 20%;flex:2;display: inline-block; ">hitesh</p>
+<p style="margin-right: 17%; flex: 4;display: inline-block;">X</p>
+<p style="margin-right: 20%; flex:5;display: inline-block;">Y</p>
+<p style=" flex:6;display: inline-block;">bhaiyya bro</p>
+-->
+<style>
+  table{   
+      width: 100%;
+      align-content: center;  
+  }
+  th,td{
+    padding: 10px;
+  }
+         
+</style>
+
+</body>
+</html>

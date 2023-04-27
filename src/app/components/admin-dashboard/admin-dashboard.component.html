@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin dashboard</title>  
+
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;900&family=Ubuntu&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+    
+    <style>
+        .w3-sidenav w3-white w3-card-2{
+            background-color: black !important;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="w3-container w3-teal">
+    <div>
+        <button class="btn btn-primary navbar" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">&#9776;</button>
+        <h2 class="web-name">Tele Consultation Platform</h2>
+        <div class="heading">Admin:Admin-name</div>
+    </div>
+    
+    
+    <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+        <div class="offcanvas-header">
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <h3 style="width: auto; height:auto; margin-left: 15px; ">Tele Consultation Platform</h3>
+        
+            <hr size="3px">
+            <a href="/admin-dashboard" style=" margin-bottom: 15px;"> Dashboard</a>
+            <br>		
+            <a href="/view-doctors"  style=" margin-bottom: 15px;">View Doctors</a>		
+            <br>
+            <a href="/view-admins"  style=" margin-bottom: 15px;">View Admins</a>		
+            <br>
+            <a href="/admin-dashboard"  style=" margin-bottom: 15px;">Statistics</a>		
+            <br>
+            <a href="tryit.asp-filename=tryw3css_sidenav_over.html#"  style=" margin-bottom: 15px;">LogOut</a>		
+        </div>
+    </div>
+    
+    </header>
+
+    <div class="page">
+
+        <div class="statistics">
+            <h2 class="stat-name">Statistics</h2>
+            <div class="stat">
+                <h3>No. of patients consulted</h3>
+                <h3 class="value">6,74,329</h3>
+            </div>
+            <div class="stat">
+                <h3>No. of patients consulted</h3>
+                <h3 class="value">6,74,329</h3>
+            </div>
+            <a href=""><h6 class="see-more">See More -> </h6></a>
+            
+        </div>
+        
+        <div class="doc-admin">
+            <div class="manage">
+                <button type="button" class="btn" onclick="location.href='/view-doctors'"><img src="../../../assets/Doctor.jpeg" alt="Doctor" class="images"></button>
+                <br>
+                <h5 class="add-del">Add/ Delete Doctors</h5>
+            </div>
+            <div class="manage">
+                <button type="button" class="btn" onclick="location.href='/view-admins'"><img src="../../../assets/Patient.jpeg" alt="Admin" class="images"></button>
+                <br>
+                <h5 class="add-del">Add/ Delete Admins</h5>
+            </div>
+        </div>
+
+    </div>
+
+
+</body>
+</html> 
+   
+ 
+ 

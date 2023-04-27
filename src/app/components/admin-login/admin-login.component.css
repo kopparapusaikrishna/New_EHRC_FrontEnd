@@ -1,0 +1,50 @@
+input[type="password"],
+input[type="email"] {
+	padding: 10px ;
+	border: 1px solid #ccc ;
+	border-radius: 4px ;
+	box-sizing: border-box ;
+	margin-bottom: 20px ;
+	width: 100% ;
+}
+
+button {
+	background-color: #4CAF50 ;
+	color: white ;
+	padding: 10px 20px ;
+	border: none ;
+	border-radius: 4px ;
+	cursor: pointer ;
+	font-size: 16px ;
+}
+
+button:hover {
+    background-color: #45a049 ;
+}
+    
+.form-container {
+	margin-top: 50px ;
+	max-width: 500px ;
+	margin-left: auto ;
+	margin-right: auto ;
+	padding: 20px ;
+	border-radius: 5px ;
+	background-color: #f2f2f2 ;
+}
+
+.form-title {
+	text-align: center ;
+	font-size: 28px ;
+	margin-bottom: 30px ;
+	background-color: #f2f2f2 ;
+}
+
+.header {
+	padding: 2% 5% ;
+	ont-size: 130% ;
+	text-align: left ;
+	background-color: rgb(219, 172, 42) ;
+	font-weight: 700 ;
+}
+
+	

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin dashboard</title>  
+
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;900&family=Ubuntu&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+
+    
+    <style>
+        .w3-sidenav w3-white w3-card-2{
+            background-color: black !important;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="w3-container w3-teal">
+    <div>
+        <button class="btn btn-primary navbar" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">&#9776;</button>
+        <h2 class="web-name">Tele Consultation Platform</h2>
+    </div>
+    
+    
+    <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+        <div class="offcanvas-header">
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <h3 style="width: auto; height:auto; margin-left: 15px; ">Tele Consultation Platform</h3>
+        
+            <hr size="3px">
+            <a href="tryit.asp-filename=tryw3css_sidenav_over.html#" style=" margin-bottom: 15px;"> Home</a>
+            <br>		
+            <a href="tryit.asp-filename=tryw3css_sidenav_over.html#"  style=" margin-bottom: 15px;">Records</a>		
+            <br>
+            <a href="tryit.asp-filename=tryw3css_sidenav_over.html#"  style=" margin-bottom: 15px;">xxxx</a>		
+            <br>
+            <a href="tryit.asp-filename=tryw3css_sidenav_over.html#"  style=" margin-bottom: 15px;">xxxx</a>		
+            <br>
+            <a href="tryit.asp-filename=tryw3css_sidenav_over.html#"  style=" margin-bottom: 15px;">SignOut</a>		
+        </div>
+    </div>
+    
+    </header>
+
+    <div class="user-selection">
+        <h3>Select a User</h3>
+        <div class="manage">
+            <button type="button" class="btn" onclick="location.href='/Doctor'"><img src="../../../assets/Doctor.jpeg" alt="Doctor" class="images"></button>
+            <br>
+            <h5 class="add-del">Doctor</h5>
+        </div>
+        <div class="manage">
+            <button type="button" class="btn" onclick="location.href='/Patient'"><img src="../../../assets/Patient.jpeg" alt="Admin" class="images"></button>
+            <br>
+            <h5 class="add-del">Patient</h5>
+        </div>
+    </div>
+
+    <div class="statistics">
+
+        <div class="sub-stat">
+            <img src="../../../assets/user.png" alt="user.png" class="stat-img">
+            <div class="stat-text">
+                <h6 class="stat">123456</h6>
+                <br>
+                <h6 class="stat">Patients Served</h6>
+            </div>
+        </div>
+
+        <div class="sub-stat">
+            <img src="../../../assets/stethoscope.jpg" alt="stethoscope" class="stat-img">
+            <div class="stat-text">
+                <h6 class="stat">123456</h6>
+                <br>
+                <h6 class="stat">Doctors Present</h6>
+            </div>
+        </div>
+
+        <div class="sub-stat">
+            <img src="../../../assets/maps.png" alt="location" class="stat-img">
+            <div class="stat-text">
+                <h6 class="stat">123456</h6>
+                <br>
+                <h6 class="stat">Locations Covered</h6>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html> 
