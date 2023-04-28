@@ -29,7 +29,8 @@ export class MeetingComponent implements OnInit {
     this.assignLocalStreamHandlers();
     // Join and publish methods added in this step
     this.initLocalStream(() => this.join(uid => this.publish(), error => console.error(error)));
-    this.channel_name = localStorage.getItem("channel_name");
+    // this.channel_name = localStorage.getItem("channel_name");
+    this.channel_name = "sdkfn";
   }
 
   ngOnInit(): void {
