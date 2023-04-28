@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PatientService } from 'src/app/services/patient.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-patient-departments',
@@ -11,7 +12,7 @@ export class PatientDepartmentsComponent implements OnInit {
   departmentsLst: Array<string>;
   selectedIndex: number;
   patient_details:any;
-  constructor(private patientService : PatientService) { 
+  constructor(private patientService : PatientService, private router : Router) { 
     this.departmentsLst = new Array<string>;
     this.selectedIndex = -1;
     // this.departmentsLst = ["allergist", "cardiologist", "chiropractor", " dentist", "pediatrician", "ophthalmologist"];
@@ -44,7 +45,9 @@ export class PatientDepartmentsComponent implements OnInit {
           next: (data:String) => {
             console.log(data);
             if(data==="Success"){
-              alert("Doctors are available");
+              this.getChannelName(this.departmentsLst[this.selectedIndex]);
+              console.log(localStorage.getItem("channel_name"));
+              this.router.navigate(['meeting']);
             }
             else if(data==="Failure"){
               alert("Doctors are not available");
@@ -65,10 +68,11 @@ export class PatientDepartmentsComponent implements OnInit {
     // do your logic here...
   }
 
-  getChannelName(){
-    this.patientService.getChannelName(4,'sjb')
+  getChannelName(department: string){
+    this.patientService.getChannelName(this.patient_details.patientId,department)
     .subscribe({
       next: (data:string) => {
+        console.log(data);
         localStorage.setItem("channel_name",data);
       },
       error: (e) => console.error(e)

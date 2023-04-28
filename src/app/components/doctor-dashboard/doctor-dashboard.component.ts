@@ -16,11 +16,12 @@ export class DoctorDashboardComponent implements OnInit {
   channel_name:string = '';
   constructor(private router: Router,private doctorService: DoctorService,private patientservice:PatientService) { 
     this.available = true;
-    this.toggleChange();
+    
   }
 
   ngOnInit(): void {
     this.getDoctorDetails();
+    this.toggleChange();
   }
   getDoctorDetails(){
     const username=JSON.parse(localStorage.getItem("doctor_token")!).doctor_email_id;
@@ -28,9 +29,12 @@ export class DoctorDashboardComponent implements OnInit {
     .subscribe({
       next:(res:any)=>{
         this.doctor_details=res;
+        localStorage.setItem("doctor_details",JSON.stringify(this.doctor_details));
+        console.log(this.doctor_details);
       }
     });
   }
+  
   toggleChange() {
     if(this.available==true){
       this.available=false;
@@ -41,7 +45,7 @@ export class DoctorDashboardComponent implements OnInit {
     //console.log(this.available);
 
     let aval = new AvailabilityCheck();
-    aval.doctorId = 1;
+    aval.doctorId = this.doctor_details.doctorId;
     aval.status = this.available;
     
     //console.log(aval);
@@ -62,12 +66,15 @@ export class DoctorDashboardComponent implements OnInit {
 
   getChannelName(){
     this.channel_name = 'ssss';
-    this.doctorService.getChannelName(5,'sdf')
+    this.doctorService.getChannelName(this.doctor_details.doctorId,this.doctor_details.departmentName)
     .subscribe({
       next: (data:string) => {
         this.channel_name = data;
         localStorage.setItem("channel_name",this.channel_name);
+        console.log(this.channel_name);
+        window.open('prescription','_blank');
         this.router.navigate(['meeting']);
+        
       },
       error: (e) => {
         console.log(e);

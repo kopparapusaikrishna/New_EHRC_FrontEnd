@@ -34,11 +34,15 @@ export class DoctorService {
   }
 
   getChannelName(doctor_id: number, dept_name: string): Observable<string> {
-    return this.http.get(`${baseUrl}/doctorChannel/?dept_name=${dept_name}?doctor_id=${doctor_id}`, {responseType: 'text'});
+    return this.http.get(`${baseUrl}/doctorChannel/?doctor_id=${doctor_id}&dept_name=${dept_name}`, {responseType: 'text'});
   }
 
   addAppointment(data: any): Observable<string>{
     return this.http.post<string>(`${baseUrl}/appointment`, data);
+  }
+
+  getPatientDetails(data:any): Observable<any>{
+    return this.http.get(`${baseUrl}/patientDetails?doctor_id=${data}`);
   }
 
 }

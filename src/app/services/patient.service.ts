@@ -44,7 +44,9 @@ export class PatientService {
   }
 
   getChannelName(patient_id: number, dept_name: string): Observable<string>{
-    return this.http.get(`${baseUrl}/patientChannelGlobal?department_name=${dept_name}?patient_id=${patient_id}`, {responseType: 'text'});
+    console.log(patient_id);
+    console.log(dept_name);
+    return this.http.get(`${baseUrl}/patientChannelGlobal?patient_id=${patient_id}&dept_name=${dept_name}`, {responseType: 'text'});
   }
 
 }

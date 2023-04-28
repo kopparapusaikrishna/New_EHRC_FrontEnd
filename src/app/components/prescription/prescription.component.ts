@@ -26,10 +26,25 @@ export class PrescriptionComponent  implements OnInit {
   constructor(private router: Router, private doctorService: DoctorService) { 
     this.prescription_list = new Array<Prescription>;
     this.patient_details ={};
-    // this.doctor_id = JSON.parse(localStorage.getItem("doctor_details")!).doctor_id;
+    this.doctor_id = JSON.parse(localStorage.getItem("doctor_details")!).doctorId;
+    console.log(this.doctor_id);
+    this.getPatientDetails();
+    console.log(this.patient_details);
   }
 
   ngOnInit(): void {
+  }
+
+  getPatientDetails(){
+    this.doctorService.getPatientDetails(this.doctor_id)
+    .subscribe({
+      next: (data:any) => {
+        this.patient_details = data;
+      },
+      error: (e) => {
+        console.log(e);
+      }
+    });
   }
 
   addPatientDetails(){
