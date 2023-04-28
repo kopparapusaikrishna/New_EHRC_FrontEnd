@@ -30,7 +30,7 @@ const routes: Routes = [
   { path: 'patient-departments', component: PatientDepartmentsComponent,canActivate:[AuthGuard]},
   { path: 'patient-dashboard', component: PatientDashboardComponent,canActivate: [AuthGuard]  },
   { path: 'admin-dashboard', component: AdminDashboardComponent,canActivate:[AdminauthguardGuard]},
-  { path: 'view-doctors', component: ViewDoctorsComponent,canActivate:[DoctorauthguardGuard]},
+  { path: 'view-doctors', component: ViewDoctorsComponent,canActivate:[AdminauthguardGuard]},
   { path: 'view-admins', component: ViewAdminsComponent,canActivate:[AdminauthguardGuard]},
   { path: 'add-admin', component: AddAdminComponent,canActivate:[AdminauthguardGuard]},
   { path: 'add-doctor', component: AddDoctorComponent,canActivate:[AdminauthguardGuard]},
