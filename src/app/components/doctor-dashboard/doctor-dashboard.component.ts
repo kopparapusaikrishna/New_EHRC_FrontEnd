@@ -35,6 +35,10 @@ export class DoctorDashboardComponent implements OnInit {
     });
   }
   
+  doctorPreviousAppointments(){
+    this.router.navigate(['doctor-prev-appointments']);
+  }
+
   toggleChange() {
     if(this.available==true){
       this.available=false;

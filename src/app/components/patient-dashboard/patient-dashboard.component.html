@@ -73,72 +73,7 @@
             <button>Continue</button>
         </div>
     </div>
-    <button *ngIf="previous_appointments" style="background-color:black; color: white; margin-top: 17%; margin-left: 40%; padding: 1% 1% 1% 1%; width: 20%; justify-items: center; " (click)="showpreviousappointments()">Previous Appointments</button>
-        <div *ngIf="!previous_appointments" class="prev-appointments" style="margin-top: 20%; margin-bottom:5%">
-            <div style="padding-left: 5%;">
-                <div><p>Previous Appointments</p></div>
-                <table>
-                <thead><th>Date</th><th>Specialization</th><th>Patient-name</th><th>Prescription</th><th>Consult Again</th><th><button class="close-button" style="background-color: black; color:white;" (click)="showpreviousappointments()" aria-label="Close alert" type="button" data-close>
-                    <span aria-hidden="true">&times;</span>
-                  </button></th></thead>  
-                <tr>
-                    <th>1-10-11</th>
-                    <th>Orthopedic</th>
-                    <th>Hitesh</th>
-                    <th><button class="btn btn-primary prescription-btn" (click)="generatePrescription(1)">Prescription</button></th>
-                    <th><select name="cars" id="cars">
-                        <option value="">Select Option</option>
-                        <option value="volvo"><a href="">Same Doctor</a></option>
-                        <option value="saab"><a href="">Different Doctor</a></option>
-                    </select></th>
-                </tr>
-
-                <tr>
-                    <th>1-10-11</th>
-                    <th>Orthopedic</th>
-                    <th>Hitesh</th>
-                    <th><button class="btn btn-primary prescription-btn">Prescription</button></th>
-                    <th><select name="cars" id="cars">
-                        <option value="">Select Option</option>
-                        <option value="volvo"><a href="/patient-departments'">Same Doctor</a></option>
-                        <option value="saab"><a href="">Different Doctor</a></option>
-                    </select></th>
-                </tr> 
-
-                <tr>
-                    <th>1-10-11</th>
-                    <th>Orthopedic</th>
-                    <th>Hitesh</th>
-                    <th><button class="btn btn-primary prescription-btn">Prescription</button></th>
-                    <th><select name="cars" id="cars">
-                        <option value="">Select Option</option>
-                        <option value="volvo"><a href="">Same Doctor</a></option>
-                        <option value="saab"><a href="">Different Doctor</a></option>
-                    </select></th>
-                </tr> 
-
-                <tr>
-                    <th>1-10-11</th>
-                    <th>Orthopedic</th>
-                    <th>Hitesh</th>
-                    <th><button class="btn btn-primary prescription-btn">Prescription</button></th>
-                    <th><select name="cars" id="cars">
-                        <option value="">Select Option</option>
-                        <option value="volvo"><a href="">Same Doctor</a></option>
-                        <option value="saab"><a href="">Different Doctor</a></option>
-                    </select></th>
-                </tr> 
-                
-                </table>
-            </div> 
-                
-            <div style="text-align:center;" class="all-appointments">
-                <!-- <p style="width: fit-content;"> For more details:</p> -->
-                <button >View All Previous Appointments</button>
-            </div>
-            
-        </div> 
-        
+    <button *ngIf="previous_appointments" style="background-color:black; color: white; margin-top: 17%; margin-left: 40%; padding: 1% 1% 1% 1%; width: 20%; justify-items: center; " (click)="getPreviousAppointments()">Previous Appointments</button>
     <style>
     table{
         width: 100%;

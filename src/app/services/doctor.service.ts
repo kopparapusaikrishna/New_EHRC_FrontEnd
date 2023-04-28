@@ -38,11 +38,15 @@ export class DoctorService {
   }
 
   addAppointment(data: any): Observable<string>{
-    return this.http.post<string>(`${baseUrl}/appointment`, data);
+    return this.http.post<string>(`${baseUrl}/addAppointmentDetails`, data);
   }
 
   getPatientDetails(data:any): Observable<any>{
     return this.http.get(`${baseUrl}/patientDetails?doctor_id=${data}`);
+  }
+
+  getPreviousAppointments(doctor_id: number): Observable<any>{
+    return this.http.get(`${baseUrl}/doctorPreviousAppointmentsList?doctor_id=${doctor_id}`);
   }
 
 }

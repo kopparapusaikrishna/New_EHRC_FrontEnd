@@ -28,7 +28,7 @@
         <div class=" heading-div">
             <button class="btn btn-primary navbar" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">&#9776;</button>
             <h2 class="web-name">Tele Consultation Platform</h2>
-            <div  class="heading">Patient: Patient-name</div>
+            <div  class="heading">{{patient_details.patientName}}</div>
         </div>
         
         
@@ -60,12 +60,12 @@
         <div style="padding-left: 5%;">
             <div><p>Previous Appointments</p></div>
             <table>
-            <thead><th>Date</th><th>Specialization</th><th>Patient-name</th><th>Prescription</th><th>Consult Again</th></thead>  
+            <thead><th>Date</th><th>Specialization</th><th>Doctor-name</th><th>Prescription</th><th>Consult Again</th></thead>  
             <tr *ngFor="let prev_appointment of prevAppointmentsLst; let i = index">
                 <th>{{prev_appointment.appointment_date}}</th>
                 <th>{{prev_appointment.doctor_dept}}</th>
                 <th>{{prev_appointment.doctor_name}}</th>
-                <th><button class="btn btn-primary">Prescription</button></th>
+                <th><button class="btn btn-primary" (click)="getPrescription(prev_appointment.appointment_id)">Prescription</button></th>
                 <th>
                     <select [(ngModel)] = "consultAgainLst[i]">
                         <option [ngValue]="undefined" disabled>Select Option</option>

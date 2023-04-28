@@ -49,4 +49,8 @@ export class PatientService {
     return this.http.get(`${baseUrl}/patientChannelGlobal?patient_id=${patient_id}&dept_name=${dept_name}`, {responseType: 'text'});
   }
 
+  getPreviousAppointments(patient_id: number): Observable<any>{
+    return this.http.get(`${baseUrl}/previousAppointmentsList?patient_id=${patient_id}`);
+  }
+
 }

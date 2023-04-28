@@ -28,7 +28,7 @@
         <div class=" heading-div">
             <button class="btn btn-primary navbar" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">&#9776;</button>
             <h2 class="web-name">Tele Consultation Platform</h2>
-            <div  class="heading">Doctor: Doctor-name</div>
+            <div  class="heading">{{doctor_details.doctorName}}</div>
         </div>
         
         
@@ -63,7 +63,7 @@
             <tr *ngFor="let prev_appointment of prevAppointmentsLst; let i = index">
                 <th>{{prev_appointment.appointment_date}}</th>
                 <th>{{prev_appointment.patient_name}}</th>
-                <th><button class="btn btn-primary">Prescription</button></th> 
+                <th><button class="btn btn-primary" (click)="getPrescription(prev_appointment.appointment_id)">Prescription</button></th> 
                 <th>{{prev_appointment.follow_up}}</th>
             </tr>
             

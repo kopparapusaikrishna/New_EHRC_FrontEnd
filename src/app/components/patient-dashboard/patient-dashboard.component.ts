@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PatientService } from 'src/app/services/patient.service';
 import { PdfService } from 'src/app/services/pdf.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-patient-dashboard',
@@ -11,7 +12,7 @@ export class PatientDashboardComponent implements OnInit {
  previous_appointments=true
  patient_id: number = -1;
  patient_details:any;
-  constructor(private patientservice:PatientService, private pdfService: PdfService) { 
+  constructor(private router: Router,private patientservice:PatientService, private pdfService: PdfService) { 
     this.getPatientDetails();
   }
 
@@ -54,8 +55,10 @@ export class PatientDashboardComponent implements OnInit {
     a.href = window.URL.createObjectURL(blob);
     a.click();
   })
+  }
 
-
-}
+  getPreviousAppointments(){
+    this.router.navigate(['patient-prev-appointments']);
+  }
 
 }
