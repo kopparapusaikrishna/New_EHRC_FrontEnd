@@ -3,6 +3,8 @@ import { DoctorService } from 'src/app/services/doctor.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
 import { Prescription } from 'src/app/models/prescription.model';
+import { FollowUp } from 'src/app/models/follow-up.model';
+import { PdfService } from 'src/app/services/pdf.service';
 @Component({
   selector: 'app-prescription',
   templateUrl: './prescription.component.html',
@@ -20,16 +22,24 @@ export class PrescriptionComponent  implements OnInit {
   follow_up:string = "Yes";
   followup_date: string = '';
 
+  prev_appointment_id: number = -2;
+  prev_appointment: FollowUp;
+
   showDiv:boolean = true;
   saved:boolean = false;
 
-  constructor(private router: Router, private doctorService: DoctorService) { 
+  constructor(private router: Router, private doctorService: DoctorService, private pdfService: PdfService) { 
     this.prescription_list = new Array<Prescription>;
     this.patient_details ={};
     this.doctor_id = JSON.parse(localStorage.getItem("doctor_details")!).doctorId;
     console.log(this.doctor_id);
     this.getPatientDetails();
     console.log(this.patient_details);
+    this.prev_appointment_id = +localStorage.getItem("prev_appointment_id")!;
+    this.prev_appointment = {
+      isFollow: this.prev_appointment_id === -1,
+      apppointment_id: this.prev_appointment_id
+    };
   }
 
   ngOnInit(): void {
@@ -66,6 +76,21 @@ export class PrescriptionComponent  implements OnInit {
   followExist(follow_up: string): boolean{
     return follow_up === "Yes";
   }
+
+  getPrescription(){
+    let appointmentId:number = this.prev_appointment.apppointment_id!;
+    this.pdfService.generatePrescription(appointmentId).subscribe(response => {
+      console.log(response);
+      console.log(response.headers.get('content-disposition'));
+      // let fileName = response.headers.get('content-disposition')!.split(';')[1].split('=')[1];
+      let fileName = "prescription.pdf";
+      let blob:Blob = response.body as Blob;
+      let a = document.createElement('a');
+      a.download = fileName;
+      a.href = window.URL.createObjectURL(blob);
+      a.click();
+    })
+    }
 
   onSubmit(){
     console.log(this.prescription_list);

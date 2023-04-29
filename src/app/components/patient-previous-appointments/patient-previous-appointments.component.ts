@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FollowUp } from 'src/app/models/follow-up.model';
 import { Prev_appointments } from 'src/app/models/prev-appointments';
 import { PatientService } from 'src/app/services/patient.service';
 import { PdfService } from 'src/app/services/pdf.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-patient-previous-appointments',
@@ -13,7 +15,7 @@ export class PatientPreviousAppointmentsComponent implements OnInit {
   consultAgainLst: Array<string>;
   patient_details:any;
 
-  constructor(private patientService: PatientService, private pdfService: PdfService) { 
+  constructor(private patientService: PatientService, private pdfService: PdfService, private router: Router) { 
     this.prevAppointmentsLst = new Array<Prev_appointments>;
     this.getPatientDetails();
     this.getPreviousAppointments();
@@ -46,10 +48,36 @@ export class PatientPreviousAppointmentsComponent implements OnInit {
     
    }
 
-  followUpAppointment(index: number): void {
+  followUpAppointment(index: number, apppointment_id: number): void {
+
+    console.log(apppointment_id);
+
+    const followUpDetails: FollowUp = {
+      isFollow: true,
+      apppointment_id: apppointment_id
+    }
+    localStorage.setItem("followUp",JSON.stringify(followUpDetails));
+
     console.log("Consult clicked" + this.consultAgainLst[index]);
-    if(this.consultAgainLst[index] != "Same Doctor" || this.consultAgainLst[index] != "Different Doctor") {
+    if(this.consultAgainLst[index] != "Same Doctor" && this.consultAgainLst[index] != "Different Doctor") {
       alert("Select an option")
+    }
+    else if (this.consultAgainLst[index] == "Same Doctor") {
+      console.log("same");
+      this.patientService.followUpSameDoctor(apppointment_id)
+      .subscribe({
+        next: (data: string) => {
+          localStorage.setItem("channel_name",data);
+          console.log(data);
+          this.router.navigate(['meeting']);
+        },
+        error: (e) => {
+          console.log(e);
+        }
+      });
+    }
+    else{
+      this.router.navigate(['patient-departments']);
     }
   }
 

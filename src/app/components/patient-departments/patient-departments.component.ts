@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PatientService } from 'src/app/services/patient.service';
 import { Router } from '@angular/router';
+import { FollowUp } from 'src/app/models/follow-up.model';
 
 @Component({
   selector: 'app-patient-departments',
@@ -45,14 +46,22 @@ export class PatientDepartmentsComponent implements OnInit {
           next: (data:String) => {
             console.log(data);
             if(data==="Success"){
-              this.getChannelName(this.departmentsLst[this.selectedIndex]);
-              console.log(localStorage.getItem("channel_name"));
-              this.router.navigate(['meeting']);
+              const details:FollowUp = JSON.parse(localStorage.getItem("followUp")!)
+              if(details.isFollow == false){
+                this.getChannelName(this.departmentsLst[this.selectedIndex]);
+                console.log(localStorage.getItem("channel_name"));
+                this.router.navigate(['meeting']);
+              }
+              else{
+                console.log(details);
+                this.followChannel(details.apppointment_id!, this.departmentsLst[this.selectedIndex]);
+                console.log(localStorage.getItem("channel_name"));
+                this.router.navigate(['meeting']);
+              }
             }
             else if(data==="Failure"){
               alert("Doctors are not available");
             }
-            // console.log(this.in_count_map);
           },
           error: (e) => console.error(e)
         });
@@ -66,6 +75,22 @@ export class PatientDepartmentsComponent implements OnInit {
     console.log(this.selectedIndex);
 
     // do your logic here...
+  }
+
+  followChannel(appointment_id: number,department: string){
+    console.log(department);
+    console.log(appointment_id);
+    console.log("after");
+    this.patientService.followUpDifferentDoctor(appointment_id, department)
+    .subscribe({
+      next: (data:any) => {
+        console.log(data);
+        localStorage.setItem("channel_name",data);
+      },
+      error: (e) => {
+        console.log(e.error.message);
+      }
+    });
   }
 
   getChannelName(department: string){

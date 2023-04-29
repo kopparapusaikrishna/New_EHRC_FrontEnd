@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PatientService } from 'src/app/services/patient.service';
 import { PdfService } from 'src/app/services/pdf.service';
 import { Router } from '@angular/router';
+import { FollowUp } from 'src/app/models/follow-up.model';
 
 @Component({
   selector: 'app-patient-dashboard',
@@ -29,6 +30,16 @@ export class PatientDashboardComponent implements OnInit {
     var box = document.getElementsByClassName("w3-sidenav") as unknown as HTMLCollectionOf<HTMLElement>;
     box[0].style.display="block"
   }
+
+  newAppointment(){
+    const followUpDetails: FollowUp = {
+      isFollow: false,
+      apppointment_id: -1
+    }
+    localStorage.setItem("followUp",JSON.stringify(followUpDetails));
+    this.router.navigate(['patient-departments']);
+  }
+
  showpreviousappointments(){
   this.previous_appointments=!this.previous_appointments;
  }

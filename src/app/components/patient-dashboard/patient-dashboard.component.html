@@ -65,12 +65,12 @@
         <div class="appointment ">
             <h5>New Appointment</h5>
         
-            <button onclick="location.href='/patient-departments'">Continue</button>
+            <button (click)="newAppointment()">Continue</button>
         </div>
         <div class="follow-up">
             <h5>Follow-up Appointment</h5>
         
-            <button>Continue</button>
+            <button (click)="getPreviousAppointments()">Continue</button>
         </div>
     </div>
     <button *ngIf="previous_appointments" style="background-color:black; color: white; margin-top: 17%; margin-left: 40%; padding: 1% 1% 1% 1%; width: 20%; justify-items: center; " (click)="getPreviousAppointments()">Previous Appointments</button>
