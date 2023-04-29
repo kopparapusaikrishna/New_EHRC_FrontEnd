@@ -33,8 +33,8 @@ export class DoctorService {
     return this.http.get(`${baseUrl}/doctordetails?email_id=${doctor_email_id}`,{headers});
   }
 
-  getChannelName(doctor_id: number, dept_name: string): Observable<string> {
-    return this.http.get(`${baseUrl}/doctorChannel/?doctor_id=${doctor_id}&dept_name=${dept_name}`, {responseType: 'text'});
+  getChannelName(doctor_id: number, dept_name: string): Observable<any> {
+    return this.http.get(`${baseUrl}/doctorChannel?doctor_id=${doctor_id}&dept_name=${dept_name}`);
   }
 
   addAppointment(data: any): Observable<string>{

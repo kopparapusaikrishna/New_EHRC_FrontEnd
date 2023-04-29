@@ -53,4 +53,12 @@ export class PatientService {
     return this.http.get(`${baseUrl}/previousAppointmentsList?patient_id=${patient_id}`);
   }
 
+  followUpSameDoctor(appointment_id: number): Observable<any>{
+    return this.http.get(`${baseUrl}/patientChannelLocal/Same?appointment_id=${appointment_id}`,{responseType: 'text'});
+  }
+
+  followUpDifferentDoctor(appointment_id:number, dept_name: string): Observable<any>{
+    return this.http.get(`${baseUrl}/patientChannelLocal/Different?appointment_id=${appointment_id}&dept_name=${dept_name}`);
+  }
+
 }

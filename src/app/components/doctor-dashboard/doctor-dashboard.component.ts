@@ -72,9 +72,11 @@ export class DoctorDashboardComponent implements OnInit {
     this.channel_name = 'ssss';
     this.doctorService.getChannelName(this.doctor_details.doctorId,this.doctor_details.departmentName)
     .subscribe({
-      next: (data:string) => {
-        this.channel_name = data;
+      next: (data:any) => {
+        this.channel_name = data.channel_name;
+        console.log(data);
         localStorage.setItem("channel_name",this.channel_name);
+        localStorage.setItem("prev_appointment_id",data.appointment_id);
         console.log(this.channel_name);
         window.open('prescription','_blank');
         this.router.navigate(['meeting']);
