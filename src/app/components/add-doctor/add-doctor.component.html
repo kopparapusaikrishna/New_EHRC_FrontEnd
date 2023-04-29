@@ -116,7 +116,7 @@
             </div>
             <div>
               <label for="phone" class="attr-name">Phone number:</label>
-              <input type="tel" id="phone" name="phone" [(ngModel)]="ph_no" required>
+              <input type="tel" id="phone" name="phone" [(ngModel)]="ph_no" pattern="[0-9]{10}" required>
             </div>
             <div>
               <label for="dob" class="attr-name">Date of birth:</label>

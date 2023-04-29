@@ -28,7 +28,7 @@
 
     <div class="form-container" style="box-shadow: 10px;">
         <h2 class="form-title">Login</h2>
-        <form ngNativeValidate>
+        <form >
             <input type="email" placeholder="Enter email" name="username"  [(ngModel)]="model.username" required/>    
             <input type="password" placeholder="Enter Password" name="password"  [(ngModel)]="model.password" required/>  
             <button type="submit" class="login-btn" (click)="loginadmin()">Login</button>  

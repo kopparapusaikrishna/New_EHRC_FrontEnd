@@ -28,7 +28,7 @@
 
     <div class="form-container">
         <h2 class="form-title">Login</h2>
-        <form ngNativeValidate *ngIf="!otp_sent" (ngSubmit)="sendOTP()">
+        <form *ngIf="!otp_sent" (ngSubmit)="sendOTP()">
           <label for="phone">Phone number:</label>
           <input type="tel" id="phone" name="phone_number" placeholder="Enter phone number" [(ngModel)]="model.phone_number" [ngModelOptions]="{standalone: true}" required>
           <button type="submit">Send OTP</button><br><br>
