@@ -56,7 +56,7 @@ export class AddAdminComponent implements OnInit {
     .subscribe({
       next: (data:any) => {
         this.status = data;
-        console.log(this.status);
+        console.log("status ", this.status);
         // console.log(data);
 
         if(this.status === "Success") {
@@ -73,7 +73,10 @@ export class AddAdminComponent implements OnInit {
           alert(this.status);
         }
       },
-      error: (e) => console.error(e)
+      error: (e) => {
+        console.error(e);
+        alert("Please fill all the fields correctly");
+      }
     });
   }
 

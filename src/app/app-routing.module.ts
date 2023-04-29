@@ -32,7 +32,7 @@ const routes: Routes = [
   { path: 'admin-dashboard', component: AdminDashboardComponent,canActivate:[AdminauthguardGuard]},
   { path: 'view-doctors', component: ViewDoctorsComponent,canActivate:[AdminauthguardGuard]},
   { path: 'view-admins', component: ViewAdminsComponent,canActivate:[AdminauthguardGuard]},
-  { path: 'add-admin', component: AddAdminComponent,canActivate:[AdminauthguardGuard]},
+  { path: 'add-admin', component: AddAdminComponent/*,canActivate:[AdminauthguardGuard]*/},
   { path: 'add-doctor', component: AddDoctorComponent,canActivate:[AdminauthguardGuard]},
   { path: 'profiles', component: UserProfilesComponent,canActivate:[AuthGuard]},
   { path: 'add-profile', component: AddProfileComponent},
