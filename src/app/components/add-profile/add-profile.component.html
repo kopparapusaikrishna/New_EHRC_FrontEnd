@@ -107,7 +107,7 @@
             <button class="btn btn-primary add-admin" type="submit">Add Doctor</button>
         </div> -->
 
-        <form class="center-form" (ngSubmit)="onSubmit()">
+        <form ngNativeValidate class="center-form" (ngSubmit)="onSubmit()">
             <div>
               <label for="name" class="attr-name">Name:</label>
               <input type="text" id="name" name="name" [(ngModel)]="name" required>

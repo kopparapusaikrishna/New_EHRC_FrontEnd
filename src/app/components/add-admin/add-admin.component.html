@@ -95,18 +95,18 @@
             <button class="btn btn-primary add-admin" type="submit">Add Admin</button>
         </div> -->
 
-        <form class="center-form" (ngSubmit)="onSubmit()">
+        <form ngNativeValidate class="center-form" (ngSubmit)="onSubmit()">
             <div>
               <label for="name" class="attr-name">Name:</label>
-              <input type="text" id="name" name="name" [(ngModel)]="name" required>
+              <input type="text" id="name" name="name" [(ngModel)]="name" required title="Please enter a username">
             </div>
             <div>
               <label for="phone" class="attr-name">Phone number:</label>
-              <input type="tel" id="phone" name="phone" [(ngModel)]="ph_no" required>
+              <input type="tel" id="phone" name="phone" required ngModel pattern="[0-9]{10}" title="Please enter a phone number">
             </div>
             <div>
               <label for="dob" class="attr-name">Date of birth:</label>
-              <input type="date" id="dob" name="dob" [(ngModel)]="dob" required>
+              <input type="date" id="dob" name="dob" [(ngModel)]="dob" required >
             </div>
             <div>
               <label for="gender" class="attr-name">Gender:</label>
