@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { AvailabilityCheck } from '../models/availability-check.model';
 
 
-const baseUrl = 'http://localhost:8101';
+const baseUrl = 'https://140d-119-161-98-68.ngrok-free.app';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,8 @@ export class DoctorService {
 
     const headers = {
       'Content-Type': 'application/json',
-      'Authorization': `${token}`
+      'Authorization': `${token}`,
+      'ngrok-skip-browser-warning':'google-chrome'
     };
  
     return this.http.put<number>(`${baseUrl}/DoctorAvailability`, aval,{headers});
@@ -28,25 +29,26 @@ export class DoctorService {
 
     const headers = {
       'Content-Type': 'application/json',
-      'Authorization': `${token}`
+      'Authorization': `${token}`,
+      'ngrok-skip-browser-warning':'google-chrome'
     };
     return this.http.get(`${baseUrl}/doctordetails?email_id=${doctor_email_id}`,{headers});
   }
 
   getChannelName(doctor_id: number, dept_name: string): Observable<any> {
-    return this.http.get(`${baseUrl}/doctorChannel?doctor_id=${doctor_id}&dept_name=${dept_name}`);
+    return this.http.get(`${baseUrl}/doctorChannel?doctor_id=${doctor_id}&dept_name=${dept_name}`, {headers:{'ngrok-skip-browser-warning':'google-chrome'}});
   }
 
   addAppointment(data: any): Observable<string>{
-    return this.http.post<string>(`${baseUrl}/addAppointmentDetails`, data);
+    return this.http.post<string>(`${baseUrl}/addAppointmentDetails`, data, {headers:{'ngrok-skip-browser-warning':'google-chrome'}});
   }
 
   getPatientDetails(data:any): Observable<any>{
-    return this.http.get(`${baseUrl}/patientDetails?doctor_id=${data}`);
+    return this.http.get(`${baseUrl}/patientDetails?doctor_id=${data}`, {headers:{'ngrok-skip-browser-warning':'google-chrome'}});
   }
 
   getPreviousAppointments(doctor_id: number): Observable<any>{
-    return this.http.get(`${baseUrl}/doctorPreviousAppointmentsList?doctor_id=${doctor_id}`);
+    return this.http.get(`${baseUrl}/doctorPreviousAppointmentsList?doctor_id=${doctor_id}`, {headers:{'ngrok-skip-browser-warning':'google-chrome'}});
   }
 
 }
