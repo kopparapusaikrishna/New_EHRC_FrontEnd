@@ -13,7 +13,7 @@ export class PdfService {
   constructor(private http:HttpClient) { }
 
   generatePrescription(appointmentId: number) {
-    return this.http.get(`${baseUrl}/prescriptions/${appointmentId}`,{responseType: 'blob', observe: 'response'});
+    return this.http.get(`${baseUrl}/prescriptions/${appointmentId}`,{responseType: 'blob', observe: 'response',headers:{'ngrok-skip-browser-warning':'google-chrome'}});
   }
 
 

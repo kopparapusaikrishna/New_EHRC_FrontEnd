@@ -52,7 +52,7 @@ export class PatientService {
   }
 
   getPreviousAppointments(patient_id: number): Observable<any>{
-    return this.http.get(`${baseUrl}/previousAppointmentsList?patient_id=${patient_id}`);
+    return this.http.get(`${baseUrl}/previousAppointmentsList?patient_id=${patient_id}`,{headers:{'ngrok-skip-browser-warning':'google-chrome'}});
   }
 
   followUpSameDoctor(appointment_id: number): Observable<any>{

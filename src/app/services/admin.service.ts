@@ -37,11 +37,11 @@ export class AdminService {
   }
 
   delAdmin(adminId: number): Observable<string> {
-    return this.http.delete(`${baseUrl}/DeleteAdmin?adminId=${adminId}`,{responseType: 'text'})
+    return this.http.delete(`${baseUrl}/DeleteAdmin?adminId=${adminId}`,{responseType: 'text',headers:{'ngrok-skip-browser-warning':'google-chrome'}})
   }
 
   getNoOfConsultations(doctorId: number, noOfDays: number): Observable<number> {
-    return this.http.get<number>(`${baseUrl}/NoOfConsultations?doctorId=${doctorId}&noOfDays=${noOfDays}`)
+    return this.http.get<number>(`${baseUrl}/NoOfConsultations?doctorId=${doctorId}&noOfDays=${noOfDays}`,{headers:{'ngrok-skip-browser-warning':'google-chrome'}})
   }
 
 }
