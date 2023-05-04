@@ -1,165 +1,45 @@
-.topsection{
-    display:flex;
-    border-bottom: 6px;
-    border-top: 1px;
-    padding-bottom: 4%;
-    border-color: black;
+body{
+    height: 100vh;
+    width: 100vw;
+    font-family: 'Merriweather', serif;
+}
+
+.navbar-custom{
+    background-color:darkslategray;
+}
+
+.navbar-custom .navbar-brand,
+        .navbar-custom .navbar-text,  .navbar-custom .nav-link{
+            color: white;
+            font-size: 25px;
 }
 
 .heading-div{
     padding-top: 2%;
 }
 
-.navbar{
-    margin: 0.5% 0.5% 1.3% 0.5%;
-    padding: 0.3% 0.5%;
-    display: inline-block;
-}
-
-.web-name{
-    display: inline-block;
-    margin-left: 5%;
-}
-
-body{
-    padding-bottom: 100%;
-}
 
 .heading{
     font-size: 25px;
-    display: inline-block;
-    margin-top: 0.8%;
-    float: right;
+    font-family: 'Merriweather', serif;
+    color: white;
+    text-align: right;
+    margin-left: auto;
+    margin-right: 3%;
+    margin-bottom: 0;
 }
 
-
-.Available-status{
-    position: absolute;
-    width: 268px;
-    height: 31px;
-    left: 1136px;
-    top: 158px;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 24px;
-    text-align: center;
-    background-color:lightgreen;
-    color: #000000;
-}
-
-.visit-patient{
-    align-content: center;
-    margin-top :10%;
-    margin-left: 40%;
-    font-weight: 400;
-    font-size: 20px;
-    width: 20%;
-    height: 70px;
-    background: #617ddc;
-    border-radius: 6px;
-    border: 2px 2px 2px 2px;
-}
-
-.records{
-    display: flex;
-    margin-top: 10px;
-}
-
-.my-patient{
-    position: relative;
-    left: 11%;
-    margin-left:20px;
-    top:5px;
-    font-size: 20px;
-}
-  
-
-.all-patient{
-    position: relative;
-    left: 70%;
-    top:5px;
-    font-size: 20px;
-}
-
-
-.my-patient-results{
-    position: relative;
-    left: 5%;
-    top:45px;
-}
-
-
-.all-patient-results{
-    position: relative;
-    left: 65%;
-    top: 45px;
-}
-    
-
-.toggle {
-    position : relative;
-    display : inline-block;
-    width : 100px;
-    height : 52px;
-    background-color: red;
-    border-radius: 30px;
-    border: 2px solid gray;
-}
-
-       
-/* After slide changes */
-.toggle:after{
-    content: '';
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: gray;
-    top: 1px;
-    left: 1px;
-    transition:  all 0.5s;
-}
-
-       
-/* Toggle text */
-p{
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
-}
-
-       
-/* Checkbox checked effect */
-.checkbox:checked + .toggle::after{
-    left : 49px;
-}
-
-
-/* Checkbox checked toggle label bg color */
-.checkbox:checked + .toggle{
-    background-color: green;
-}
-
-       
-/* Checkbox vanished */
-.checkbox{
-    display : none;
-}
-
-.available-toggle-btn{
-    float: right;
-}
-
-.visit-patient:hover{
+.quote{
     color: white;
 }
 
-
-.w3-sidenav w3-white w3-card-2{
-    background-color: black;
+.quote h1{
+    font-family: 'Merriweather', serif;
 }
-    
+
+.quote h5{
+    font-family: 'Merriweather', serif;
+}
 
 .quote{
     width: fit-content;
@@ -169,24 +49,23 @@ p{
     margin-right: auto;
 }
 
+.meet-divs{
+    text-align: center;
+}
       
 .appointment{
+    display: inline-block;
+    margin: 0% 10%;
     width: 250px;
     height: 100px;
-    margin-top: 5%;
     color: white;
-    margin-left: 15%;
-    margin-bottom: 0%;
-    border: black;
-    border-style: solid;
-    border-width: 1px;
     border-radius: 10px;
-    float: left;
     background-color: #0a192f;
 }
 
       
 .appointment h5{
+    font-family: 'Merriweather', serif;
     text-align: center;
     margin-top: 10px;
 }
@@ -194,116 +73,64 @@ p{
       
 .appointment button{
     margin-top: 5%;
-    margin-left: 35%;
-    margin-right: 20%;
     margin-bottom: 5%;
     background-color: #CC5500;
     border-radius: 10px;
 }
 
 .appointment button:hover{
-    background-color: green;
+    background-color: rgba(204, 85, 0, 0.7);
     color: white;
 }
       
 
 .follow-up{
+    display: inline-block;
+    margin: 0% 10%;
     width: 250px;
     height: 100px;
     margin-top:5%;
     color: white;
-    margin-left: 30%;
-    margin-bottom: 0%;
-    border: black;
-    border-style: solid;
-    border-width: 1px;
     border-radius: 10px;
-    float: left;
     background-color: #0a192f;
 }
       
       
 .follow-up h5{
+    font-family: 'Merriweather', serif;
     text-align: center;
     margin-top: 10px;
 }
 
-body{
-    padding-bottom: 10%;
-}
-
 .follow-up button{
     margin-top: 5%;
-    margin-left: 35%;
-    margin-right: 20%;
     margin-bottom: 5%;
     background-color: #CC5500;
     border-radius: 10px;
 }
 
 .follow-up button:hover{
-    background-color: green;
+    background-color: rgba(204, 85, 0, 0.7);
     color: white;
 }
 
-
-.prev-appointments{
-    border: 2px black solid;
-    width: 70%;
-    margin-left: 15%;
-    color: white;
-    background-color: #0a192f;
-}
-
-.prev-appointments p{
-    line-height: normal;
+.meet-btn{
     text-align: center;
-    font-size: 20px;
-    width:100%;
-    height: fit-content;
 }
 
-.prev-appointments table{
-    border-collapse: separate;
-    border-spacing: 0 7px;
+.previous{
+    margin-top: 10%;
+    text-align: center;
 }
 
-
-.prescription-btn{
-    font-size: 90%;
-    padding: 4%;
-    background-color: light-blue;
-}
-
-
-.prescription-btn:hover{
-    background-color: green;
-    color: black;
-}
-
-.all-appointments{
-    margin-bottom: 2%;
-    margin-top: 1%;
-    padding-left: 0;
-}
-
-.all-appointments button{
-    background-color: #CC5500;
+.previous button{
     border-radius: 10px;
-    height: 10%;
-    margin-left: 2%;
+    background-color:rgba(0, 0, 0, 0.95); 
+    color: white; 
+    padding: 1% 1% 1% 1%; 
+    width: 20%;
 }
 
-.all-appointments button:hover{
-    background-color: green;
-    color: white;
-}
-
-
-.full-header{
-   background-color: #434547;
-   color: white;
-   font-size: 20px;
-  
-   padding-top: 1%;
+.previous button:hover{
+    background-color:rgba(0, 0, 0, 0.8); 
 }

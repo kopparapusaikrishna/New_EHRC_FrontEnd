@@ -1,3 +1,20 @@
+body{
+    height: 100vh;
+    width: 100vw;
+    font-family: 'Merriweather', serif;
+}
+
+.navbar-custom{
+    background-color:darkslategray;
+}
+
+.navbar-custom .navbar-brand,
+        .navbar-custom .navbar-text,  .navbar-custom .nav-link{
+            color: white;
+            font-size: 25px;
+			margin-left: 1%;
+}
+
 input[type="password"],
 input[type="email"] {
 	padding: 10px ;
@@ -29,22 +46,18 @@ button:hover {
 	margin-right: auto ;
 	padding: 20px ;
 	border-radius: 5px ;
-	background-color: #f2f2f2 ;
+	background-color: rgba(228, 228, 228, 0.9);
 }
 
 .form-title {
+	font-family: 'Merriweather', serif;
 	text-align: center ;
 	font-size: 28px ;
 	margin-bottom: 30px ;
-	background-color: #f2f2f2 ;
 }
 
-.header {
-	padding: 2% 5% ;
-	ont-size: 130% ;
-	text-align: left ;
-	background-color: rgb(219, 172, 42) ;
-	font-weight: 700 ;
+.list{
+	text-align: center;
 }
 
 	

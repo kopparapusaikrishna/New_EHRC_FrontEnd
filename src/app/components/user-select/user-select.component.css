@@ -45,6 +45,7 @@ body{
 
 
 .user-selection{
+    border-radius: 4px;
     font-family: 'Merriweather', serif;
     margin: 5% 25%;
     background-color: rgba(228, 228, 228, 0.9);
@@ -77,6 +78,7 @@ body{
 }
 
 .statistics{
+    border-radius: 4px;
     margin: 5% 20%;
     background-color: rgba(228, 228, 228, 0.9);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);

@@ -16,7 +16,7 @@ export class DoctorDashboardComponent implements OnInit {
   channel_name:string = '';
   constructor(private router: Router,private doctorService: DoctorService,private patientservice:PatientService) { 
     this.available = true;
-    
+    this.doctor_details = JSON.parse(localStorage.getItem("doctor_details")!);
   }
 
   ngOnInit(): void {

@@ -22,15 +22,12 @@
         }
     </style>
 </head>
-<body style="background-color:white" background="../../../assets/doctorbkg.jpg" >
-    <header class="w3-container full-header">
-        <div class=" heading-div full-header">
-            <button class="btn btn-primary navbar" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">&#9776;</button>
-            <h2 class="web-name">Tele Consultation Platform</h2>
-            <div  class="heading">{{patient_details.patientName}}</div>
-        </div>
-        
-    </header>
+<body background="../../../assets/doctorbkg.jpg" >
+    <nav class="navbar sticky-top navbar-expand-lg navbar-custom">
+        <a class="navbar-brand" href="#">Tele Consultation Platform</a>
+        <p class="heading">{{patient_details.patientName}}</p>
+      </nav>
+   
         <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
             <div class="offcanvas-header">
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -56,33 +53,29 @@
     
         <br>
 
-    <div class="quote" style="color: white;">
+    <div class="quote">
         <h1>Welcome to medical consultation </h1>
         <h5>"Medicines cure diseases, but only doctors can cure patients." - Carl Jung.</h5>
     </div>
 
-    <div>
+    <div class="meet-divs">
         <div class="appointment ">
             <h5>New Appointment</h5>
-        
-            <button (click)="newAppointment()">Continue</button>
+            <div class="meet-btn">
+                <button (click)="newAppointment()">Continue</button>
+            </div>
         </div>
         <div class="follow-up">
             <h5>Follow-up Appointment</h5>
-        
-            <button (click)="getPreviousAppointments()">Continue</button>
+            <div class="meet-btn">
+                <button (click)="getPreviousAppointments()">Continue</button>
+            </div>
         </div>
     </div>
-    <button *ngIf="previous_appointments" style="background-color:black; color: white; margin-top: 17%; margin-left: 40%; padding: 1% 1% 1% 1%; width: 20%; justify-items: center; " (click)="getPreviousAppointments()">Previous Appointments</button>
-    <style>
-    table{
-        width: 100%;
-        align-content: center;    
-    }
-    th,td{
-        padding: 10pxs;
-    }
-    </style>
+    <div class="previous">
+        <button *ngIf="previous_appointments" (click)="getPreviousAppointments()">Previous Appointments</button>
+    </div>
+    
 </body>
 
 
