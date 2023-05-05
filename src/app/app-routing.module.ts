@@ -22,6 +22,7 @@ import { DoctorPreviousAppointmentsComponent } from './components/doctor-previou
 import { PatientPreviousAppointmentsComponent } from './components/patient-previous-appointments/patient-previous-appointments.component';
 import { MeetingComponent } from './components/meeting/meeting.component';
 import { PrescriptionComponent } from './components/prescription/prescription.component';
+import { StatisticsComponent } from './components/statistics/statistics.component';
 
 
 const routes: Routes = [
@@ -43,7 +44,8 @@ const routes: Routes = [
   { path: 'patient-prev-appointments', component: PatientPreviousAppointmentsComponent},
   { path: 'doctor-prev-appointments', component: DoctorPreviousAppointmentsComponent},
   { path: 'meeting', component: MeetingComponent},
-  { path: 'prescription', component: PrescriptionComponent}
+  { path: 'prescription', component: PrescriptionComponent},
+  { path: 'statistics', component: StatisticsComponent }
 ];
 
 @NgModule({

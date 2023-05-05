@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin dashboard</title>  
+
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;900&family=Ubuntu&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+</head>
+<body background="../../../assets/doctorbkg.jpg">
+
+    <nav class="navbar sticky-top navbar-expand-lg navbar-custom">
+        <a class="navbar-brand" href="#">Tele Consultation Platform</a>
+        <p class="name">AdminName</p>
+    </nav>
+    <div class="title">
+        <h2>Statistics</h2>
+    </div>
+    
+    <div class="canvas">
+        <h4>Consultations Per Department</h4>
+
+        <div class="inputs">
+            <form  class="center-form" (ngSubmit)="onSubmit()">
+                <div>
+                  <label for="dob" class="attr-name">Start Date: </label>
+                  <input type="date" id="dob" name="dob" [(ngModel)]="start_date" required>
+                </div>
+                <div>
+                    <label for="dob" class="attr-name">End Date: </label>
+                    <input type="date" id="dob" name="dob" [(ngModel)]="end_date" required>
+                  </div>
+                <div>
+                <button class="btn btn-primary" type="submit">Go</button>
+                </div>
+            </form>
+        </div>
+        <div *ngIf="c_bool">
+            <canvas baseChart
+            [type]="'pie'"
+            [datasets]="c_pieChartDatasets"
+            [labels]="c_pieChartlabel"
+            [options]="c_pieChartOptions"
+            [plugins]="c_pieChartPlugins"
+            [legend]="c_pieChartLegend" style="display: inline-block" >
+            </canvas>
+            <h5>No. of Consultations = {{num_consultants}}</h5>
+        </div>
+        
+    </div>
+
+    <div class="canvas">
+        <h4>No. of Doctors Per Department</h4>
+        <div *ngIf="d_bool">
+            <canvas baseChart
+            [type]="'pie'"
+            [datasets]="d_pieChartDatasets"
+            [labels]="d_pieChartlabel"
+            [options]="d_pieChartOptions"
+            [plugins]="d_pieChartPlugins"
+            [legend]="d_pieChartLegend" style="display: inline-block" >
+            </canvas>
+            <h5>Total No. of Doctors = {{num_doctors}}</h5>
+        </div>
+        
+    </div>
+    
+
+
+</body>
+</html> 

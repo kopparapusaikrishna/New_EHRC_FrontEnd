@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 
 import { NgxAgoraModule, AgoraConfig } from 'ngx-agora';
+import { NgChartsModule } from 'ng2-charts';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -28,6 +29,7 @@ import { MeetingComponent } from './components/meeting/meeting.component';
 import { PrescriptionComponent } from './components/prescription/prescription.component';
 import { environment } from 'src/environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { StatisticsComponent } from './components/statistics/statistics.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     DoctorPreviousAppointmentsComponent,
     PatientPreviousAppointmentsComponent,
     MeetingComponent,
-    PrescriptionComponent
+    PrescriptionComponent,
+    StatisticsComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +62,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     NgxAgoraModule.forRoot({ AppID: environment.agora.appId }),
     BrowserAnimationsModule,
-    MatIconModule
+    MatIconModule, NgChartsModule
   ],
   exports: [MatIconModule],
   providers: [],
