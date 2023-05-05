@@ -5,25 +5,46 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Meeting Page</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 
 <body>
-    <div id="videos">
-        <div [id]="localCallId" class="video-player" id="local"></div>
+    <div id="videos" class="box">
+        <div [id]="localCallId" class="video-player video1" id="local"></div>
      
-        <div *ngFor="let callId of remoteCalls" [id]="callId" class="video-player" id="remote"></div>
+        <div *ngFor="let callId of remoteCalls" [id]="callId" class="video-player video2" id="remote"></div>
     </div>
 
-    <div id="controls" class="buttons">
-        <div class="control-container meet-btn" id="camera-btn">
-            <button><img src="../../../assets/camera.png" class="img-class" (click)="camera()" /></button>
+    <!-- <div class="slider-container">
+        <input type="range" [(ngModel)]="sliderValue" (input)="resizeVideos()" min="0" max="100" step="1">
+    </div> -->
+
+    <div id="controls" class="buttons box">
+        <div class="control-container" (click)="camera()">
+            <mat-icon *ngIf="isVideoMuted; else video" color="warn" class="meet-btn-off circle-btn">videocam_off</mat-icon>
+            <ng-template #video>
+                <mat-icon color="warn" class="meet-btn-on circle-btn">videocam</mat-icon>
+            </ng-template>
         </div>
-        <div class="control-container meet-btn" id="mic-btn">
-            <button><img src="../../../assets/mic.png" class="img-class" (click)="mute()"  /></button>
+        
+        <div class="control-container" (click)="mute()">
+            <mat-icon *ngIf="isAudioMuted; else mic" color="warn" class="meet-btn-off circle-btn">mic_off</mat-icon>
+            <ng-template #mic>
+                <mat-icon color="warn" class="meet-btn-on circle-btn">mic</mat-icon>
+            </ng-template>
         </div>
 
-        <div class="control-container meet-btn" id="leave-btn">
-            <button><img src="../../../assets/phone.png" class="img-class" (click)="end()" /></button>
+        <div class="control-container" (click)="end()">
+            <mat-icon color="warn" class="meet-btn-off circle-btn">call_end</mat-icon>
+        </div>
+        <div class="slider-container">
+            <input type="range" [(ngModel)]="sliderValue" (input)="resizeVideos()" min="0" max="100" step="1">
         </div>
     </div>
 </body>

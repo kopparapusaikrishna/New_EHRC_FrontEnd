@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
 
 import { NgxAgoraModule, AgoraConfig } from 'ngx-agora';
 
@@ -26,6 +27,7 @@ import { PatientPreviousAppointmentsComponent } from './components/patient-previ
 import { MeetingComponent } from './components/meeting/meeting.component';
 import { PrescriptionComponent } from './components/prescription/prescription.component';
 import { environment } from 'src/environments/environment';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -55,8 +57,11 @@ import { environment } from 'src/environments/environment';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    NgxAgoraModule.forRoot({ AppID: environment.agora.appId })
+    NgxAgoraModule.forRoot({ AppID: environment.agora.appId }),
+    BrowserAnimationsModule,
+    MatIconModule
   ],
+  exports: [MatIconModule],
   providers: [],
   bootstrap: [AppComponent]
 })

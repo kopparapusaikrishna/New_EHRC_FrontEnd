@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 import { NgxAgoraService, Stream, AgoraClient, ClientEvent, StreamEvent } from 'ngx-agora';
 
 @Component({
@@ -12,15 +13,16 @@ export class MeetingComponent implements OnInit {
   title = 'angular-video';
   localCallId = 'agora_local';
   remoteCalls: string[] = [];
+  sliderValue = 50;
 
   private channel_name: any = '';
   private client: AgoraClient;
   private localStream: Stream;
   private uid: number;
-  private isVideoMuted: boolean = false;
-  private isAudioMuted: boolean = false;
+  isVideoMuted: boolean
+  isAudioMuted: boolean;
 
-  constructor(private router: Router, private ngxAgoraService: NgxAgoraService) {
+  constructor(private router: Router, private ngxAgoraService: NgxAgoraService, private location: Location) {
     this.uid = Math.floor(Math.random() * 100);
     this.client = this.ngxAgoraService.createClient({ mode: 'rtc', codec: 'h264' });
     this.assignClientHandlers();
@@ -28,15 +30,33 @@ export class MeetingComponent implements OnInit {
     this.localStream = this.ngxAgoraService.createStream({ streamID: this.uid, audio: true, video: true, screen: false });
     this.assignLocalStreamHandlers();
     // Join and publish methods added in this step
+
     this.initLocalStream(() => this.join(uid => this.publish(), error => console.error(error)));
-    this.channel_name = localStorage.getItem("channel_name");
-    // this.channel_name = "sdkfn";
+    // this.channel_name = localStorage.getItem("channel_name");
+    this.channel_name = "sdkfn";
+    this.isAudioMuted = false;
+    this.isVideoMuted = false;
   }
 
   ngOnInit(): void {
-    
     this.assignClientHandlers();
   }
+
+
+  resizeVideos(): void {
+    console.log(this.sliderValue);
+    const video1 = document.querySelectorAll('.video1')[0] as unknown as HTMLVideoElement;
+    const video2 = document.querySelectorAll('.video2')[0] as unknown as HTMLVideoElement;
+    const video1Size = this.sliderValue;
+    const video2Size = 100 - this.sliderValue;
+
+    video1.style.width = video1Size + '%';
+    video1.style.height = video1Size + '%';
+    video2.style.width = video2Size + '%';
+    video2.style.height = video2Size + '%';
+  }
+
+  
 
   join(onSuccess?: (uid: number | string) => void, onFailure?: (error: Error) => void): void {
     this.client.join(null, this.channel_name, this.uid, onSuccess, onFailure);
@@ -130,14 +150,19 @@ export class MeetingComponent implements OnInit {
 
   camera() {
     if(this.isVideoMuted){
+      
       this.localStream.unmuteVideo();
+
     }
     else{
+      console.log("hii");
       this.localStream.muteVideo();
+      console.log("hii");
     }
+    console.log("inside camera: "+this.isVideoMuted);
     
     this.isVideoMuted = !this.isVideoMuted;
-    
+    console.log("inside camera: "+this.isVideoMuted);
   }
 
   mute() {
@@ -145,17 +170,22 @@ export class MeetingComponent implements OnInit {
       this.localStream.unmuteAudio();
     }
     else{
+      // console.log("hi");
       this.localStream.muteAudio();
+      // console.log("hi");
     }
+
+    console.log("inside mute:"+this.isAudioMuted);
     
     this.isAudioMuted = !this.isAudioMuted;
+    console.log("inside mute:"+this.isAudioMuted);
   }
 
   end() {
     this.client.leave(() => {
       this.ngxAgoraService.client.leave();
       this.client.unpublish(this.localStream);
-      this.router.navigate(['patient-dashboard']);
+      this.location.back();
       console.log("Leavel channel successfully");
     }, (err:any) => {
       console.log("Leave channel failed", err);

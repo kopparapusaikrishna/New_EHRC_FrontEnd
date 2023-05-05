@@ -10,10 +10,11 @@ import { FollowUp } from 'src/app/models/follow-up.model';
   styleUrls: ['./patient-dashboard.component.css']
 })
 export class PatientDashboardComponent implements OnInit {
- previous_appointments=true
+ previous_appointments:boolean;
  patient_id: number = -1;
  patient_details:any;
   constructor(private router: Router,private patientservice:PatientService, private pdfService: PdfService) { 
+    this.previous_appointments=true;
     this.getPatientDetails();
   }
 
