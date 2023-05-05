@@ -32,8 +32,8 @@ export class MeetingComponent implements OnInit {
     // Join and publish methods added in this step
 
     this.initLocalStream(() => this.join(uid => this.publish(), error => console.error(error)));
-    // this.channel_name = localStorage.getItem("channel_name");
-    this.channel_name = "sdkfn";
+    this.channel_name = localStorage.getItem("channel_name");
+    // this.channel_name = "sdkfn";
     this.isAudioMuted = false;
     this.isVideoMuted = false;
   }
