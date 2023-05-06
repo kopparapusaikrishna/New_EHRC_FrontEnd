@@ -39,16 +39,20 @@ a{
 }
 
 .page{
-    border-radius: 4px;
-    margin: 5% 20%;
-    border-color: #D9D9D9;
-    border-style: solid;
-    border-width: 15px;
-    background-color: rgba(228, 228, 228, 0.9);
+   
+    margin: 5% 10%;
+    border-color: #271212;
+    background-color:silver;
+    border-style:solid ;
+    border-width: 1px;
+    border-radius: 30px;
+    box-shadow: 15px 15px 15px 15px rgb(57, 55, 55);
+   
 }
     
 .statistics{
-    border-radius: 4px;
+    padding: 1%;
+    border-radius: 30px;
     background-color: rgba(264, 264, 264, 0.8);
 }
     

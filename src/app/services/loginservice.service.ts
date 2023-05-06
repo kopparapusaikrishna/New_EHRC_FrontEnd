@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 import { Profile } from '../models/profile.model';
 import { ProfileLst } from '../models/profile-lst.model';
 
-const baseUrl = 'https://140d-119-161-98-68.ngrok-free.app';
+const baseUrl = 'http://localhost:8101';
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +28,7 @@ PatientOTP(phoneNumber:string) {
     return this.http.get(`${baseUrl}/Patient/sendOTP?phone_number=${phoneNumber}`, {headers:{'ngrok-skip-browser-warning':'google-chrome'}});
 }
 PatientVerifyOTP(phoneNumber:string,otp:string) {
-    return this.http.get(`${baseUrl}/Patient/verifyOTP?phone_number=${phoneNumber}&otp=${otp}`, {headers:{'ngrok-skip-browser-warning':'google-chrome'}});
+    return this.http.get(`${baseUrl}/Patient/verifyOTP?phone_number=${phoneNumber}&otp=${otp}`);
 }
 
 postProfileDetails(profileDetails: Profile): Observable<string> {
