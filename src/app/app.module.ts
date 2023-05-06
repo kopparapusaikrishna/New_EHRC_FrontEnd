@@ -2,7 +2,13 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+
 import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatMenuModule } from '@angular/material/menu';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatButtonModule} from '@angular/material/button';
+import { MatDividerModule} from '@angular/material/divider';
 
 import { NgxAgoraModule, AgoraConfig } from 'ngx-agora';
 import { NgChartsModule } from 'ng2-charts';
@@ -62,7 +68,13 @@ import { StatisticsComponent } from './components/statistics/statistics.componen
     FormsModule,
     NgxAgoraModule.forRoot({ AppID: environment.agora.appId }),
     BrowserAnimationsModule,
-    MatIconModule, NgChartsModule
+    MatIconModule, 
+    MatSidenavModule,
+    NgChartsModule,
+    MatMenuModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatDividerModule
   ],
   exports: [MatIconModule],
   providers: [],

@@ -22,37 +22,124 @@
         }
     </style>
 </head>
-<body background="../../../assets/profiles1.webp" >
-    
-    <nav class="navbar sticky-top navbar-expand-lg navbar-custom">
-      <a class="navbar-brand" href="#">Tele Consultation Platform</a>
-      <p class="heading">{{doctor_details.doctorName}}</p>
-    </nav>
- 
- 
-<!-- Default checked -->
-  <div class="available-toggle-btn">
-    <p style="color: black; padding-right: 0%; font-family: 'Merriweather', serif;"> Available / Not Available</p>
-    <input type="checkbox" id="switch" class="checkbox" (change)="toggleChange()"/>
-          <label for="switch" class="toggle">
-          </label>
-  </div>
-  <div class="container" style=" margin-top: 20px;margin-left: 15%; padding-bottom:2% ; padding-top:0px ; padding-right:1%; padding-left:1%; align-content: center; width:70%">
-    
-      <div>    
-      <button class="visit-patient" (click)="getChannelName()">Visit a patient</button>
+<body>
+   
+  <!-- <nav class="navbar sticky-top navbar-expand-lg navbar-custom">
+    <a class="navbar-brand" href="#">Tele Consultation Platform</a>
+    <p class="heading">{{doctor_details.doctorName}}</p>
+  </nav> -->
+
+  <mat-toolbar class="mat-elevation-z8">
+    <button
+      mat-icon-button
+      *ngIf="sidenav.mode === 'over'"
+      (click)="sidenav.toggle()"
+    >
+      <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
+      <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+    </button>
+    <a >Tele Consultation Platform</a>
+    <p class="heading">{{doctor_details.doctorName}}</p>
+  </mat-toolbar>
+  
+  <mat-sidenav-container >
+    <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+      <img
+        class="avatar mat-elevation-z8"
+        src="../../../assets/Doctor.jpeg"
+      />
+  
+      <h4 class="name">{{doctor_details.doctorName}}</h4>
+      <p class="designation">{{doctor_details.departmentName}}</p>
+  
+      <mat-divider></mat-divider>
+  
+      <button mat-button class="menu-button" routerLink="doctor-dashboard">
+        <mat-icon>dashboard</mat-icon>
+        <span>Dashboard</span>
+      </button>
+      <button mat-button class="menu-button" routerLink="doctor-prev-appointments">
+        <mat-icon>event</mat-icon>
+        <span>Appointments</span>
+      </button>
+      <!-- <button mat-button class="menu-button" routerLink="/about">
+        <mat-icon>info</mat-icon>
+        <span>About</span>
+      </button> -->
+      <button mat-button class="menu-button" routerLink="/about">
+        <mat-icon>exit_to_app</mat-icon>
+        <span>LogOut</span>
+      </button>
+  
+      <mat-divider></mat-divider>
+  
+      <button mat-button class="menu-button" routerLink="/help">
+        <mat-icon>help</mat-icon>
+        <span>Help</span>
+      </button>
+    </mat-sidenav>
+    <!-- <mat-sidenav-content>
+      <div class="content mat-elevation-z8">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content> -->
+
+    <mat-sidenav-content style = "background: url('../../../assets/profiles1.webp')">
+      <div class="available-toggle-btn">
+        <p style="color: black; padding-right: 0%; font-family: 'Merriweather', serif;"> Available / Not Available</p>
+        <input type="checkbox" id="switch" class="checkbox" (change)="toggleChange()"/>
+              <label for="switch" class="toggle">
+              </label>
       </div>
 
-      <div class="details">
-        <p>My Patients : 222</p>
-        <p>All Patients : 222</p>
-      </div>
+      <div class="container" style=" margin-top: 20px; margin-left: 15%; padding-bottom:2% ; padding-top:0px ; padding-right:1%; padding-left:1%; align-content: center; width:70%">
+        
+          <div>    
+          <button class="visit-patient" (click)="getChannelName()">Visit a patient</button>
+          </div>
     
-  </div>
-<br>
-<div class="previous-div">
-  <button class="previous" (click)="doctorPreviousAppointments()" >Show previous Appointments</button>
-</div>
+          <div class="details">
+            <p>My Patients : 222</p>
+            <p>All Patients : 222</p>
+          </div>
+        
+      </div>
+      <br>
+      <div class="previous-div">
+        <button class="previous" (click)="doctorPreviousAppointments()" >Show previous Appointments</button>
+      </div>
+    </mat-sidenav-content>
+
+
+  </mat-sidenav-container>
+ 
+
+
+
+ 
+<!-- Default checked -->
+    <!-- <div class="available-toggle-btn">
+      <p style="color: black; padding-right: 0%; font-family: 'Merriweather', serif;"> Available / Not Available</p>
+      <input type="checkbox" id="switch" class="checkbox" (change)="toggleChange()"/>
+            <label for="switch" class="toggle">
+            </label>
+    </div>
+    <div class="container" style=" margin-top: 20px;margin-left: 15%; padding-bottom:2% ; padding-top:0px ; padding-right:1%; padding-left:1%; align-content: center; width:70%">
+      
+        <div>    
+        <button class="visit-patient" (click)="getChannelName()">Visit a patient</button>
+        </div>
+
+        <div class="details">
+          <p>My Patients : 222</p>
+          <p>All Patients : 222</p>
+        </div>
+      
+    </div>
+  <br>
+  <div class="previous-div">
+    <button class="previous" (click)="doctorPreviousAppointments()" >Show previous Appointments</button>
+  </div> -->
 
 
 </body>

@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Departments_lst } from '../models/departments-lst.model';
 
 
-const baseUrl = 'http://localhost:8101';
+const baseUrl = 'https://f0b7-119-161-98-68.ngrok-free.app';
 
 @Injectable({
   providedIn: 'root'

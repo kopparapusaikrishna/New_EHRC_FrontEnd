@@ -7,7 +7,7 @@ import { Admin } from '../models/admin.model';
 import { Admins_lst } from '../models/admins-lst.model';
 
 
-const baseUrl = 'https://140d-119-161-98-68.ngrok-free.app';
+const baseUrl = 'https://f0b7-119-161-98-68.ngrok-free.app';
 
 @Injectable({
   providedIn: 'root'

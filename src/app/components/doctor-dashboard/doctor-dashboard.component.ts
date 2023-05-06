@@ -2,7 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { AvailabilityCheck } from 'src/app/models/availability-check.model';
 import { DoctorService } from 'src/app/services/doctor.service';
 import { PatientService } from 'src/app/services/patient.service';
-import { Router } from '@angular/router';
+
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { MatSidenav } from '@angular/material/sidenav';
+import { delay, filter } from 'rxjs/operators';
+import { NavigationEnd, Router } from '@angular/router';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
 @Component({
   selector: 'app-doctor-dashboard',
@@ -14,7 +19,9 @@ export class DoctorDashboardComponent implements OnInit {
   showpreviousappointments=true;
   doctor_details:any;
   channel_name:string = '';
-  constructor(private router: Router,private doctorService: DoctorService,private patientservice:PatientService) { 
+  sidenav!: MatSidenav;
+
+  constructor(private router: Router,private doctorService: DoctorService,private patientservice:PatientService, private observer: BreakpointObserver) { 
     this.available = true;
     this.doctor_details = JSON.parse(localStorage.getItem("doctor_details")!);
   }
@@ -23,6 +30,38 @@ export class DoctorDashboardComponent implements OnInit {
     this.getDoctorDetails();
     this.toggleChange();
   }
+
+
+
+  ngAfterViewInit() {
+    this.observer
+      .observe(['(max-width: 800px)'])
+      .pipe(delay(1), untilDestroyed(this))
+      .subscribe((res) => {
+        if (res.matches) {
+          this.sidenav.mode = 'over';
+          this.sidenav.close();
+        } else {
+          this.sidenav.mode = 'side';
+          this.sidenav.open();
+        }
+      });
+
+    this.router.events
+      .pipe(
+        untilDestroyed(this),
+        filter((e) => e instanceof NavigationEnd)
+      )
+      .subscribe(() => {
+        if (this.sidenav.mode === 'over') {
+          this.sidenav.close();
+        }
+      });
+  }
+
+
+
+
   getDoctorDetails(){
     const username=JSON.parse(localStorage.getItem("doctor_token")!).doctor_email_id;
     this.doctorService.getdoctordetails(username)

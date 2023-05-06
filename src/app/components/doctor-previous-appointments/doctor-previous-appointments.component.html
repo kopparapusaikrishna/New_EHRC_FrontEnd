@@ -24,7 +24,7 @@
 </head>
 
 <body>
-    <header class="w3-container w3-teal">
+    <!-- <header class="w3-container w3-teal">
         <div class=" heading-div">
             <button class="btn btn-primary navbar" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">&#9776;</button>
             <h2 class="web-name">Tele Consultation Platform</h2>
@@ -53,24 +53,86 @@
         </div>
           
         
-    </header>
+    </header> -->
 
-    <div class="prev-appointments" style="margin-top: 2%; margin-bottom:5%">
-        <div style="padding-left: 5%;">
-            <div><p>Previous Appointments</p></div>
-            <table>
-            <thead><th>Date</th><th>Patient Name</th><th>Prescription</th><th>Follow-up</th></thead>  
-            <tr *ngFor="let prev_appointment of prevAppointmentsLst; let i = index">
-                <th>{{prev_appointment.appointment_date}}</th>
-                <th>{{prev_appointment.patient_name}}</th>
-                <th><button class="btn btn-primary" (click)="getPrescription(prev_appointment.appointment_id)">Prescription</button></th> 
-                <th>{{prev_appointment.follow_up}}</th>
-            </tr>
-            
-            </table>
-        </div> 
-        
-    </div> 
+
+    <mat-toolbar class="mat-elevation-z8">
+        <button
+          mat-icon-button
+          *ngIf="sidenav.mode === 'over'"
+          (click)="sidenav.toggle()"
+        >
+          <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
+          <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+        </button>
+        <a >Tele Consultation Platform</a>
+        <p class="heading">{{doctor_details.doctorName}}</p>
+      </mat-toolbar>
+      
+      <mat-sidenav-container >
+        <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+          <img
+            class="avatar mat-elevation-z8"
+            src="../../../assets/Doctor.jpeg"
+          />
+      
+          <h4 class="name">{{doctor_details.doctorName}}</h4>
+          <p class="designation">{{doctor_details.departmentName}}</p>
+      
+          <mat-divider></mat-divider>
+      
+          <button mat-button class="menu-button" routerLink="doctor-dashboard">
+            <mat-icon>dashboard</mat-icon>
+            <span>Dashboard</span>
+          </button>
+          <button mat-button class="menu-button" routerLink="doctor-prev-appointments">
+            <mat-icon>event</mat-icon>
+            <span>Appointments</span>
+          </button>
+          <!-- <button mat-button class="menu-button" routerLink="/about">
+            <mat-icon>info</mat-icon>
+            <span>About</span>
+          </button> -->
+          <button mat-button class="menu-button" routerLink="/about">
+            <mat-icon>exit_to_app</mat-icon>
+            <span>LogOut</span>
+          </button>
+      
+          <mat-divider></mat-divider>
+      
+          <button mat-button class="menu-button" routerLink="/help">
+            <mat-icon>help</mat-icon>
+            <span>Help</span>
+          </button>
+        </mat-sidenav>
+        <!-- <mat-sidenav-content>
+          <div class="content mat-elevation-z8">
+            <router-outlet></router-outlet>
+          </div>
+        </mat-sidenav-content> -->
+    
+        <mat-sidenav-content style = "background: url('../../../assets/profiles1.webp')">
+            <div class="prev-appointments" style="margin-top: 2%; margin-bottom:5%">
+                <div style="padding-left: 5%;">
+                    <div><p>Previous Appointments</p></div>
+                    <table>
+                    <thead><th>Date</th><th>Patient Name</th><th>Prescription</th><th>Follow-up</th></thead>  
+                    <tr *ngFor="let prev_appointment of prevAppointmentsLst; let i = index">
+                        <th>{{prev_appointment.appointment_date}}</th>
+                        <th>{{prev_appointment.patient_name}}</th>
+                        <th><button class="btn btn-primary" (click)="getPrescription(prev_appointment.appointment_id)">Prescription</button></th> 
+                        <th>{{prev_appointment.follow_up}}</th>
+                    </tr>
+                    
+                    </table>
+                </div> 
+                
+            </div> 
+        </mat-sidenav-content>
+    
+    
+      </mat-sidenav-container>
+
 
     <style>
         table{

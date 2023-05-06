@@ -3,7 +3,12 @@ import { FollowUp } from 'src/app/models/follow-up.model';
 import { Prev_appointments } from 'src/app/models/prev-appointments';
 import { PatientService } from 'src/app/services/patient.service';
 import { PdfService } from 'src/app/services/pdf.service';
-import { Router } from '@angular/router';
+
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { MatSidenav } from '@angular/material/sidenav';
+import { delay, filter } from 'rxjs/operators';
+import { NavigationEnd, Router } from '@angular/router';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
 @Component({
   selector: 'app-patient-previous-appointments',
@@ -15,7 +20,9 @@ export class PatientPreviousAppointmentsComponent implements OnInit {
   consultAgainLst: Array<string>;
   patient_details:any;
 
-  constructor(private patientService: PatientService, private pdfService: PdfService, private router: Router) { 
+  sidenav!: MatSidenav;
+
+  constructor(private patientService: PatientService, private pdfService: PdfService, private router: Router, private observer: BreakpointObserver) { 
     this.prevAppointmentsLst = new Array<Prev_appointments>;
     this.getPatientDetails();
     this.getPreviousAppointments();
@@ -25,6 +32,35 @@ export class PatientPreviousAppointmentsComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+
+  ngAfterViewInit() {
+    this.observer
+      .observe(['(max-width: 800px)'])
+      .pipe(delay(1), untilDestroyed(this))
+      .subscribe((res) => {
+        if (res.matches) {
+          this.sidenav.mode = 'over';
+          this.sidenav.close();
+        } else {
+          this.sidenav.mode = 'side';
+          this.sidenav.open();
+        }
+      });
+
+    this.router.events
+      .pipe(
+        untilDestroyed(this),
+        filter((e) => e instanceof NavigationEnd)
+      )
+      .subscribe(() => {
+        if (this.sidenav.mode === 'over') {
+          this.sidenav.close();
+        }
+      });
+  }
+
+
 
   getPreviousAppointments(){
     this.patientService.getPreviousAppointments(this.patient_details.patientId)

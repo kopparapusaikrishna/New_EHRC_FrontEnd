@@ -23,78 +23,101 @@
 </head>
 <body background="../../../assets/profiles1.webp">
 
-    <nav class="navbar sticky-top navbar-expand-lg navbar-custom">
+    <!-- <nav class="navbar sticky-top navbar-expand-lg navbar-custom">
         <a class="navbar-brand" href="#">Tele Consultation Platform</a>
         <p class="name">AdminName</p>
-        <!-- <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown button
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </div> -->
-    </nav>
+    </nav> -->
     
     
-    <!-- <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
-        <div class="offcanvas-header">
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-            <h3 style="width: auto; height:auto; margin-left: 15px; ">Tele Consultation Platform</h3>
+    <mat-toolbar class="mat-elevation-z8">
+        <button
+          mat-icon-button
+          *ngIf="sidenav.mode === 'over'"
+          (click)="sidenav.toggle()"
+        >
+          <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
+          <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+        </button>
+        <a >Tele Consultation Platform</a>
+        <p class="heading">Admin Name</p>
+    </mat-toolbar>
+      
+      <mat-sidenav-container>
+        <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+          <img
+            class="avatar mat-elevation-z8"
+            src="../../../assets/Patient.jpeg"
+          />
+      
+          <h4 class="name">Admin Name</h4>
+      
+          <mat-divider></mat-divider>
+          
+          <button mat-button class="menu-button" routerLink="patient-dashboard">
+            <mat-icon>dashboard</mat-icon>
+            <span>Dashboard</span>
+          </button>
+          <button mat-button class="menu-button" routerLink="patient-prev-appointments">
+            <mat-icon>event</mat-icon>
+            <span>Manage Doctors</span>
+          </button>
+          <!-- <button mat-button class="menu-button" routerLink="/about">
+            <mat-icon>info</mat-icon>
+            <span>About</span>
+          </button> -->
+          <button mat-button class="menu-button" routerLink="Patient">
+            <mat-icon>exit_to_app</mat-icon>
+            <span>LogOut</span>
+          </button>
+      
+          <mat-divider></mat-divider>
+      
+          <button mat-button class="menu-button" routerLink="/help">
+            <mat-icon>help</mat-icon>
+            <span>Help</span>
+          </button>
+        </mat-sidenav>
+        <mat-sidenav-content  style = "background: url('../../../assets/profiles1.webp')">
+            <div class="page">
+
+                <div class="statistics">
+                    <h2 class="stat-name">Statistics</h2>
+                    <div class="list">
+                        <div class="stat">
+                            <h3>No. of patients consulted</h3>
+                            <h3 class="value">6,74,329</h3>
+                        </div>
+                        <div class="stat">
+                            <h3>No. of patients consulted</h3>
+                            <h3 class="value">6,74,329</h3>
+                        </div>
+                    </div>
+                    <a href=""><h6 class="see-more">See More -> </h6></a>
+                    
+                </div>
+                
+                <div class="doc-admin">
+                    <div class="list">
+                        <div class="manage">
+                            <button type="button" class="btn" onclick="location.href='/view-doctors'"><img src="../../../assets/Doctor.jpeg" alt="Doctor" class="images"></button>
+                            <br>
+                            <h5 class="add-del">Add/ Delete Doctors</h5>
+                        </div>
+                        <div class="manage">
+                            <button type="button" class="btn" onclick="location.href='/view-admins'"><img src="../../../assets/Patient.jpeg" alt="Admin" class="images"></button>
+                            <br>
+                            <h5 class="add-del">Add/ Delete Admins</h5>
+                        </div>
+                    </div>
+                    
+                </div>
         
-            <hr size="3px">
-            <a href="/admin-dashboard" style=" margin-bottom: 15px;"> Dashboard</a>
-            <br>		
-            <a href="/view-doctors"  style=" margin-bottom: 15px;">View Doctors</a>		
-            <br>
-            <a href="/view-admins"  style=" margin-bottom: 15px;">View Admins</a>		
-            <br>
-            <a href="/admin-dashboard"  style=" margin-bottom: 15px;">Statistics</a>		
-            <br>
-            <a href="tryit.asp-filename=tryw3css_sidenav_over.html#"  style=" margin-bottom: 15px;">LogOut</a>		
-        </div>
-    </div> -->
+            </div>
+        </mat-sidenav-content>
+      </mat-sidenav-container>
     
 
-    <div class="page">
-
-        <div class="statistics">
-            <h2 class="stat-name">Statistics</h2>
-            <div class="list">
-                <div class="stat">
-                    <h3>No. of patients consulted</h3>
-                    <h3 class="value">6,74,329</h3>
-                </div>
-                <div class="stat">
-                    <h3>No. of patients consulted</h3>
-                    <h3 class="value">6,74,329</h3>
-                </div>
-            </div>
-            <a href=""><h6 class="see-more">See More -> </h6></a>
-            
-        </div>
-        
-        <div class="doc-admin">
-            <div class="list">
-                <div class="manage">
-                    <button type="button" class="btn" onclick="location.href='/view-doctors'"><img src="../../../assets/Doctor.jpeg" alt="Doctor" class="images"></button>
-                    <br>
-                    <h5 class="add-del">Add/ Delete Doctors</h5>
-                </div>
-                <div class="manage">
-                    <button type="button" class="btn" onclick="location.href='/view-admins'"><img src="../../../assets/Patient.jpeg" alt="Admin" class="images"></button>
-                    <br>
-                    <h5 class="add-del">Add/ Delete Admins</h5>
-                </div>
-            </div>
-            
-        </div>
-
-    </div>
+    
 
 
 </body>
