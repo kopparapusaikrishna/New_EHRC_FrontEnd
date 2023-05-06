@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { AvailabilityCheck } from '../models/availability-check.model';
 
 
-const baseUrl = 'https://f0b7-119-161-98-68.ngrok-free.app';
+const baseUrl = 'https://a744-119-161-98-68.ngrok-free.app';
 
 @Injectable({
   providedIn: 'root'
@@ -36,19 +36,47 @@ export class DoctorService {
   }
 
   getChannelName(doctor_id: number, dept_name: string): Observable<any> {
-    return this.http.get(`${baseUrl}/doctorChannel?doctor_id=${doctor_id}&dept_name=${dept_name}`, {headers:{'ngrok-skip-browser-warning':'google-chrome'}});
+    const token = JSON.parse(localStorage.getItem('doctor_token')!).token;
+
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `${token}`,
+      'ngrok-skip-browser-warning':'google-chrome'
+    };
+    return this.http.get(`${baseUrl}/doctorChannel?doctor_id=${doctor_id}&dept_name=${dept_name}`, {headers});
   }
 
   addAppointment(data: any): Observable<string>{
-    return this.http.post<string>(`${baseUrl}/addAppointmentDetails`, data, {headers:{'ngrok-skip-browser-warning':'google-chrome'}});
+    const token = JSON.parse(localStorage.getItem('doctor_token')!).token;
+
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `${token}`,
+      'ngrok-skip-browser-warning':'google-chrome'
+    };
+    return this.http.post<string>(`${baseUrl}/addAppointmentDetails`, data, {headers});
   }
 
   getPatientDetails(data:any): Observable<any>{
-    return this.http.get(`${baseUrl}/patientDetails?doctor_id=${data}`, {headers:{'ngrok-skip-browser-warning':'google-chrome'}});
+    const token = JSON.parse(localStorage.getItem('doctor_token')!).token;
+
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `${token}`,
+      'ngrok-skip-browser-warning':'google-chrome'
+    };
+    return this.http.get(`${baseUrl}/patientDetails?doctor_id=${data}`, {headers});
   }
 
   getPreviousAppointments(doctor_id: number): Observable<any>{
-    return this.http.get(`${baseUrl}/doctorPreviousAppointmentsList?doctor_id=${doctor_id}`, {headers:{'ngrok-skip-browser-warning':'google-chrome'}});
+    const token = JSON.parse(localStorage.getItem('doctor_token')!).token;
+
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `${token}`,
+      'ngrok-skip-browser-warning':'google-chrome'
+    };
+    return this.http.get(`${baseUrl}/doctorPreviousAppointmentsList?doctor_id=${doctor_id}`, {headers});
   }
 
 }

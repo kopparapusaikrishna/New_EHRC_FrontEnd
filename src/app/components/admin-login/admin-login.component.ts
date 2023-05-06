@@ -33,7 +33,7 @@ export class AdminLoginComponent implements OnInit {
             // Authenticate user and log them in
             alert('username and password doesnt match!');
           } else {
-            localStorage.setItem("admin_token",response.token);
+            localStorage.setItem("admin_token",JSON.stringify({ admin_email_id:user,token:response.token}));
             this.router.navigate(["/admin-dashboard"]);
           }
         })

@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Departments_lst } from '../models/departments-lst.model';
 
 
-const baseUrl = 'https://f0b7-119-161-98-68.ngrok-free.app';
+const baseUrl = 'https://a744-119-161-98-68.ngrok-free.app';
 
 @Injectable({
   providedIn: 'root'
@@ -14,11 +14,25 @@ export class PatientService {
   constructor(private http: HttpClient) { }
 
   getDepartmentsLst(): Observable<Departments_lst> {
-    return this.http.get<Departments_lst>(`${baseUrl}/PatientDepartment`, {headers:{'ngrok-skip-browser-warning':'google-chrome'}});
+    const token = JSON.parse(localStorage.getItem('patient_token')!).token;
+
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `${token}`,
+      'ngrok-skip-browser-warning':'google-chrome'
+    };
+    return this.http.get<Departments_lst>(`${baseUrl}/PatientDepartment`, {headers});
   }
   
   getContainsDepartment(deptName: string): Observable<string> {
-    return this.http.get(`${baseUrl}/patient?department_name=${deptName}`,{responseType: 'text', headers:{'ngrok-skip-browser-warning':'google-chrome'}});
+    const token = JSON.parse(localStorage.getItem('patient_token')!).token;
+
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `${token}`,
+      'ngrok-skip-browser-warning':'google-chrome'
+    };
+    return this.http.get(`${baseUrl}/patient?department_name=${deptName}`,{responseType: 'text', headers});
   }
   getUserProfileslst(phone_number: string){
     const token = JSON.parse(localStorage.getItem('patient_token')!).token;
@@ -48,19 +62,47 @@ export class PatientService {
   getChannelName(patient_id: number, dept_name: string): Observable<string>{
     console.log(patient_id);
     console.log(dept_name);
-    return this.http.get(`${baseUrl}/patientChannelGlobal?patient_id=${patient_id}&dept_name=${dept_name}`, {responseType: 'text',headers:{'ngrok-skip-browser-warning':'google-chrome'}});
+    const token = JSON.parse(localStorage.getItem('patient_token')!).token;
+
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `${token}`,
+      'ngrok-skip-browser-warning':'google-chrome'
+    };
+    return this.http.get(`${baseUrl}/patientChannelGlobal?patient_id=${patient_id}&dept_name=${dept_name}`, {responseType: 'text',headers})
   }
 
   getPreviousAppointments(patient_id: number): Observable<any>{
-    return this.http.get(`${baseUrl}/previousAppointmentsList?patient_id=${patient_id}`,{headers:{'ngrok-skip-browser-warning':'google-chrome'}});
+    const token = JSON.parse(localStorage.getItem('patient_token')!).token;
+
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `${token}`,
+      'ngrok-skip-browser-warning':'google-chrome'
+    };
+    return this.http.get(`${baseUrl}/previousAppointmentsList?patient_id=${patient_id}`,{headers});
   }
 
   followUpSameDoctor(appointment_id: number): Observable<any>{
-    return this.http.get(`${baseUrl}/patientChannelLocal/Same?appointment_id=${appointment_id}`,{responseType: 'text',headers:{'ngrok-skip-browser-warning':'google-chrome'}});
+    const token = JSON.parse(localStorage.getItem('patient_token')!).token;
+
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `${token}`,
+      'ngrok-skip-browser-warning':'google-chrome'
+    };
+    return this.http.get(`${baseUrl}/patientChannelLocal/Same?appointment_id=${appointment_id}`,{responseType: 'text',headers});
   }
 
   followUpDifferentDoctor(appointment_id:number, dept_name: string): Observable<any>{
-    return this.http.get(`${baseUrl}/patientChannelLocal/Different?appointment_id=${appointment_id}&dept_name=${dept_name}`,{headers:{'ngrok-skip-browser-warning':'google-chrome'}});
+    const token = JSON.parse(localStorage.getItem('patient_token')!).token;
+
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `${token}`,
+      'ngrok-skip-browser-warning':'google-chrome'
+    };
+    return this.http.get(`${baseUrl}/patientChannelLocal/Different?appointment_id=${appointment_id}&dept_name=${dept_name}`,{headers});
   }
 
 }

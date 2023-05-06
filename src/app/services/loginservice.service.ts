@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 import { Profile } from '../models/profile.model';
 import { ProfileLst } from '../models/profile-lst.model';
 
-const baseUrl = 'https://f0b7-119-161-98-68.ngrok-free.app';
+const baseUrl = 'https://a744-119-161-98-68.ngrok-free.app';
 
 @Injectable({
   providedIn: 'root'
@@ -16,11 +16,11 @@ export class LoginserviceService {
 
 constructor(private http:HttpClient) { }
 getDoctorData(username: string,password: string) {
-    return this.http.get(`${baseUrl}/Doctor/`+username+'/'+password, {headers:{'ngrok-skip-browser-warning':'google-chrome'}});
+    return this.http.get(`${baseUrl}/Doctor?username=${username}&password=${password}`, {headers:{'ngrok-skip-browser-warning':'google-chrome'}});
 }
 
 getAdminData(username: string,password: string) {
-    return this.http.get(`${baseUrl}/Admin/`+username+'/'+password, {headers:{'ngrok-skip-browser-warning':'google-chrome'}});
+    return this.http.get(`${baseUrl}/Admin?username=${username}&password=${password}`, {headers:{'ngrok-skip-browser-warning':'google-chrome'}});
 }
 
 PatientOTP(phoneNumber:string) {
@@ -45,18 +45,7 @@ deleteProfile(patientId: number): Observable<string> {
   return this.http.delete(`${baseUrl}/DeleteProfile/${patientId}`,{responseType: 'text', headers:{'ngrok-skip-browser-warning':'google-chrome'}})
 }
 
-login(email: string, password: string) {
-   return this.http.get(`${baseUrl}/Doctor1/`+email+'/'+password, {headers:{'ngrok-skip-browser-warning':'google-chrome'}})
-    .subscribe((user: any) => {
-        if (user && user.token) {
-            // store user details and jwt token in local storage to keep user logged in between page refreshes
-            localStorage.setItem('currentUser', user.token);
-            return true;
-          }
-          return false;;
-        })
-      
-  }
+
 
   logout() {
     localStorage.removeItem('currentUser');
