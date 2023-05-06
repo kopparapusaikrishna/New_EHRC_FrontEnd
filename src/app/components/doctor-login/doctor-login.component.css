@@ -51,6 +51,12 @@ button:hover{
 	padding: 20px;
 	border-radius: 5px;
 	background-color: rgba(228, 228, 228, 0.9);
+	border-color: #271212;
+    background-color:silver;
+    border-style:solid ;
+    border-width: 1px;
+   
+    box-shadow: 15px 15px 15px 15px rgb(57, 55, 55);
 }
 
 

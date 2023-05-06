@@ -1,19 +1,30 @@
+
+
+.navbar-custom{
+    background-color:darkslategray;
+    
+}
+
+.navbar-custom .navbar-brand,
+        .navbar-custom .navbar-text,  .navbar-custom .nav-link{
+            color: white;
+            font-size: 25px;
+}
+
 a{
-    text-decoration: none;
+    padding-left: 2%;
+ 
 }
 
-.topsection{
-    display:flex;
-    border-bottom: 6px;
-    border-top: 1px;
-    padding-bottom: 4%;
-    border-color: black;
-}
 
-.navbar{
-    margin: 0.5% 0.5% 1.3% 0.5%;
-    padding: 0.3% 0.5%;
-    display: inline-block;
+.name{
+    font-size: 25px;
+    font-family: 'Merriweather', serif;
+    color: white;
+    text-align: right;
+    margin-left: auto;
+    margin-right: 3%;
+    margin-bottom: 0;
 }
 
 .web-name{
@@ -35,10 +46,15 @@ a{
 
 
 .doctors-list{
-    border-color: #D9D9D9;
-    border-style: solid;
-    border-width: 10px;
+    border-color: #271212;
+    background-color:silver;
+    border-style:solid ;
+    border-width: 1px;
+    border-radius: 30px;
+    box-shadow: 15px 15px 15px 15px rgb(57, 55, 55);
+  
     margin: 5% 25%;
+    color: black;
 }
 
 .list-of-admins{
@@ -98,6 +114,13 @@ a{
     width: 15px;
     flex: 1;
 }
+body{
+    height: 100vh;
+    width: 100vw;
+    font-family: 'Merriweather', serif;
 
+   padding-bottom: 50%;
+   
+}
 
 

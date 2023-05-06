@@ -27,41 +27,30 @@
 </head>
 
 
-<body>
-    <div style="background-color: black;">
+<body background="../../../assets/profiles1.webp">
+
+  <nav class="navbar sticky-top navbar-expand-lg navbar-custom">
+      <a class="navbar-brand" href="#">Tele Consultation Platform</a>
+      <div  class="heading" style="margin-bottom: 10px; text-align: center; color: white;" >{{patient_details.patientName}}</div>
+   
+  
+  </nav>
         
-      <nav class="w3-sidenav w3-white w3-card-2" style="background-color: black; display:none;">
-          <a href="javascript:void(0)" (click)="w3_close()" 
-          class="w3-closenav w3-large" style="float: left;"> &#9776;</a>
-          <br>
-          <br>
-          <h3 style="width: auto; height:auto; margin-left: 15px; ">Website-Name</h3>
-        
-          <hr size="3px">
-          <a href="tryit.asp-filename=tryw3css_sidenav_over.html#" style=" margin-bottom: 15px;"> Home</a>		
-          <a href="tryit.asp-filename=tryw3css_sidenav_over.html#"  style=" margin-bottom: 15px;">Records</a>		
-          <a href="tryit.asp-filename=tryw3css_sidenav_over.html#"  style=" margin-bottom: 15px;">xxxx</a>		
-          <a href="tryit.asp-filename=tryw3css_sidenav_over.html#"  style=" margin-bottom: 15px;">xxxx</a>		
-          <a href="tryit.asp-filename=tryw3css_sidenav_over.html#"  style=" margin-bottom: 15px;">SignOut</a>		
-      </nav>
-    </div>
+ 
+    
+   
 
-    <header class="w3-container w3-teal">
-      <span class="w3-opennav w3-xlarge" (click)="w3_open()" style="width: 50px;">&#9776;</span>
-      <div  class="heading" style="margin-bottom: 10px; text-align: center" >{{patient_details.patientName}}</div>
-    </header>
-
-
-    <div class="form-check" *ngFor="let dept of departmentsLst; let index = index">
-        <label class="form-check-label text-break">
-          <input class="form-check-input" type="checkbox" [ngModel] = "selectedIndex === index"
+    <div style="display: flex;" class="form-check" *ngFor="let dept of departmentsLst; let index = index">
+        <label style="display: flex;" class="form-check-label text-break">
+          <input style="display: flex;" class="form-check-input" type="checkbox" [ngModel] = "selectedIndex === index"
               (change)="changeSelection($event, index)" />
           {{ dept }}
           <span class="form-check-sign">
               <span class="check"></span>
           </span>
         </label>
+       
     </div>
-    <input class="submit-button" type="submit" value="Connect" (click)="retreiveHasDepartment()">
+    <input  style="display: flex; margin-top: 3%; margin-left: 25%;" class="submit-button" type="submit" value="Connect" (click)="retreiveHasDepartment()">
 
 </body>
