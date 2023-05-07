@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AvailabilityCheck } from '../models/availability-check.model';
+import { environment } from 'src/environments/environment';
 
 
-const baseUrl = 'https://a744-119-161-98-68.ngrok-free.app';
+const baseUrl = environment.baseUrl;
 
 @Injectable({
   providedIn: 'root'
@@ -77,6 +78,16 @@ export class DoctorService {
       'ngrok-skip-browser-warning':'google-chrome'
     };
     return this.http.get(`${baseUrl}/doctorPreviousAppointmentsList?doctor_id=${doctor_id}`, {headers});
+  }
+
+  getPatientsCount(doctor_id: number, dept_name: string): Observable<Array<number>> {
+    const token = JSON.parse(localStorage.getItem('doctor_token')!).token;
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `${token}`,
+      'ngrok-skip-browser-warning':'google-chrome'
+    };
+    return this.http.get<Array<number>>(`${baseUrl}/doctorStats?doctor_id=${doctor_id}&dept_name=${dept_name}`, {headers});
   }
 
 }

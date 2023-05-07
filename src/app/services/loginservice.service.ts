@@ -6,8 +6,9 @@ import { Observable } from 'rxjs';
 
 import { Profile } from '../models/profile.model';
 import { ProfileLst } from '../models/profile-lst.model';
+import { environment } from 'src/environments/environment';
 
-const baseUrl = 'https://a744-119-161-98-68.ngrok-free.app';
+const baseUrl = environment.baseUrl;
 
 @Injectable({
   providedIn: 'root'

@@ -21,9 +21,13 @@ export class DoctorDashboardComponent implements OnInit {
   channel_name:string = '';
   sidenav!: MatSidenav;
 
+  global_count:number = -1;
+  local_count:number = -1;
+
   constructor(private router: Router,private doctorService: DoctorService,private patientservice:PatientService, private observer: BreakpointObserver) { 
     this.available = true;
     this.doctor_details = JSON.parse(localStorage.getItem("doctor_details")!);
+    this.getPatientStats();
   }
 
   ngOnInit(): void {
@@ -120,6 +124,19 @@ export class DoctorDashboardComponent implements OnInit {
         window.open('prescription','_blank');
         this.router.navigate(['meeting']);
         
+      },
+      error: (e) => {
+        console.log(e);
+      }
+    });
+  }
+
+  getPatientStats(){
+    this.doctorService.getPatientsCount(this.doctor_details.doctorId,this.doctor_details.departmentName)
+    .subscribe({
+      next: (data:Array<number>) => {
+        this.global_count = data[0];
+        this.local_count = data[1];
       },
       error: (e) => {
         console.log(e);

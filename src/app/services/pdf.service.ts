@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 
 
-const baseUrl = 'https://a744-119-161-98-68.ngrok-free.app';
+const baseUrl = environment.baseUrl;
 
 @Injectable({
   providedIn: 'root'

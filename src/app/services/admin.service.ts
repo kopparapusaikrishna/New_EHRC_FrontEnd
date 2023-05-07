@@ -5,9 +5,10 @@ import { Doctors_lst } from '../models/doctors-lst.model';
 import { Doctor } from '../models/doctor.models';
 import { Admin } from '../models/admin.model';
 import { Admins_lst } from '../models/admins-lst.model';
+import { environment } from 'src/environments/environment';
 
 
-const baseUrl = 'https://a744-119-161-98-68.ngrok-free.app';
+const baseUrl = environment.baseUrl;
 
 @Injectable({
   providedIn: 'root'
@@ -91,6 +92,16 @@ export class AdminService {
       'ngrok-skip-browser-warning':'google-chrome'
     };
     return this.http.get<number>(`${baseUrl}/NoOfConsultations?doctorId=${doctorId}&noOfDays=${noOfDays}`,{headers})
+  }
+
+  getPatientsCount(): Observable<Array<number>> {
+    const token = JSON.parse(localStorage.getItem('admin_token')!).token;
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `${token}`,
+      'ngrok-skip-browser-warning':'google-chrome'
+    };
+    return this.http.get<Array<number>>(`${baseUrl}/adminHomeStats`, {headers});
   }
 
 }
