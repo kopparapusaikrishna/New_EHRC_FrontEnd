@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-const baseUrl = 'http://localhost:8101';
+const baseUrl = 'https://a744-119-161-98-68.ngrok-free.app';
 
 @Injectable({
   providedIn: 'root'

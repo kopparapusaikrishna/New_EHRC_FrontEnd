@@ -55,5 +55,5 @@ export class AdminDashboardComponent {
               this.sidenav.close();
             }
           });
-      }
+    }
 }

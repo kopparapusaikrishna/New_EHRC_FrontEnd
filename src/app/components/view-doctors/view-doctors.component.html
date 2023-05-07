@@ -24,128 +24,105 @@
 </head>
 <body background="../../../assets/profiles1.webp">
 
-    <nav class="navbar sticky-top navbar-expand-lg navbar-custom">
+    <!-- <nav class="navbar sticky-top navbar-expand-lg navbar-custom">
         <a class="navbar-brand" href="#">Tele Consultation Platform</a>
+    </nav> -->
+    
+
+
+    <mat-toolbar class="mat-elevation-z8">
+        <button
+          mat-icon-button
+          *ngIf="sidenav.mode === 'over'"
+          (click)="sidenav.toggle()"
+        >
+          <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
+          <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+        </button>
+        <a >Tele Consultation Platform</a>
+        <p class="heading">Admin Name</p>
+    </mat-toolbar>
       
+    <mat-sidenav-container>
+      <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+        <img
+          class="avatar mat-elevation-z8"
+          src="../../../assets/Patient.jpeg"
+        />
     
-    </nav>
+        <h4 class="name">Admin Name</h4>
     
-    
-    <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
-        <div class="offcanvas-header">
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-            <h3 style="width: auto; height:auto; margin-left: 15px; ">Tele Consultation Platform</h3>
+        <mat-divider></mat-divider>
         
-            <hr size="3px">
-            <a href="/admin-dashboard" style=" margin-bottom: 15px;"> Dashboard</a>
-            <br>		
-            <a href="/view-doctors"  style=" margin-bottom: 15px;">View Doctors</a>		
-            <br>
-            <a href="/view-admins"  style=" margin-bottom: 15px;">View Admins</a>		
-            <br>
-            <a href="/admin-dashboard"  style=" margin-bottom: 15px;">Statistics</a>		
-            <br>
-            <a href="tryit.asp-filename=tryw3css_sidenav_over.html#"  style=" margin-bottom: 15px;">LogOut</a>		
-        </div>
-    </div>
+        <button mat-button class="menu-button" routerLink="/admin-dashboard">
+          <mat-icon>dashboard</mat-icon>
+          <span>Dashboard</span>
+        </button>
+        <button mat-button class="menu-button" routerLink="/view-doctors" routerLinkActive="active">
+          <mat-icon>medical_services</mat-icon>
+          <span>Manage Doctors</span>
+        </button>
+        <button mat-button class="menu-button" routerLink="/view-admins">
+          <mat-icon>admin_panel_settings</mat-icon>
+          <span>Manage Admins</span>
+        </button>
+        <!-- <button mat-button class="menu-button" routerLink="/about">
+          <mat-icon>info</mat-icon>
+          <span>About</span>
+        </button> -->
+        <button mat-button class="menu-button" routerLink="/Admin">
+          <mat-icon>exit_to_app</mat-icon>
+          <span>LogOut</span>
+        </button>
     
+        <mat-divider></mat-divider>
+    
+        <button mat-button class="menu-button" routerLink="/help">
+          <mat-icon>help</mat-icon>
+          <span>Help</span>
+        </button>
+      </mat-sidenav>
+      <mat-sidenav-content  style = "background: url('../../../assets/profiles1.webp')">
+        <div class="doctors-list">
 
-
-    <div class="doctors-list">
-
-        <h3 class="list-of-doctors">List of Doctors</h3>
-
-        <div class="add-doctor">
-            <h3>Add Doctor</h3>
-            <a href="/add-doctor"><img src="../../../assets/plus.jpg" alt="Admin" class="plus"></a>
-        </div>
-        
-        <div class="manage-doctor" *ngFor="let doct of doctorsLst; let i = index">
-            <div class="doctor-details">
-                <div class="name">
-                    <h4 class="name"> <b>Dr. {{doct.name}}</b> </h4>
-                </div>
-                <a role="button" (click)="deleteDoctor(doct.doctor_id)"><img src="../../../assets/trash-can.jpg" alt="Admin" class="delete-icon"></a>
-                <br>
-                <div class="sub-details">
-                    <div class="h6-div"><h6 class="h6-details">{{doct.qualification}}, {{doct.department_name}}</h6></div>
-                    
-                    <div class="h6-div"><h6 class="h6-details">{{doct.clinic_address}}</h6></div>
-                    <div class="h6-div"><h6 class="h6-details">Ph.No: {{doct.phone_number}}</h6></div>
-                    <div class="h6-div"><h6 class="h6-details">15 Years of Experience</h6></div>
-                    <br>
-                </div>
-                <br>
-
-                <div class="num-consultations">
-                    <h6 class="num-consult-text"> <b>Number of Consultations from the past</b> </h6>
-                    <input class="form-control days-input" type="number" placeholder="Number of Days" min="1" [(ngModel)]= "no_of_days"> <!--consults.get(doct.doctor_id)[0] -->
-                    <button type="submit" class="btn btn-primary go" (click)="retriveNoOfConsultations(doct.doctor_id)">Go</button>
-                    <div class="consultations-count" *ngIf= "checkIf(doct.doctor_id);"> <!-- *ngIf= "doct.doctor_id === doctor_id"> -->
-                        <h6 class="num-consult"><b>{{no_of_consults}} consultations</b></h6>
+            <h3 class="list-of-doctors">List of Doctors</h3>
+    
+            <div class="add-doctor">
+                <h3>Add Doctor</h3>
+                <a href="/add-doctor"><img src="../../../assets/plus.jpg" alt="Admin" class="plus"></a>
+            </div>
+            
+            <div class="manage-doctor" *ngFor="let doct of doctorsLst; let i = index">
+                <div class="doctor-details">
+                    <div class="name">
+                        <h4 class="name"> <b>Dr. {{doct.name}}</b> </h4>
                     </div>
+                    <a role="button" (click)="deleteDoctor(doct.doctor_id)"><img src="../../../assets/trash-can.jpg" alt="Admin" class="delete-icon"></a>
+                    <br>
+                    <div class="sub-details">
+                        <div class="h6-div"><h6 class="h6-details">{{doct.qualification}}, {{doct.department_name}}</h6></div>
+                        
+                        <div class="h6-div"><h6 class="h6-details">{{doct.clinic_address}}</h6></div>
+                        <div class="h6-div"><h6 class="h6-details">Ph.No: {{doct.phone_number}}</h6></div>
+                        <div class="h6-div"><h6 class="h6-details">15 Years of Experience</h6></div>
+                        <br>
+                    </div>
+                    <br>
+    
+                    <div class="num-consultations">
+                        <h6 class="num-consult-text"> <b>Number of Consultations from the past</b> </h6>
+                        <input class="form-control days-input" type="number" placeholder="Number of Days" min="1" [(ngModel)]= "no_of_days"> <!--consults.get(doct.doctor_id)[0] -->
+                        <button type="submit" class="btn btn-primary go" (click)="retriveNoOfConsultations(doct.doctor_id)">Go</button>
+                        <div class="consultations-count" *ngIf= "checkIf(doct.doctor_id);"> <!-- *ngIf= "doct.doctor_id === doctor_id"> -->
+                            <h6 class="num-consult"><b>{{no_of_consults}} consultations</b></h6>
+                        </div>
+                    </div>
+    
                 </div>
-
             </div>
         </div>
-
-        <!-- <div class="manage-doctor">
-            <div class="doctor-details">
-                <div class="name">
-                    <h4 class="name"> <b>Dr. Mohan Babu</b> </h4>
-                </div>
-                <a href="" ><img src="../../../assets/trash-can.jpg" alt="Admin" class="delete-icon"></a>
-                <br>
-                <div class="sub-details">
-                    <div class="h6-div"><h6 class="h6-details">MBBS, Dermatologist</h6></div>
-                    
-                    <div class="h6-div"><h6 class="h6-details">Tandon Helath Clinic, k block, Gandhi Nagar, Tirupathi</h6></div>
-                    <div class="h6-div"><h6 class="h6-details">15 Years of Experience</h6></div>
-                    <br>
-                </div>
-                <br>
-
-                <div class="num-consultations">
-                    <h6 class="num-consult-text"> <b>Number of Consultations from the past</b> </h6>
-                    <input class="form-control days-input" type="text" placeholder="Number of Days">
-                    <button type="submit" class="btn btn-primary go">Go</button>
-                    <h6 class="num-consult"><b>500 consultations</b></h6>
-                </div>
-
-            </div>
-            
-        </div>
-
-        <div class="manage-doctor">
-            <div class="doctor-details">
-                <div class="name">
-                    <h4 class="name"> <b>Dr. Mohan Babu</b> </h4>
-                </div>
-                <a href="" ><img src="../../../assets/trash-can.jpg" alt="Admin" class="delete-icon"></a>
-                <br>
-                <div class="sub-details">
-                    <div class="h6-div"><h6 class="h6-details">MBBS, Dermatologist</h6></div>
-                    
-                    <div class="h6-div"><h6 class="h6-details">Tandon Helath Clinic, k block, Gandhi Nagar, Tirupathi</h6></div>
-                    <div class="h6-div"><h6 class="h6-details">15 Years of Experience</h6></div>
-                    <br>
-                </div>
-                <br>
-
-                <div class="num-consultations">
-                    <h6 class="num-consult-text"> <b>Number of Consultations from the past</b> </h6>
-                    <input class="form-control days-input" type="text" placeholder="Number of Days">
-                    <button type="submit" class="btn btn-primary go">Go</button>
-                    <h6 class="num-consult"><b>500 consultations</b></h6>
-                </div>
-
-            </div>
-            
-        </div> -->
-
-    </div>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
 
 </body>
 </html> 

@@ -20,117 +20,111 @@
         }
     </style>
 </head>
-<body background="../../../assets/profiles1.webp">
+<body>
 
-  <nav class="navbar sticky-top navbar-expand-lg navbar-custom">
+  <!-- <nav class="navbar sticky-top navbar-expand-lg navbar-custom">
       <a class="navbar-brand" href="#">Tele Consultation Platform</a>
-    
-  
-  </nav>
-
-    
-    <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
-        <div class="offcanvas-header">
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-            <h3 style="width: auto; height:auto; margin-left: 15px; ">Tele Consultation Platform</h3>
-        
-            <hr size="3px">
-            <a href="/admin-dashboard" style=" margin-bottom: 15px;"> Dashboard</a>
-            <br>		
-            <a href="/view-doctors"  style=" margin-bottom: 15px;">View Doctors</a>		
-            <br>
-            <a href="/view-admins"  style=" margin-bottom: 15px;">View Admins</a>		
-            <br>
-            <a href="/admin-dashboard"  style=" margin-bottom: 15px;">Statistics</a>		
-            <br>
-            <a href="tryit.asp-filename=tryw3css_sidenav_over.html#"  style=" margin-bottom: 15px;">LogOut</a>		
-        </div>
-    </div>
+  </nav> -->
     
    
+  <mat-toolbar class="mat-elevation-z8">
+    <button
+      mat-icon-button
+      *ngIf="sidenav.mode === 'over'"
+      (click)="sidenav.toggle()"
+    >
+      <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
+      <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+    </button>
+    <a >Tele Consultation Platform</a>
+    <p class="heading">Admin Name</p>
+</mat-toolbar>
+  
+<mat-sidenav-container>
+  <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+    <img
+      class="avatar mat-elevation-z8"
+      src="../../../assets/Patient.jpeg"
+    />
 
+    <h4 class="name">Admin Name</h4>
+
+    <mat-divider></mat-divider>
+    
+    <button mat-button class="menu-button" routerLink="/admin-dashboard">
+      <mat-icon>dashboard</mat-icon>
+      <span>Dashboard</span>
+    </button>
+    <button mat-button class="menu-button" routerLink="/view-doctors">
+      <mat-icon>medical_services</mat-icon>
+      <span>Manage Doctors</span>
+    </button>
+    <button mat-button class="menu-button" routerLink="/view-admins">
+      <mat-icon>admin_panel_settings</mat-icon>
+      <span>Manage Admins</span>
+    </button>
+    <!-- <button mat-button class="menu-button" routerLink="/about">
+      <mat-icon>info</mat-icon>
+      <span>About</span>
+    </button> -->
+    <button mat-button class="menu-button" routerLink="/Admin">
+      <mat-icon>exit_to_app</mat-icon>
+      <span>LogOut</span>
+    </button>
+
+    <mat-divider></mat-divider>
+
+    <button mat-button class="menu-button" routerLink="/help">
+      <mat-icon>help</mat-icon>
+      <span>Help</span>
+    </button>
+  </mat-sidenav>
+  <mat-sidenav-content  style = "background: url('../../../assets/profiles1.webp')">
     <div class="admins-list">
         
-        <h3 class="list-of-admins"><b>Add Admin</b></h3>
-        <br>
-        <br>
-        <h6 class="enter-all-fields"><b>Enter all the Fields</b></h6>
+      <h3 class="list-of-admins"><b>Add Admin</b></h3>
+      <br>
+      <br>
+      <h6 class="enter-all-fields"><b>Enter all the Fields</b></h6>
 
-        <!-- <div class="form-fields">
-            <div class="form">
-                <label for="name" class="attr-name">Name</label>
-                <br>
-                <label for="phone-number" class="attr-name">Phone Number</label>
-                <br>
-                <label for="dob" class="attr-name">Date Of Birth</label>
-                <br>
-                <label for="gender" class="attr-name">Gender</label>
-                <br>
-                <label for="email" class="attr-name">Email ID</label>
-                <br>
-                <label for="password" class="attr-name">Password</label>
-            </div>
-    
-            <div class="form">
-                <input type="text" class="inp" required>
-                <br>
-                <input type="tel" class="inp" required>
-                <br>
-                <input type="date" class="inp" required>
-                <br>
-                <select id="gender" name="gender" class="inp">
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                    <option value="Other">Other</option>
-                </select>
-                <br>
-                <input type="email" class="inp" required>
-                <br>
-                <input type="password" class="inp" required>
-            </div>
-            <br>
-            <button class="btn btn-primary add-admin" type="submit">Add Admin</button>
-        </div> -->
+      <form ngNativeValidate class="center-form" (ngSubmit)="onSubmit()">
+          <div>
+            <label for="name" class="attr-name">Name:</label>
+            <input type="text" id="name" name="name" [(ngModel)]="name" required title="Please enter a username">
+          </div>
+          <div>
+            <label for="phone" class="attr-name">Phone number:</label>
+            <input type="tel" id="phone" name="phone" required ngModel pattern="[0-9]{10}" title="Please enter a phone number">
+          </div>
+          <div>
+            <label for="dob" class="attr-name">Date of birth:</label>
+            <input type="date" id="dob" name="dob" [(ngModel)]="dob" required >
+          </div>
+          <div>
+            <label for="gender" class="attr-name">Gender:</label>
+            <select id="gender" name="gender" [(ngModel)]="gender" required>
+              <option value="">Select gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div>
+            <label for="email" class="attr-name">Email:</label>
+            <input type="email" id="email" name="email" [(ngModel)]="email_id" required>
+          </div>
+          <div>
+            <label for="password" class="attr-name">Password:</label>
+            <input type="password" id="password" name="password" [(ngModel)]="password" required>
+          </div>
+          <div>
+          <button class="btn btn-primary add-admin" type="submit">Add Admin</button>
+          </div>
+      </form>
 
-        <form ngNativeValidate class="center-form" (ngSubmit)="onSubmit()">
-            <div>
-              <label for="name" class="attr-name">Name:</label>
-              <input type="text" id="name" name="name" [(ngModel)]="name" required title="Please enter a username">
-            </div>
-            <div>
-              <label for="phone" class="attr-name">Phone number:</label>
-              <input type="tel" id="phone" name="phone" required ngModel pattern="[0-9]{10}" title="Please enter a phone number">
-            </div>
-            <div>
-              <label for="dob" class="attr-name">Date of birth:</label>
-              <input type="date" id="dob" name="dob" [(ngModel)]="dob" required >
-            </div>
-            <div>
-              <label for="gender" class="attr-name">Gender:</label>
-              <select id="gender" name="gender" [(ngModel)]="gender" required>
-                <option value="">Select gender</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-            <div>
-              <label for="email" class="attr-name">Email:</label>
-              <input type="email" id="email" name="email" [(ngModel)]="email_id" required>
-            </div>
-            <div>
-              <label for="password" class="attr-name">Password:</label>
-              <input type="password" id="password" name="password" [(ngModel)]="password" required>
-            </div>
-            <div>
-            <button class="btn btn-primary add-admin" type="submit">Add Admin</button>
-            </div>
-        </form>
-
-    </div>
-
+  </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
 
 </body>
 </html> 

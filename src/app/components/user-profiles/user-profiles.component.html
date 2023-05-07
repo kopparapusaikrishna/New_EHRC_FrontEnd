@@ -49,7 +49,7 @@
       
           <mat-divider></mat-divider>
           
-          <button mat-button class="menu-button" routerLink="profiles">
+          <button mat-button class="menu-button" routerLink="/profiles" routerLinkActive="active">
             <mat-icon>people</mat-icon>
             <span>Profiles</span>
           </button>
@@ -57,7 +57,7 @@
             <mat-icon>info</mat-icon>
             <span>About</span>
           </button> -->
-          <button mat-button class="menu-button" routerLink="Patient">
+          <button mat-button class="menu-button" routerLink="/Patient">
             <mat-icon>exit_to_app</mat-icon>
             <span>LogOut</span>
           </button>
@@ -70,7 +70,7 @@
           </button>
         </mat-sidenav>
         <mat-sidenav-content  style = "background: url('../../../assets/profiles1.webp')">
-            <h3 class="mobile" style="color: black;">Ph.No:{{phone_number}}</h3>
+            <h3 class="mobile" style="color: rgb(215, 209, 209);">Ph.No: {{phone_number}}</h3>
             <div *ngIf="showpin">
                 <div class="profiles">
                     <h2>Profiles</h2>
@@ -110,7 +110,7 @@
       </mat-sidenav-container>
 
 
-    <h3 class="mobile" style="color: black;">Ph.No:{{phone_number}}</h3>
+    <!-- <h3 class="mobile" style="color: black;">Ph.No:{{phone_number}}</h3>
     <div *ngIf="showpin">
     <div class="profiles">
         <h2>Profiles</h2>
@@ -127,7 +127,7 @@
                 </div>
                 
             </div>
-        </div>
+        </div> -->
         
       <!--
         <div class="profile">
@@ -156,7 +156,7 @@
             
         </div>
 -->
-        <button class="btn select" onclick="window.location.href='/add-profile';">Add Profile</button>
+        <!-- <button class="btn select" onclick="window.location.href='/add-profile';">Add Profile</button>
 
     </div>
 </div>
@@ -172,7 +172,7 @@
          close
         </button>
     </div>
-</div>
+</div> -->
     
 
 </body>

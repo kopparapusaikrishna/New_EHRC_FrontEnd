@@ -23,92 +23,72 @@
     </style>
 </head>
 
-  <body background="../../../assets/profiles1.webp">
+  <body>
 
-    <nav class="navbar sticky-top navbar-expand-lg navbar-custom">
+    <!-- <nav class="navbar sticky-top navbar-expand-lg navbar-custom">
         <a class="navbar-brand" href="#">Tele Consultation Platform</a>
-      
-    
-    </nav>
+    </nav> -->
   
     
+    <mat-toolbar class="mat-elevation-z8">
+      <button
+        mat-icon-button
+        *ngIf="sidenav.mode === 'over'"
+        (click)="sidenav.toggle()"
+      >
+        <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
+        <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+      </button>
+      <a >Tele Consultation Platform</a>
+      <p class="heading">Admin Name</p>
+  </mat-toolbar>
     
-    <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
-        <div class="offcanvas-header">
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-            <h3 style="width: auto; height:auto; margin-left: 15px; ">Tele Consultation Platform</h3>
-        
-            <hr size="3px">
-            <a href="/admin-dashboard" style=" margin-bottom: 15px;"> Dashboard</a>
-            <br>		
-            <a href="/view-doctors"  style=" margin-bottom: 15px;">View Doctors</a>		
-            <br>
-            <a href="/view-admins"  style=" margin-bottom: 15px;">View Admins</a>		
-            <br>
-            <a href="/admin-dashboard"  style=" margin-bottom: 15px;">Statistics</a>		
-            <br>
-            <a href="tryit.asp-filename=tryw3css_sidenav_over.html#"  style=" margin-bottom: 15px;">LogOut</a>		
-        </div>
-    </div>
-    
-    
-
-    <div class="doctors-list">
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+      <img
+        class="avatar mat-elevation-z8"
+        src="../../../assets/Patient.jpeg"
+      />
+  
+      <h4 class="name">Admin Name</h4>
+  
+      <mat-divider></mat-divider>
+      
+      <button mat-button class="menu-button" routerLink="/admin-dashboard">
+        <mat-icon>dashboard</mat-icon>
+        <span>Dashboard</span>
+      </button>
+      <button mat-button class="menu-button" routerLink="/view-doctors">
+        <mat-icon>medical_services</mat-icon>
+        <span>Manage Doctors</span>
+      </button>
+      <button mat-button class="menu-button" routerLink="/view-admins">
+        <mat-icon>admin_panel_settings</mat-icon>
+        <span>Manage Admins</span>
+      </button>
+      <!-- <button mat-button class="menu-button" routerLink="/about">
+        <mat-icon>info</mat-icon>
+        <span>About</span>
+      </button> -->
+      <button mat-button class="menu-button" routerLink="/Admin">
+        <mat-icon>exit_to_app</mat-icon>
+        <span>LogOut</span>
+      </button>
+  
+      <mat-divider></mat-divider>
+  
+      <button mat-button class="menu-button" routerLink="/help">
+        <mat-icon>help</mat-icon>
+        <span>Help</span>
+      </button>
+    </mat-sidenav>
+    <mat-sidenav-content  style = "background: url('../../../assets/profiles1.webp')">
+      <div class="doctors-list">
         
         <h3 class="list-of-admins"><b>Add Doctor</b></h3>
         <br>
         <br>
         <h6 class="enter-all-fields"><b>Enter all the Fields</b></h6>
-
-        <!-- <div class="form-fields">
-            <div class="form">
-                <label for="name" class="attr-name">Name</label>
-                <br>
-                <label for="phone-number" class="attr-name">Phone Number</label>
-                <br>
-                <label for="dob" class="attr-name">Date Of Birth</label>
-                <br>
-                <label for="gender" class="attr-name">Gender</label>
-                <br>
-                <label for="clinic address" class="attr-name">Clinic Address</label>
-                <br>
-                <label for="qualification" class="attr-name">Qualification</label>
-                <br>
-                <label for="Department Name" class="attr-name">Department Name</label>
-                <br>
-                <label for="email" class="attr-name">Email ID</label>
-                <br>
-                <label for="password" class="attr-name">Password</label>
-            </div>
-    
-            <div class="form">
-                <input type="text" class="inp" [(ngModel)]= "name" required>
-                <br>
-                <input type="tel" class="inp" [(ngModel)]= "ph_no" required>
-                <br>
-                <input type="date" class="inp" [(ngModel)]= "dob" required>
-                <br>
-                <select id="gender" name="gender" [(ngModel)]= "gender" class="inp">
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                    <option value="Other">Other</option>
-                </select>
-                <br>
-                <input type="text" class="inp" [(ngModel)]= "clinic_address" required>
-                <br>
-                <input type="text" class="inp" [(ngModel)]= "qualification" required>
-                <br>
-                <input type="text" class="inp" [(ngModel)]= "dept_name" required>
-                <br>
-                <input type="email" class="inp" [(ngModel)]= "email_id" required>
-                <br>
-                <input type="password" class="inp" [(ngModel)]= "password" required>
-            </div>
-            <br>
-            <button class="btn btn-primary add-admin" type="submit">Add Doctor</button>
-        </div> -->
 
         <form ngNativeValidate class="center-form" (ngSubmit)="onSubmit()">
             <div>
@@ -162,6 +142,8 @@
         </form>
 
     </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>    
 
 
 </body>
