@@ -39,7 +39,7 @@
           <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
         </button>
         <a >Tele Consultation Platform</a>
-        <p class="heading">Admin Name</p>
+        <p class="heading">{{admin_details.adminName}}</p>
     </mat-toolbar>
       
     <mat-sidenav-container>
@@ -49,7 +49,7 @@
           src="../../../assets/Patient.jpeg"
         />
     
-        <h4 class="name">Admin Name</h4>
+        <h4 class="name">{{admin_details.adminName}}</h4>
     
         <mat-divider></mat-divider>
         
@@ -85,15 +85,15 @@
           <div class="page">
 
               <div class="statistics">
-                  <h2 class="stat-name">Statistics</h2>
+                  <h1 class="stat-name">Statistics</h1>
                   <div class="list">
                       <div class="stat">
-                          <h3>No. of patients consulted</h3>
-                          <h3 class="value">{{num_consult}}</h3>
+                          <h2>No. of patients consulted</h2>
+                          <h2 class="value">{{num_consult}}</h2>
                       </div>
                       <div class="stat">
-                          <h3>No. of Doctors Present</h3>
-                          <h3 class="value">{{num_doc}}</h3>
+                          <h2>No. of Doctors Present</h2>
+                          <h2 class="value">{{num_doc}}</h2>
                       </div>
                   </div>
                   <a href=""><h6 class="see-more">See More -> </h6></a>
@@ -105,12 +105,12 @@
                       <div class="manage">
                           <button type="button" class="btn" onclick="location.href='/view-doctors'"><img src="../../../assets/Doctor.jpeg" alt="Doctor" class="images"></button>
                           <br>
-                          <h5 class="add-del">Add/ Delete Doctors</h5>
+                          <h3 class="add-del">Add/ Delete Doctors</h3>
                       </div>
                       <div class="manage">
                           <button type="button" class="btn" onclick="location.href='/view-admins'"><img src="../../../assets/Patient.jpeg" alt="Admin" class="images"></button>
                           <br>
-                          <h5 class="add-del">Add/ Delete Admins</h5>
+                          <h3 class="add-del">Add/ Delete Admins</h3>
                       </div>
                   </div>
                   

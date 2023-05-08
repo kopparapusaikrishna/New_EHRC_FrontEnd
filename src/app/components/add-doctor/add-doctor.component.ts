@@ -29,6 +29,9 @@ export class AddDoctorComponent implements OnInit {
   status: string;
 
   sidenav!: MatSidenav;
+  admin_details:any;
+  type="password";
+  icon="fa fa-fw fa-eye"
 
   constructor(private router: Router, private adminService : AdminService, private observer: BreakpointObserver) { 
     this.name = "";
@@ -42,6 +45,8 @@ export class AddDoctorComponent implements OnInit {
     this.email = "";
     this.password = "";
     this.status = "";
+    this.admin_details = JSON.parse(localStorage.getItem("admin_details")!);
+    
   }
 
   ngOnInit(): void {
@@ -74,7 +79,16 @@ export class AddDoctorComponent implements OnInit {
       });
 }
 
-
+showpass(){
+  if (this.type=="password"){
+     this.type="text";
+     this.icon="fa fa-fw fa-eye-slash"
+  }
+  else{
+   this.type="password";
+   this.icon="fa fa-fw fa-eye"
+   }
+ }
 
   emailForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email])

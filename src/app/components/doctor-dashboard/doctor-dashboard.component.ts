@@ -32,7 +32,7 @@ export class DoctorDashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.getDoctorDetails();
-    this.toggleChange();
+    // this.toggleChange();
   }
 
 
@@ -109,6 +109,22 @@ export class DoctorDashboardComponent implements OnInit {
       },
       error: (e) => console.error(e)
     });
+  }
+
+  endMyDay(){
+    var result = confirm("Are you sure you want to delete?");
+    this.toggleChange();
+    if (result) {
+      console.log(this.doctor_details.doctorId);
+      this.doctorService.endMyDay(this.doctor_details.doctorId)
+      .subscribe({
+        next: (data:any) => {
+          console.log(data);
+          this.getPatientStats();
+        },
+        error: (e) => console.error(e)
+      });
+    }
   }
 
   getChannelName(){

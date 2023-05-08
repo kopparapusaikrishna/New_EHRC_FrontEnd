@@ -40,7 +40,7 @@
         <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
       </button>
       <a >Tele Consultation Platform</a>
-      <p class="heading">Admin Name</p>
+      <p class="heading">{{admin_details.adminName}}</p>
   </mat-toolbar>
     
   <mat-sidenav-container>
@@ -50,7 +50,7 @@
         src="../../../assets/Patient.jpeg"
       />
   
-      <h4 class="name">Admin Name</h4>
+      <h4 class="name">{{admin_details.adminName}}</h4>
   
       <mat-divider></mat-divider>
       
@@ -85,10 +85,10 @@
     <mat-sidenav-content  style = "background: url('../../../assets/profiles1.webp')">
       <div class="doctors-list">
         
-        <h3 class="list-of-admins"><b>Add Doctor</b></h3>
+        <h2 class="list-of-admins"><b>Add Doctor</b></h2>
         <br>
         <br>
-        <h6 class="enter-all-fields"><b>Enter all the Fields</b></h6>
+        <h4 class="enter-all-fields"><b>Enter all the Fields</b></h4>
 
         <form ngNativeValidate class="center-form" (ngSubmit)="onSubmit()">
             <div>
@@ -132,11 +132,12 @@
               <label for="email" class="attr-name">Email:</label>
               <input type="email" id="email" name="email" [(ngModel)]="email" required>
             </div>
-            <div>
+            <div style="margin-left: 1.5%;">
               <label for="password" class="attr-name">Password:</label>
-              <input type="password" id="password" name="password" [(ngModel)]="password" required>
+              <input style="margin-right: -10px;" type={{type}} id="password" name="password" [(ngModel)]="password" required>
+              <span toggle="#password" class="field-icon toggle-password"><i class={{icon}} (click)="showpass()"></i></span>
             </div>
-            <div>
+            <div class="add-admin-btn" style="padding: 0; text-align: center;">
             <button class="btn btn-primary add-admin" type="submit">Add Doctor</button>
             </div>
         </form>

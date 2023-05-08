@@ -22,6 +22,8 @@ export class UserProfilesComponent implements OnInit {
   pin : any;
 
   sidenav!: MatSidenav;
+  type="password";
+  icon="fa fa-fw fa-eye"
 
   constructor(private router: Router,private patientservice:PatientService,private loginservice:LoginserviceService, private observer: BreakpointObserver) {
    
@@ -124,4 +126,16 @@ export class UserProfilesComponent implements OnInit {
   }
 
 }
+
+showpass(){
+  if (this.type=="password"){
+     this.type="text";
+     this.icon="fa fa-fw fa-eye-slash"
+  }
+  else{
+   this.type="password";
+   this.icon="fa fa-fw fa-eye"
+   }
+ }
+
 }

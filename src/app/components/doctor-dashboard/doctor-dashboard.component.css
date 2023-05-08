@@ -63,16 +63,29 @@ a{
     color: #000000;
 }
 
+.end-day{
+    background-color: red;
+    color: white;
+    border-color: red;
+    border-radius: 5px;
+    width: 15%;
+    height: 40px;
+    margin: 2% 1%
+}
+
+.end-day:hover{
+    background-color: rgba(240, 0, 0, 0.85);
+}
+
 .visit-patient{
     color: rgba(0, 0, 0, 0.9);
     align-content: center;
-    margin-top :5%;
+    margin-top :3%;
     margin-left: 40%;
     font-weight: 400;
     font-size: 20px;
     width: 20%;
     height: 70px;
-    background: #617ddc;
 
     border-radius: 6px;
     border: 2px 2px 2px 2px;

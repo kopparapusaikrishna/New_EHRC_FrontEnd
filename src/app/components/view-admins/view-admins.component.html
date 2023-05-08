@@ -40,7 +40,7 @@
           <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
         </button>
         <a >Tele Consultation Platform</a>
-        <p class="heading">Admin Name</p>
+        <p class="heading">{{admin_details.adminName}}</p>
     </mat-toolbar>
       
     <mat-sidenav-container>
@@ -50,7 +50,7 @@
           src="../../../assets/Patient.jpeg"
         />
     
-        <h4 class="name">Admin Name</h4>
+        <h4 class="name">{{admin_details.adminName}}</h4>
     
         <mat-divider></mat-divider>
         
@@ -85,9 +85,9 @@
       <mat-sidenav-content  style = "background: url('../../../assets/profiles1.webp')">
         <div class="admins-list">
 
-            <h3 class="list-of-admins">List of Admins</h3>
+            <h2 class="list-of-admins">List of Admins</h2>
             <div class="add-admin">
-                <h3>Add Admin</h3>
+                <h2>Add Admin</h2>
                 <a href="/add-admin"><img src="../../../assets/plus.jpg" alt="Admin" class="plus"></a>
             </div>
 
@@ -99,8 +99,8 @@
                     <a role="button" (click)="deleteAdmin(admin.admin_id)"><img src="../../../assets/trash-can.jpg" alt="Admin" class="delete-icon"></a>
                     <br>
                     <div class="sub-details">
-                        <div class="h6-div"><h6 class="h6-details">Email ID : {{admin.email_id}}</h6></div>
-                        <div class="h6-div"><h6 class="h6-details">Phone Number: {{admin.phone_number}}</h6></div>
+                        <div class="h6-div"><h4 class="h6-details">Email ID : {{admin.email_id}}</h4></div>
+                        <div class="h6-div"><h4 class="h6-details">Phone Number: {{admin.phone_number}}</h4></div>
                         <br>
                     </div>
                     <br>

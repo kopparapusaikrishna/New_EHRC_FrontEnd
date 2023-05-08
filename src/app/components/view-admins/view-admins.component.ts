@@ -15,31 +15,15 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 })
 export class ViewAdminsComponent implements OnInit {
   adminsLst: Array<Admin>;
-
+  admin_details:any;
   status: string;
 
   sidenav!: MatSidenav;
 
   constructor(private adminService : AdminService, private router: Router, private observer: BreakpointObserver) {
-    const admin1: Admin = {
-      admin_id: 0,
-      name: "bhayya",
-      dob: new Date('2023-09-24'),
-      gender: 'M',
-      email_id: 'bhayyabro@gmai.com',
-      password: '123456',
-      phone_number: '9848440825',
-    };
 
-    const admin2: Admin = {
-      admin_id: 0,
-      name: "bakka",
-      dob: new Date('2023-09-24'),
-      gender: 'F',
-      email_id: 'bakka@gmai.com',
-      password: '123456',
-      phone_number: '9848440827',
-    };
+    this.admin_details = JSON.parse(localStorage.getItem("admin_details")!);
+    console.log(this.admin_details);
 
     this.adminsLst = new Array();
 

@@ -41,7 +41,7 @@ body{
     font-family: 'Merriweather', serif;
     color: white;
     margin-bottom: 0;
-    margin-left: 70%;
+    margin-left: 60%;
     font-size: 25px;
 }
     
@@ -59,8 +59,43 @@ body{
     border-radius: 30px;
     box-shadow: 15px 15px 15px 15px rgb(57, 55, 55);
     margin: 5% 15%;
+    padding-left: 1%;
     margin: 5% 25%;
     color: black;
+}
+
+.admins-list h2{
+  font-family: 'Merriweather', serif;
+}
+
+.admins-list h4{
+  font-family: 'Merriweather', serif;
+}
+
+.field-icon {
+  float: right;
+  margin-right: 11px;
+  margin-top: -0%;
+  position: relative;
+  z-index: 2;
+}
+
+.toggle-password {
+  cursor: pointer;
+}
+
+.toggle-password i {
+  color: black;
+  position: absolute;
+  right: 0;
+  top: 50%;
+font-size:larger;
+
+  transform: translateY(-50%);
+}
+
+.toggle-password.active i {
+  color: #07c;
 }
 
 .list-of-admins{
@@ -194,4 +229,9 @@ mat-toolbar {
   .active {
     background-color: #f4eeee21;
     color: #1976d2;
+  }
+
+  .add-admin-btn{
+    text-align: center;
+    padding: 0;
   }

@@ -11,7 +11,7 @@
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
     <style>
         .w3-sidenav w3-white w3-card-2{
@@ -51,7 +51,7 @@
           
           <button mat-button class="menu-button" routerLink="/profiles" routerLinkActive="active">
             <mat-icon>people</mat-icon>
-            <span>Profiles</span>
+            <span >Profiles</span>
           </button>
           <!-- <button mat-button class="menu-button" routerLink="/about">
             <mat-icon>info</mat-icon>
@@ -73,12 +73,12 @@
             <h3 class="mobile" style="color: rgb(215, 209, 209);">Ph.No: {{phone_number}}</h3>
             <div *ngIf="showpin">
                 <div class="profiles">
-                    <h2>Profiles</h2>
+                    <h1>Profiles</h1>
                     <div *ngFor="let profile of profile_lst; let i = index"  >
                         <div class="profile">
                             <img src="../../../assets/profile.png" alt="profile" class="profile-img">
                             <div class="name-div" style="color: black;">
-                                <h5 class="name" >{{profile.patientName}}</h5>
+                                <h1 class="name" >{{profile.patientName}}</h1>
                                 
                             </div> 
                             <div class="buttons">
@@ -93,18 +93,21 @@
 
                 </div>
             </div>
-            <div  *ngIf="!showpin" style="  border-style:solid;   color: black; background-color:silver ;box-shadow: 15px 15px 15px 15px rgb(57, 55, 55); border-radius: 30px; margin-top: 15%; margin-left: 35%; width: 30%; padding: 5px 5px 5px 5px; padding-top: 5%; padding-bottom: 0%; padding-left: 0%;">
-            
-                <label for="pin" style="margin-right: 1%; margin-left:8%">Enter your PIN:</label>
-                <input type="password" id="pin" name="pin"  pattern="[0-9]{4}" [(ngModel)]="pin" required>
-            
-                <br>
-                <button type="submit" (click)="getuserpin()" style="  padding:8px 8px 8px 8px ;background-color : black; color: white; margin-top : 2%; margin-left: 45%;">submit</button>
-            <div class="callout" data-closable >
-                    <button (click)="closepopup()" style="border:2px; padding:2% 2% 2% 2% ; background-color : black; color: white; margin-top : 0%; margin-right: 0% ;" class="close-button" aria-label="Close alert" type="button" data-close>
-                    close
+            <div  *ngIf="!showpin" style="  border-style:solid;   color: black; background-color:silver ;box-shadow: 15px 15px 15px 15px rgb(57, 55, 55); border-radius: 30px; margin-top: 15%; margin-left: 35%; width: 30%; padding: 5px 5px 5px 5px; padding-top: 1%; padding-bottom: 0%; padding-left: 0%;">
+                
+                <div class="callout" data-closable >
+                    <button (click)="closepopup()" style="border:2px; background-color : black; color: white; margin-top : 0%; margin-right: 0% ; margin-left: 2%" class="close-button" aria-label="Close alert" type="button" data-close>
+                        <i class="fa fa-close"></i>
                     </button>
                 </div>
+
+                <label for="pin" style="margin-right: 1%; margin-left:8%">Enter your PIN:</label>
+                <input type={{type}} id="pin" name="pin"  pattern="[0-9]{4}" [(ngModel)]="pin" required>
+                <span toggle="#password" class="field-icon toggle-password"><i class={{icon}} (click)="showpass()"></i></span>
+            
+                <br>
+                <button type="submit" (click)="getuserpin()" style="  padding:8px 8px 8px 8px ;background-color : black; color: white; margin-top : 2%; margin-left: 45%; margin-bottom: 1%;">submit</button>
+                
             </div>
         </mat-sidenav-content>
       </mat-sidenav-container>
