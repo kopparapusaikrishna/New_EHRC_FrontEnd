@@ -104,4 +104,15 @@ export class AdminService {
     return this.http.get<Array<number>>(`${baseUrl}/adminHomeStats`, {headers});
   }
 
+  getAdminDetails(admin_email_id: string): Observable<any> {
+    const token = JSON.parse(localStorage.getItem('admin_token')!).token;
+
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `${token}`,
+      'ngrok-skip-browser-warning':'google-chrome'
+    };
+    return this.http.get(`${baseUrl}/admindetails?email_id=${admin_email_id}`,{headers});
+  }
+
 }

@@ -15,6 +15,8 @@ import { AdminService } from 'src/app/services/admin.service';
 export class AdminDashboardComponent {
     sidenav!: MatSidenav;
 
+    admin_details: any;
+
     num_consult: number = -1;
     num_doc:number = -1
 
@@ -32,7 +34,7 @@ export class AdminDashboardComponent {
     }
 
     ngOnInit(): void {
-        
+        this.getAdminDetails();
     }
 
     ngAfterViewInit() {
@@ -70,6 +72,18 @@ export class AdminDashboardComponent {
       },
       error: (e) => {
         console.log(e);
+      }
+    });
+  }
+
+  getAdminDetails(){
+    const username=JSON.parse(localStorage.getItem("admin_token")!).admin_email_id;
+    this.admin_service.getAdminDetails(username)
+    .subscribe({
+      next:(res:any)=>{
+        this.admin_details=res;
+        localStorage.setItem("admin_details",JSON.stringify(this.admin_details));
+        console.log(this.admin_details);
       }
     });
   }

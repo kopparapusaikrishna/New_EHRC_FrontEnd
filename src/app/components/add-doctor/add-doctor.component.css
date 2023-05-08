@@ -36,7 +36,7 @@ a{
     font-family: 'Merriweather', serif;
     color: white;
     margin-bottom: 0;
-    margin-left: 70%;
+    margin-left: 60%;
     font-size: 25px;
 }
     
@@ -53,14 +53,49 @@ a{
     border-width: 1px;
     border-radius: 30px;
     box-shadow: 15px 15px 15px 15px rgb(57, 55, 55);
-  
+    padding-left: 1%;
     margin: 5% 25%;
     color: black;
+}
+
+.doctors-list h2{
+  font-family: 'Merriweather', serif;
+}
+
+.doctors-list h4{
+  font-family: 'Merriweather', serif;
 }
 
 .list-of-admins{
     display: inline-block;
     margin-left: 1%;
+    margin-bottom: 0;
+}
+
+.field-icon {
+  float: right;
+  margin-right: 11px;
+  margin-top: -0%;
+  position: relative;
+  z-index: 2;
+}
+
+.toggle-password {
+  cursor: pointer;
+}
+
+.toggle-password i {
+  color: black;
+  position: absolute;
+  right: 0;
+  top: 50%;
+font-size:larger;
+
+  transform: translateY(-50%);
+}
+
+.toggle-password.active i {
+  color: #07c;
 }
 
 

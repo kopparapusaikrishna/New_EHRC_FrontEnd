@@ -40,7 +40,7 @@
           <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
         </button>
         <a >Tele Consultation Platform</a>
-        <p class="heading">Admin Name</p>
+        <p class="heading">{{admin_details.adminName}}</p>
     </mat-toolbar>
       
     <mat-sidenav-container>
@@ -50,7 +50,7 @@
           src="../../../assets/Patient.jpeg"
         />
     
-        <h4 class="name">Admin Name</h4>
+        <h4 class="name">{{admin_details.adminName}}</h4>
     
         <mat-divider></mat-divider>
         
@@ -85,10 +85,10 @@
       <mat-sidenav-content  style = "background: url('../../../assets/profiles1.webp')">
         <div class="doctors-list">
 
-            <h3 class="list-of-doctors">List of Doctors</h3>
+            <h2 class="list-of-doctors">List of Doctors</h2>
     
             <div class="add-doctor">
-                <h3>Add Doctor</h3>
+                <h2>Add Doctor</h2>
                 <a href="/add-doctor"><img src="../../../assets/plus.jpg" alt="Admin" class="plus"></a>
             </div>
             
@@ -100,17 +100,17 @@
                     <a role="button" (click)="deleteDoctor(doct.doctor_id)"><img src="../../../assets/trash-can.jpg" alt="Admin" class="delete-icon"></a>
                     <br>
                     <div class="sub-details">
-                        <div class="h6-div"><h6 class="h6-details">{{doct.qualification}}, {{doct.department_name}}</h6></div>
+                        <div class="h6-div"><h4 class="h6-details">{{doct.qualification}}, {{doct.department_name}}</h4></div>
                         
-                        <div class="h6-div"><h6 class="h6-details">{{doct.clinic_address}}</h6></div>
-                        <div class="h6-div"><h6 class="h6-details">Ph.No: {{doct.phone_number}}</h6></div>
-                        <div class="h6-div"><h6 class="h6-details">15 Years of Experience</h6></div>
+                        <div class="h6-div"><h4 class="h6-details">{{doct.clinic_address}}</h4></div>
+                        <div class="h6-div"><h4 class="h6-details">Ph.No: {{doct.phone_number}}</h4></div>
+                        <div class="h6-div"><h4 class="h6-details">15 Years of Experience</h4></div>
                         <br>
                     </div>
                     <br>
     
                     <div class="num-consultations">
-                        <h6 class="num-consult-text"> <b>Number of Consultations from the past</b> </h6>
+                        <h4 class="num-consult-text"> <b>Number of Consultations from the past</b> </h4>
                         <input class="form-control days-input" type="number" placeholder="Number of Days" min="1" [(ngModel)]= "no_of_days"> <!--consults.get(doct.doctor_id)[0] -->
                         <button type="submit" class="btn btn-primary go" (click)="retriveNoOfConsultations(doct.doctor_id)">Go</button>
                         <div class="consultations-count" *ngIf= "checkIf(doct.doctor_id);"> <!-- *ngIf= "doct.doctor_id === doctor_id"> -->

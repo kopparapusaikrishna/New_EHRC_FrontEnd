@@ -1,7 +1,7 @@
 body{
     height: 100vh;
     width: 100vw;
-    font-family: 'Merriweather', serif;
+    /* font-family: 'Merriweather', serif; */
 
    padding-bottom: 50%;
    
@@ -42,7 +42,7 @@ a{
     font-family: 'Merriweather', serif;
     color: white;
     margin-bottom: 0;
-    margin-left: 70%;
+    margin-left: 60%;
     font-size: 25px;
 }
     
@@ -66,16 +66,18 @@ a{
 }
 
 .list-of-admins{
+  margin-top: 1%;
     display: inline-block;
     margin-left: 1%;
 }
 
 .add-admin{
+  margin-top: 1%;
     display: inline-block;
     float: right;
 }
 
-.add-admin h3{
+.add-admin h2{
     display: inline-block;
     margin-left: 75%;
 }
@@ -181,8 +183,13 @@ mat-toolbar {
   }
   
   .name {
+    display: inline-block;
     margin-top: 8px;
     font-weight: normal;
+  }
+
+  .name h4{
+    display: inline-block;
   }
   
   .designation {

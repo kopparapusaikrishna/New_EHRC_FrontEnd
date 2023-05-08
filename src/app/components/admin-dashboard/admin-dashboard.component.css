@@ -23,7 +23,7 @@ a{
     font-family: 'Merriweather', serif;
     color: white;
     margin-bottom: 0;
-    margin-left: 70%;
+    margin-left: 60%;
     font-size: 25px;
 }
 
@@ -72,7 +72,7 @@ a{
     text-align: center;
 }
 
-.stat h3{
+.stat h2{
     font-family: 'Merriweather', serif;
 }
 

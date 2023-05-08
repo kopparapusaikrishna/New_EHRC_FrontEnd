@@ -25,6 +25,9 @@ export class AddAdminComponent implements OnInit {
   status:string;
 
   sidenav!: MatSidenav;
+  admin_details:any;
+  type="password";
+  icon="fa fa-fw fa-eye"
 
   constructor(private adminService : AdminService, private router: Router, private observer: BreakpointObserver) {
     this.name = "";
@@ -35,6 +38,7 @@ export class AddAdminComponent implements OnInit {
     this.password = "";
 
     this.status = "";
+    this.admin_details = JSON.parse(localStorage.getItem("admin_details")!);
   }
 
   ngOnInit(): void {
@@ -67,7 +71,16 @@ export class AddAdminComponent implements OnInit {
       });
 }
 
-
+showpass(){
+  if (this.type=="password"){
+     this.type="text";
+     this.icon="fa fa-fw fa-eye-slash"
+  }
+  else{
+   this.type="password";
+   this.icon="fa fa-fw fa-eye"
+   }
+ }
 
   onSubmit(): void {
     console.log("Form submitted!");

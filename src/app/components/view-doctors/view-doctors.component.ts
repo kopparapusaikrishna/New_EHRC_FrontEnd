@@ -16,7 +16,7 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 export class ViewDoctorsComponent implements OnInit {
 
   consults: Map<number, [number, number, boolean]>; //days, no_of_consultings, display 
-
+  admin_details:any;
   doctorsLst: Array<Doctor>;
   status: string;
 
@@ -29,32 +29,8 @@ export class ViewDoctorsComponent implements OnInit {
   sidenav!: MatSidenav;
 
   constructor(private adminService : AdminService, private router: Router, private observer: BreakpointObserver) { 
-    const doct1: Doctor = {
-      doctor_id: 0,
-      name: "Mohan Babu",
-      dob: new Date('2023-09-24'),
-      gender: 'M',
-      doctor_start_date: new Date('2012-09-24'),
-      email_id: 'MohanBabu@gmai.com',
-      password: '123456',
-      qualification: 'MBBS',
-      department_name: 'Dermatologist',
-      phone_number: '9848440825',
-      clinic_address: 'Tadon Health Clinic, k block, Gandhi nagar, Tirupathi'
-    };
-    const doct2: Doctor = {
-      doctor_id: 1,
-      name: "Ram Babu",
-      dob: new Date('2023-09-4'),
-      gender: 'M',
-      doctor_start_date: new Date('2001-01-24'),
-      email_id: 'RamBabu@gmai.com',
-      password: '12345678',
-      qualification: 'Degree',
-      department_name: 'Gen-Physician',
-      phone_number: '9123456799',
-      clinic_address: 'Tadon Health Clinic, h block, Auto nagar, Hyderabad'
-    };
+    
+    this.admin_details = JSON.parse(localStorage.getItem("admin_details")!);
 
     this.doctorsLst = new Array();
 

@@ -18,7 +18,7 @@
     font-family: 'Merriweather', serif;
     color: white;
     margin-bottom: 0;
-    margin-left: 70%;
+    margin-left: 60%;
     font-size: 25px;
 }
     
@@ -42,19 +42,21 @@
 }
 
 .list-of-doctors{
+    margin-top: 1%;
     display: inline-block;
     margin-left: 1%;
 }
 
 
 .add-doctor{
+    margin-top: 1%;
     display: inline-block;
     float: right;
 }
 
-.add-doctor h3{
+.add-doctor h2{
     display: inline-block;
-    margin-left: 75%;
+    margin-left: 65%;
 }
 
 .navbar-custom{

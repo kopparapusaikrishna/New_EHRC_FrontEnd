@@ -54,7 +54,8 @@ a{
     color: black;
 }
 
-.profiles h2{
+.profiles h1{
+    font-family: 'Merriweather', serif;
     text-align: center;
     margin-bottom: 5%;
 }
@@ -76,7 +77,8 @@ a{
     width: max-content;
 }
 
-.name-div h5{
+.name-div h2{
+    font-family: 'Merriweather', serif;
     display: inline-block;
     width: max-content;
     text-align: left;
@@ -106,6 +108,34 @@ a{
 .redirect{
     width: 15%;
     margin-bottom: 1.5%;
+    cursor: pointer;
+}
+
+.field-icon {
+  float: right;
+  margin-right: 28%;
+  margin-top: -4.5%;
+  position: relative;
+  z-index: 2;
+}
+
+.toggle-password {
+  cursor: pointer;
+}
+
+.toggle-password i {
+  margin-top: 5%;
+  color: black;
+  /* position: absolute; */
+  right: 0;
+  top: 50%;
+  font-size:larger;
+
+  transform: translateY(-50%);
+}
+
+.toggle-password.active i {
+  color: #07c;
 }
 
 .select{
@@ -115,6 +145,10 @@ a{
     display: grid;
     margin-bottom: 1% ;
 }   
+
+.select:hover{
+  background-color: rgba(184, 184, 148, 0.7);
+}
 
 
 input[type="password"] {
