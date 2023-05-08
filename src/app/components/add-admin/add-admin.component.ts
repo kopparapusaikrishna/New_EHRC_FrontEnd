@@ -7,6 +7,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { delay, filter } from 'rxjs/operators';
 import { NavigationEnd, Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-admin',
@@ -15,14 +16,9 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 })
 export class AddAdminComponent implements OnInit {
 
-  name: string;
-  ph_no: string;
-  dob: Date;
-  gender: string;
-  email_id: string;
-  password: string;
-
   status:string;
+
+  adminForm:FormGroup;
 
   sidenav!: MatSidenav;
   admin_details:any;
@@ -30,15 +26,19 @@ export class AddAdminComponent implements OnInit {
   icon="fa fa-fw fa-eye"
 
   constructor(private adminService : AdminService, private router: Router, private observer: BreakpointObserver) {
-    this.name = "";
-    this.ph_no = "";
-    this.dob = new Date('0000-00-00');
-    this.gender = "";
-    this.email_id = "";
-    this.password = "";
 
     this.status = "";
     this.admin_details = JSON.parse(localStorage.getItem("admin_details")!);
+
+    this.adminForm = new FormGroup({
+      name: new FormControl('',[Validators.required, Validators.pattern(/^[A-Za-z]+(?:\s[A-Za-z]+)*$/)]),
+      dob: new FormControl('', [Validators.required]),
+      gender: new FormControl('', [Validators.required]),
+      ph_no: new FormControl('', [Validators.required, Validators.pattern('^[0-9]{10}$')]),
+      email_id: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')]),
+      password: new FormControl('',[Validators.required])
+    });
+
   }
 
   ngOnInit(): void {
@@ -83,50 +83,45 @@ showpass(){
  }
 
   onSubmit(): void {
-    console.log("Form submitted!");
-    console.log("Name: " + this.name);
-    console.log("Phone: " + this.ph_no);
-    console.log("DOB: " + this.dob);
-    console.log("Gender: " + this.gender);
-    console.log("Email: " + this.email_id);
-    console.log("Password: " + this.password);
 
     const admin: Admin = {
       admin_id: 0,
-      name: this.name,
-      dob: this.dob,
-      gender: this.gender,
-      email_id: this.email_id,
-      password: this.password,
-      phone_number: this.ph_no,
+      name: this.adminForm.get('name')?.value,
+      dob: this.adminForm.get('dob')?.value,
+      gender: this.adminForm.get('gender')?.value,
+      email_id: this.adminForm.get('email_id')?.value,
+      password: this.adminForm.get('password')?.value,
+      phone_number: this.adminForm.get('ph_no')?.value,
     };
+    console.log(admin);
+    if(this.adminForm.valid == false){
+      alert("Enter all fields Correctly");
+    }
 
-    this.adminService.postAdminDetails(admin)
-    .subscribe({
-      next: (data:any) => {
-        this.status = data;
-        console.log("status ", this.status);
-        // console.log(data);
+    else{
+      this.adminService.postAdminDetails(admin)
+      .subscribe({
+        next: (data:any) => {
+          this.status = data;
+          console.log("status ", this.status);
+          // console.log(data);
 
-        if(this.status === "Success") {
-          alert(this.status);
-          this.name = "";
-          this.ph_no = "";
-          this.dob = new Date('0000-00-00');
-          this.gender = "";
-          this.email_id = "";
-          this.password = "";
+          if(this.status === "Success") {
+            alert(this.status);
+            this.adminForm.reset();
 
+          }
+          else {
+            alert(this.status);
+          }
+        },
+        error: (e) => {
+          console.error(e);
+          alert("Please fill all the fields correctly");
         }
-        else {
-          alert(this.status);
-        }
-      },
-      error: (e) => {
-        console.error(e);
-        alert("Please fill all the fields correctly");
-      }
-    });
+      });
+    }
+
   }
 
 }

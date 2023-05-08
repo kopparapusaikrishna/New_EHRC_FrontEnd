@@ -29,17 +29,25 @@
 
     <div class="form-container">
         <h2 class="form-title">Login</h2>
-        <form *ngIf="!otp_sent" (ngSubmit)="sendOTP()">
+        <form [formGroup]="myForm" *ngIf="!otp_sent" (ngSubmit)="sendOTP()">
           <label for="phone">Phone number:</label>
-          <input type="tel" id="phone" name="phone_number" placeholder="Enter phone number" [(ngModel)]="model.phone_number" [ngModelOptions]="{standalone: true}" required>
+          <input formControlName="mobile" type="tel" id="phone" name="phone_number" placeholder="Enter phone number" [(ngModel)]="model.phone_number" required>
+          
+          <div *ngIf="myForm.controls['mobile'].invalid && myForm.controls['mobile'].touched && myForm.controls['mobile'].errors?.['pattern']" class="alert alert-danger">
+            Mobile Number should be of length 10 and should contain only digits from '0-9'
+          </div>
+          
           <div class="submit">
             <button type="submit">Send OTP</button><br><br>
           </div>
         </form>
 
-        <form *ngIf="otp_sent"  (ngSubmit)="verifyOTP()">
+        <form [formGroup]="otpForm" *ngIf="otp_sent"  (ngSubmit)="verifyOTP()">
           <label for="otp">OTP:</label>
-          <input type="text" id="otp" name="otp" placeholder="Enter OTP" [(ngModel)]="model.otp" [ngModelOptions]="{standalone: true}" required>
+          <input formControlName="otp" type="text" id="otp" name="otp" placeholder="Enter OTP" [(ngModel)]="model.otp" required>
+          <div *ngIf="otpForm.controls['otp'].invalid && otpForm.controls['otp'].touched && otpForm.controls['otp'].errors?.['pattern']" class="alert alert-danger">
+            OTP should be of length 6 and should contain only digits from '0-9'
+          </div>
           <div class="submit">
             <button type="submit">Verify OTP  </button>
           </div>

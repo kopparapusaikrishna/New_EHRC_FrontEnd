@@ -90,52 +90,82 @@
         <br>
         <h4 class="enter-all-fields"><b>Enter all the Fields</b></h4>
 
-        <form ngNativeValidate class="center-form" (ngSubmit)="onSubmit()">
+        <form [formGroup]="doctorForm" class="center-form" (ngSubmit)="onSubmit()">
             <div>
               <label for="name" class="attr-name">Name:</label>
-              <input type="text" id="name" name="name" [(ngModel)]="name" required>
+              <input formControlName="name" type="text" id="name" name="name" required>
+              <div *ngIf="doctorForm.controls['name'].invalid && doctorForm.controls['name'].touched || doctorForm.controls['name'].errors?.['pattern']" class="alert alert-danger">
+                Name should not be empty and does not contain numbers
+              </div>
             </div>
             <div>
               <label for="phone" class="attr-name">Phone number:</label>
-              <input type="tel" id="phone" name="phone" [(ngModel)]="ph_no" pattern="[0-9]{10}" required>
+              <input formControlName="ph_no" type="tel" id="phone" name="phone" required>
+              <div *ngIf="doctorForm.controls['ph_no'].invalid && doctorForm.controls['ph_no'].touched || doctorForm.controls['ph_no'].errors?.['pattern']" class="alert alert-danger">
+                Phone number should be of length 10 and contain only numbers
+              </div>
             </div>
             <div>
               <label for="dob" class="attr-name">Date of birth:</label>
-              <input type="date" id="dob" name="dob" [(ngModel)]="dob" required>
+              <input formControlName="dob" type="date" id="dob" name="dob" required>
+              <div *ngIf="doctorForm.controls['dob'].invalid && doctorForm.controls['dob'].touched" class="alert alert-danger">
+                Date of birth should not be empty
+              </div>
             </div>
             <div>
               <label for="gender" class="attr-name">Gender:</label>
-              <select id="gender" name="gender" [(ngModel)]="gender" required>
+              <select formControlName="gender" id="gender" name="gender" required>
                 <option value="">Select gender</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
                 <option value="other">Other</option>
               </select>
+              <div *ngIf="doctorForm.controls['gender'].invalid && doctorForm.controls['gender'].touched" class="alert alert-danger">
+                Gender should not be empty
+              </div>
             </div>
             <div>
               <label for="address" class="attr-name">Address:</label>
-              <textarea id="address" name="address" [(ngModel)]="clinic_address" required></textarea>
+              <textarea formControlName="clinic_address" id="address" name="address" required></textarea>
+              <div *ngIf="doctorForm.controls['clinic_address'].invalid && doctorForm.controls['clinic_address'].touched" class="alert alert-danger">
+                Clinic Address should not be empty
+              </div>
             </div>
             <div>
               <label for="qualification" class="attr-name">Qualification:</label>
-              <input type="text" id="qualification" name="qualification" [(ngModel)]="qualification" required>
+              <input formControlName="qualification" type="text" id="qualification" name="qualification" required>
+              <div *ngIf="doctorForm.controls['qualification'].invalid && doctorForm.controls['qualification'].touched" class="alert alert-danger">
+                Qualification should not be empty
+              </div>
             </div>
             <div>
               <label for="dob" class="attr-name">Job start date:</label>
-              <input type="date" id="doctor_start_date" name="doctor_start_date" [(ngModel)]="doctor_start_date" required>
+              <input formControlName="doctor_start_date" type="date" id="doctor_start_date" name="doctor_start_date" required>
+              <div *ngIf="doctorForm.controls['doctor_start_date'].invalid && doctorForm.controls['doctor_start_date'].touched" class="alert alert-danger">
+                Doctor Start Date should not be empty
+              </div>
             </div>
             <div>
               <label for="department" class="attr-name">Department name:</label>
-              <input type="text" id="department" name="department" [(ngModel)]="dept_name" required>
+              <input formControlName="dept_name" type="text" id="department" name="department" required>
+              <div *ngIf="doctorForm.controls['dept_name'].invalid && doctorForm.controls['dept_name'].touched || doctorForm.controls['dept_name'].errors?.['pattern']" class="alert alert-danger">
+                Department Name should start with a capital letter
+              </div>
             </div>
             <div>
               <label for="email" class="attr-name">Email:</label>
-              <input type="email" id="email" name="email" [(ngModel)]="email" required>
+              <input formControlName="email_id" type="email" id="email" name="email" required>
+              <div *ngIf="doctorForm.controls['email_id'].invalid && doctorForm.controls['email_id'].touched || doctorForm.controls['email_id'].errors?.['pattern']" class="alert alert-danger">
+                Email ID should be of the form abc@abc.com
+              </div>
             </div>
             <div style="margin-left: 1.5%;">
               <label for="password" class="attr-name">Password:</label>
-              <input style="margin-right: -10px;" type={{type}} id="password" name="password" [(ngModel)]="password" required>
+              <input formControlName="password" style="margin-right: -10px;" type={{type}} id="password" name="password" required>
               <span toggle="#password" class="field-icon toggle-password"><i class={{icon}} (click)="showpass()"></i></span>
+            </div>
+            <div *ngIf="doctorForm.controls['password'].invalid && doctorForm.controls['password'].touched" class="alert alert-danger">
+              Password should not be empty
             </div>
             <div class="add-admin-btn" style="padding: 0; text-align: center;">
             <button class="btn btn-primary add-admin" type="submit">Add Doctor</button>

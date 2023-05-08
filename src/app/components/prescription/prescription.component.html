@@ -35,29 +35,41 @@
     </div>
 
     <div class="form">
-        <form (ngSubmit)="addMedicine()" class="add-prescription">
+        <form [formGroup]="medicineForm" (ngSubmit)="addMedicine()" class="add-prescription">
             <h4>Add a new Medicine</h4>
             <!-- <hr style="border-style:solid ;"> -->
             <div >
                 <div>
                     <label for="name">Medicine Name:</label>
                     <br>
-                    <input type="text" id="name" name="name" [(ngModel)]="prescription.medicine_name" required>
+                    <input formControlName="name" type="text" id="name" name="name" required>
+                    <div *ngIf="medicineForm.controls['name'].invalid && medicineForm.controls['name'].touched" class="alert alert-danger">
+                        Medicine name Should not be empty
+                    </div>
                 </div>
                 <div>
                     <label for="power">Medicine Power:</label>
                     <br>
-                    <input type="number" id="phone" name="power" [(ngModel)]="prescription.medicine_power" required>
+                    <input formControlName="power" type="number" id="phone" name="power" required>
+                    <div *ngIf="medicineForm.controls['power'].invalid && medicineForm.controls['power'].touched && medicineForm.controls['power'].errors?.['pattern']" class="alert alert-danger">
+                        Medicine Power should be a text
+                    </div>
                 </div>
                 <div>
                     <label for="dosage">Medicine Dosage:</label>
                     <br>
-                    <input type="text" id="dosage" name="dosage" [(ngModel)]="prescription.medicine_dosage" required>
+                    <input formControlName="dosage" type="text" id="dosage" name="dosage" required>
+                    <div *ngIf="medicineForm.controls['dosage'].invalid && medicineForm.controls['dosage'].touched" class="alert alert-danger">
+                        Dosage should not be empty
+                    </div>
                 </div>
                 <div>
                     <label for="dob">Medicine Duration:</label>
                     <br>
-                    <input type="number" placeholder="No.of days" id="dob" name="dob" [(ngModel)]="prescription.duration" required min="1">
+                    <input formControlName="duration" type="number" placeholder="No.of days" id="dob" name="dob" required>
+                    <div *ngIf="medicineForm.controls['duration'].invalid && medicineForm.controls['duration'].touched && medicineForm.controls['duration'].errors?.['pattern']" class="alert alert-danger">
+                        Duration should a positive number
+                    </div>
                 </div>
                 <div class="submit">
                     <button class="btn btn-success add-admin" type="submit" >Add Medicine</button>
@@ -65,35 +77,44 @@
             </div>
         </form>
 
-        <form (ngSubmit)="addPatientDetails()" class="patient-details">
+        <form [formGroup]="patientForm" (ngSubmit)="addPatientDetails()" class="patient-details">
             <div >
                 <div>
                     <label for="dob" class="">Patient Weight:</label>
                     <br>
-                    <input type="text" id="dob" name="dob" [(ngModel)]="weight" required>
+                    <input formControlName="weight" type="text" id="dob" name="dob" required>
+                    <div *ngIf="patientForm.controls['weight'].invalid && patientForm.controls['weight'].touched && patientForm.controls['weight'].errors?.['pattern']" class="alert alert-danger">
+                        Weight should be a positive number
+                    </div>
                 </div>
                 <div>
                     <label for="dob" class="">Patient Temperature:</label>
                     <br>
-                    <input type="text" id="dob" name="dob" [(ngModel)]="temperature" required>
+                    <input formControlName="temperature" placeholder="Enter in Farenhiet" type="text" id="dob" name="dob" required>
+                    <div *ngIf="patientForm.controls['temperature'].invalid && patientForm.controls['temperature'].touched && patientForm.controls['temperature'].errors?.['pattern']" class="alert alert-danger">
+                        Temperature Should be a positive number
+                    </div>
                 </div>
                 <div>
                     <label for="dob" class="">Patient BP:</label>
                     <br>
-                    <input type="text" id="dob" name="dob" [(ngModel)]="bp" required>
+                    <input formControlName="bp" type="text" id="dob" name="dob" required>
+                    <div *ngIf="patientForm.controls['bp'].invalid && patientForm.controls['bp'].touched && patientForm.controls['bp'].errors?.['pattern']" class="alert alert-danger">
+                        <p>BP should be of form number/ number</p>
+                    </div>
                 </div>
                 <div>
                     <label for="dob" class="">Follow Up</label>
                     <br>
-                    <select id="cars" name="cars" [(ngModel)]="follow_up">
+                    <select formControlName="followup" id="cars" name="cars">
                         <option value="Yes">Yes</option>
                         <option value="No">No</option>
                     </select>
                 </div>
-                <div *ngIf="followExist(follow_up)">
+                <div *ngIf="followExist(patientForm.get('followup')!.value)">
                     <label for="dob" class="" >Follow Up Date</label>
                     <br>
-                    <input type="date" name="date" id="date" [(ngModel)]="followup_date">
+                    <input formControlName="followUpDate" type="date" name="date" id="date">
                 </div>
                 <div class="submit">
                     <button class="btn btn-success add-admin" type="submit">Save Details</button>

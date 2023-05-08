@@ -36,7 +36,7 @@ export class DoctorService {
     return this.http.get(`${baseUrl}/doctordetails?email_id=${doctor_email_id}`,{headers});
   }
 
-  getChannelName(doctor_id: number, dept_name: string): Observable<any> {
+  getChannelName(doctor_id: number, dept_name: string, available: boolean): Observable<any> {
     const token = JSON.parse(localStorage.getItem('doctor_token')!).token;
 
     const headers = {
@@ -44,7 +44,7 @@ export class DoctorService {
       'Authorization': `${token}`,
       'ngrok-skip-browser-warning':'google-chrome'
     };
-    return this.http.get(`${baseUrl}/doctorChannel?doctor_id=${doctor_id}&dept_name=${dept_name}`, {headers});
+    return this.http.get(`${baseUrl}/doctorChannel?doctor_id=${doctor_id}&dept_name=${dept_name}&availability=${available}`, {headers});
   }
 
   addAppointment(data: any): Observable<string>{
