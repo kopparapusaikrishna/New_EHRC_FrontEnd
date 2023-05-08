@@ -1,83 +1,174 @@
+body {
+  height: 180vh;
+  width: 100vw;
+  /* background-repeat: repeat-y; */
+}
+
 a {
-    text-decoration: none; }
+    text-decoration: none; 
+}
   
-  .topsection {
-    border-bottom: 6px;
-    border-top: 1px;
-    padding-bottom: 4%;
-    border-color: black; }
+.topsection {
+  border-bottom: 6px;
+  border-top: 1px;
+  padding-bottom: 4%;
+  border-color: black; 
+}
   
-  .navbar {
-    margin: 0.5% 0.5% 1.3% 0.5%;
-    padding: 0.3% 0.5%;
-    display: inline-block; }
-  
-  .web-name {
-    display: inline-block;
-    margin-left: 5%; }
-  
-  .heading {
-    font-size: 25px;
-    display: inline-block;
-    margin-top: 0.8%;
-    float: right; }
-  
-  .w3-sidenav w3-white w3-card-2 {
-    background-color: black; }
-  
-  .page-title h2 {
-    text-align: center;
-    margin: 1% 0%; }
-  
-  .page-title h6 {
-    margin: 1% 0%;
-    text-align: center; }
-  
-  .form {
-    margin: 3% 35%; }
-  
-  .add-prescription {
-    border-style: solid;
-    padding: 1%;
-    display: inline-block;
-    margin: 0% 2%;
-    border-radius: 2%;
-    margin-bottom: 0%; }
-  
-  .patient-details {
-    border-style: solid;
-    padding: 1%;
-    display: inline-block;
-    margin: 0% 2%;
-    border-radius: 2%; }
-  
-  .submit {
-    text-align: center;
-    margin-top: 3%; }
-  
-  .saved {
-    color: green;
-    text-align: center;
-    display: inline-block;
-    padding-left: 3%; }
-  
-  .medicines {
-    margin: 3% 2%;
-    background-color: #1c2457;
-    color: white; }
-  
-  .medicines h3 {
-    color: white;
-    text-align: center; }
-  
-  .medicine {
-    text-align: center;
-    margin: 1% 2%;
-    display: inline-block;
-    background-color: #245da3;
-    width: 20.5%;
-    border-radius: 2%;
-    border-style: solid;
-    border-width: medium;
-    border-color: #245da3; }
-  
+.navbar {
+  margin: 0.5% 0.5% 1.3% 0.5%;
+  padding: 0.3% 0.5%;
+  display: inline-block; 
+}
+
+.web-name {
+  display: inline-block;
+  margin-left: 5%; 
+}
+
+.heading{
+  font-family: 'Merriweather', serif;
+  color: white;
+  margin-bottom: 0;
+  margin-left: 70%;
+  font-size: 25px;
+}
+
+.w3-sidenav w3-white w3-card-2 {
+  background-color: black; 
+}
+
+.page-title {
+  text-align: center;
+  color: white;
+}
+
+.page-title h2 {
+  margin: 1% 0%; 
+}
+
+.page-title h4 {
+  margin: 1% 0%;
+}
+
+.form {
+  /* margin: 3% 25%; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-prescription {
+  /* border-style: solid; */
+  padding: 1%;
+  display: inline-block;
+  margin: 0% 1%;
+  border-radius: 2%;
+
+  border-color: #271212;
+  border-style:solid ;
+  border-width: 1px;
+  font-family: Verdana, Georgia, 'Times New Roman', Times, serif; 
+  background-color: silver;
+}
+
+.add-prescription h4 {
+  text-align: center;
+  font-size: 110%;
+  font-weight: 500;
+}
+
+.patient-details {
+  /* border-style: solid; */
+  padding: 1%;
+  display: inline-block;
+  margin: 0% 2%;
+  border-radius: 2%; 
+
+  border-color: #271212;
+  border-style:solid ;
+  border-width: 1px;
+  font-family: Verdana, Georgia, 'Times New Roman', Times, serif; 
+  background-color: silver;
+}
+
+.submit {
+  text-align: center;
+  margin-top: 3%; 
+}
+
+.saved {
+  color: green;
+  text-align: center;
+  display: inline-block;
+  padding-left: 3%; 
+}
+
+.medicines {
+  margin: 3% 2%;
+  border-color: #271212;
+  border-style:solid ;
+  border-width: 1px;
+  font-family: Verdana, Georgia, 'Times New Roman', Times, serif;
+  box-shadow: 15px 15px 15px 15px rgb(57, 55, 55); 
+  background-color: silver;
+  color: black; 
+}
+
+.medicines h3 {
+  color: black;
+  font-size: 130%;
+  font-weight: 500;
+  text-align: center; 
+}
+
+.medicine {
+  text-align: center;
+  margin: 1% 2%;
+  display: inline-block;
+  background-color: #4d8bd7;
+  width: 20.5%;
+  border-radius: 2%;
+  border-style: solid;
+  border-width: medium;
+  border-color: #4782c9; 
+}
+
+/* .prev-pres-btn {
+  color: white;
+  background-color:rgba(222, 121, 33, 0.792);
+}
+.prev-pres-btn:hover {
+  color: white;
+  background-color:rgb(222, 121, 33);
+} */
+
+
+
+mat-toolbar {
+  background: darkslategray;
+  color: white;
+}
+
+
+.key-value-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.key-value-pair {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.key {
+  font-weight: 600;
+  text-align: right;
+  width: 180px; /* add a fixed width */
+}
+
+.value {
+  flex: 1;
+  text-align: right;
+}

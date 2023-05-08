@@ -22,6 +22,8 @@ export class PrescriptionComponent  implements OnInit {
   follow_up:string = "Yes";
   followup_date: string = '';
 
+  doctor_details:any;
+
   prev_appointment_id: number = -2;
   prev_appointment: FollowUp;
 
@@ -29,6 +31,8 @@ export class PrescriptionComponent  implements OnInit {
   saved:boolean = false;
 
   constructor(private router: Router, private doctorService: DoctorService, private pdfService: PdfService) { 
+    this.doctor_details = JSON.parse(localStorage.getItem("doctor_details")!);
+
     this.prescription_list = new Array<Prescription>;
     this.patient_details ={};
     this.doctor_id = JSON.parse(localStorage.getItem("doctor_details")!).doctorId;
