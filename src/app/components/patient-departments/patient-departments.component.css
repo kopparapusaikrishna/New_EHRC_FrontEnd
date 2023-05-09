@@ -4,7 +4,7 @@
     padding-top: 1%;
     padding-bottom: 1%;
     color: white;
-    margin-top: 10%;
+    margin-top: 3%;
     border-color: #271212;
     background-color:silver;
    color: black;
@@ -29,13 +29,13 @@
   
   /* Styling for the submit button */
   .submit-button {
+    text-align: center;
     background-color: #007bff;
     color: #fff;
     border: none;
     padding: 0.5rem 1rem;
     cursor: pointer;
     border-radius: 0.25rem;
-    margin-left:40%;
   }
   
   .submit-button:hover {

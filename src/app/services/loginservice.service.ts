@@ -33,17 +33,39 @@ export class LoginserviceService {
   }
 
   postProfileDetails(profileDetails: Profile): Observable<string> {
+    const token = JSON.parse(localStorage.getItem('patient_token')!).token;
+
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `${token}`,
+      'ngrok-skip-browser-warning':'google-chrome'
+    };
     console.log("inside service" + profileDetails);
-    return this.http.post(`${baseUrl}/PostProfileDetails`, profileDetails, {responseType: 'text', headers:{'ngrok-skip-browser-warning':'google-chrome'}});
+    return this.http.post(`${baseUrl}/PostProfileDetails`, profileDetails, {responseType: 'text', headers});
   }
 
   getProfiles(phoneNumber:string): Observable<ProfileLst> {
-    return this.http.get(`${baseUrl}/GetProfiles/`+phoneNumber, {headers:{'ngrok-skip-browser-warning':'google-chrome'}});
+    const token = JSON.parse(localStorage.getItem('patient_token')!).token;
+
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `${token}`,
+      'ngrok-skip-browser-warning':'google-chrome'
+    };
+    console.log("in delete profile service");
+    return this.http.get(`${baseUrl}/GetProfiles/`+phoneNumber, {headers});
   }
 
   deleteProfile(patientId: number): Observable<string> {
-    console.log("in delete profile service")
-    return this.http.delete(`${baseUrl}/DeleteProfile/${patientId}`,{responseType: 'text', headers:{'ngrok-skip-browser-warning':'google-chrome'}})
+    const token = JSON.parse(localStorage.getItem('patient_token')!).token;
+
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `${token}`,
+      'ngrok-skip-browser-warning':'google-chrome'
+    };
+    console.log("in delete profile service");
+    return this.http.delete(`${baseUrl}/DeleteProfile/${patientId}`,{responseType: 'text', headers})
   }
 
 

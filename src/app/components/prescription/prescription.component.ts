@@ -153,9 +153,9 @@ export class PrescriptionComponent  implements OnInit {
 
     else{
       const data: Prescription = {
-        medicine_dosage: this.medicineForm.get('name')?.value,
-        medicine_name: this.medicineForm.get('power')?.value,
-        medicine_power: this.medicineForm.get('dosage')?.value,
+        medicine_dosage: this.medicineForm.get('dosage')?.value,
+        medicine_name: this.medicineForm.get('name')?.value,
+        medicine_power: this.medicineForm.get('power')?.value,
         duration: this.medicineForm.get('duration')?.value
       };
       this.prescription = {}; 

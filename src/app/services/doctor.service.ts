@@ -90,6 +90,16 @@ export class DoctorService {
     return this.http.get<Array<number>>(`${baseUrl}/doctorStats?doctor_id=${doctor_id}&dept_name=${dept_name}`, {headers});
   }
 
+  sendReminderMessage(appointmnet_id: number): Observable<any>{
+    const token = JSON.parse(localStorage.getItem('doctor_token')!).token;
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `${token}`,
+      'ngrok-skip-browser-warning':'google-chrome'
+    };
+    return this.http.get<any>(`${baseUrl}/remindPatient?appointment_id=${appointmnet_id}`,{headers});
+  }
+
   endMyDay(doctor_id: number): Observable<any>{
     const token = JSON.parse(localStorage.getItem('doctor_token')!).token;
     const headers = {

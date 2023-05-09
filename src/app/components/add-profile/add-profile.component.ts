@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Profile } from 'src/app/models/profile.model';
 import { LoginserviceService } from 'src/app/services/loginservice.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-profile',
@@ -14,7 +15,7 @@ export class AddProfileComponent implements OnInit {
 
   patientForm: FormGroup;
 
-  constructor(private loginserviceService: LoginserviceService) { 
+  constructor(private loginserviceService: LoginserviceService, private router:Router) { 
     this.ph_no = JSON.parse(localStorage.getItem("patient_token")!).patient_details.phone_number;
     this.status = "";
 
@@ -23,7 +24,7 @@ export class AddProfileComponent implements OnInit {
       dob: new FormControl('', [Validators.required]),
       gender: new FormControl('', [Validators.required]),
       location: new FormControl('', [Validators.required]),
-      pin: new FormControl('',[Validators.required, Validators.pattern('^[1-9][0-9]{5}$')])
+      pin: new FormControl('',[Validators.required, Validators.pattern('^[1-9][0-9]{3}$')])
     });
 
   }
@@ -59,7 +60,7 @@ export class AddProfileComponent implements OnInit {
             alert("this.status");
             this.ph_no="";
             this.patientForm.reset();
-            
+            this.router.navigate(['profiles']);
           }
           else {
             alert("this.status"); 

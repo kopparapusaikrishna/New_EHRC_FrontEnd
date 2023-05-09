@@ -101,6 +101,7 @@ export class StatisticsComponent implements OnInit {
     this.statService.getDepartmentStats(this.start_date,this.end_date)
     .subscribe({
       next: (data: any) => {
+        console.log(data);
         const keys = Object.keys(data);
         this.num_consultants = 0;
         this.c_pieChartlabel = new Array<string>;

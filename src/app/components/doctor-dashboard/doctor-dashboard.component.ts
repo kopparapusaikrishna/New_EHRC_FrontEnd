@@ -27,13 +27,13 @@ export class DoctorDashboardComponent implements OnInit {
 
   constructor(private router: Router,private doctorService: DoctorService,private patientservice:PatientService, private observer: BreakpointObserver, private loginservice: LoginserviceService) { 
     this.available = true;
+    this.getDoctorDetails();
     this.doctor_details = JSON.parse(localStorage.getItem("doctor_details")!);
     this.getPatientStats();
   }
 
   ngOnInit(): void {
-    this.getDoctorDetails();
-    // this.toggleChange();
+    this.toggleChange();
   }
 
 

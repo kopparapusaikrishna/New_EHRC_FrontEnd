@@ -91,6 +91,18 @@ export class DoctorPreviousAppointmentsComponent implements OnInit {
   })
   }
 
+  remindPatient(appointment_id: number){
+    this.doctorService.sendReminderMessage(appointment_id)
+    .subscribe({
+      next: (data: any) => {
+        alert("Message sent Successfully");
+      },
+      error: (e) => {
+        console.log(e);
+      }
+    });
+  }
+
   logout() {
     // console.log('component');
     this.loginservice.doctor_logout();

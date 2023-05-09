@@ -39,16 +39,24 @@
 }
 
 .prev-appointments p{
+    font-family: 'Merriweather', serif;
     line-height: normal;
     text-align: center;
     font-size: 20px;
     width:100%;
     height: fit-content;
+    color: white;
 }
 
 .prev-appointments table{
     border-collapse: separate;
     border-spacing: 0 7px;
+}
+
+.prev-appointments th{
+    font-size: medium;
+    font-family: 'Merriweather', serif;
+    color: white;
 }
 
 

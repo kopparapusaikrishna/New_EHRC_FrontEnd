@@ -28,6 +28,7 @@ body{
 }
 
 .quote{
+    text-align: center;
     color: white;
 }
 
@@ -35,7 +36,7 @@ body{
     font-family: 'Merriweather', serif;
 }
 
-.quote h5{
+.quote h3{
     font-family: 'Merriweather', serif;
 }
 
@@ -62,7 +63,7 @@ body{
 }
 
       
-.appointment h5{
+.appointment h3{
     font-family: 'Merriweather', serif;
     text-align: center;
     margin-top: 10px;
@@ -94,7 +95,7 @@ body{
 }
       
       
-.follow-up h5{
+.follow-up h3{
     font-family: 'Merriweather', serif;
     text-align: center;
     margin-top: 10px;

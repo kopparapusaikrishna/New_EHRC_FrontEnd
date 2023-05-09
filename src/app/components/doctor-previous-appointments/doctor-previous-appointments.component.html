@@ -93,12 +93,13 @@
                 <div style="padding-left: 5%;">
                     <div><p>Previous Appointments</p></div>
                     <table>
-                    <thead><th>Date</th><th>Patient Name</th><th>Prescription</th><th>Follow-up</th></thead>  
+                    <thead><th>Date</th><th>Patient Name</th><th>Prescription</th><th>Follow-up</th><th>Remind Message</th> </thead>  
                     <tr *ngFor="let prev_appointment of prevAppointmentsLst; let i = index">
                         <th>{{prev_appointment.appointment_date}}</th>
                         <th>{{prev_appointment.patient_name}}</th>
                         <th><button class="btn btn-primary" (click)="getPrescription(prev_appointment.appointment_id)">Prescription</button></th> 
                         <th>{{prev_appointment.follow_up}}</th>
+                        <th><button class="btn btn-primary" [disabled]="!prev_appointment.follow_up" (click)="remindPatient(prev_appointment.appointment_id)" >Send Message</button></th>
                     </tr>
                     
                     </table>
