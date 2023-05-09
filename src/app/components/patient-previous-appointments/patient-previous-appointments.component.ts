@@ -9,6 +9,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { delay, filter } from 'rxjs/operators';
 import { NavigationEnd, Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { LoginserviceService } from 'src/app/services/loginservice.service';
 
 @Component({
   selector: 'app-patient-previous-appointments',
@@ -22,7 +23,7 @@ export class PatientPreviousAppointmentsComponent implements OnInit {
 
   sidenav!: MatSidenav;
 
-  constructor(private patientService: PatientService, private pdfService: PdfService, private router: Router, private observer: BreakpointObserver) { 
+  constructor(private patientService: PatientService, private pdfService: PdfService, private router: Router, private observer: BreakpointObserver, private loginservice: LoginserviceService) { 
     this.prevAppointmentsLst = new Array<Prev_appointments>;
     this.getPatientDetails();
     this.getPreviousAppointments();
@@ -131,5 +132,11 @@ export class PatientPreviousAppointmentsComponent implements OnInit {
     a.href = window.URL.createObjectURL(blob);
     a.click();
   })
+  }
+
+  logout() {
+    // console.log('component');
+    this.loginservice.patient_logout();
+    this.router.navigate(['/Patient']);
   }
 }

@@ -7,6 +7,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { delay, filter } from 'rxjs/operators';
 import { NavigationEnd, Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { LoginserviceService } from 'src/app/services/loginservice.service';
 
 @Component({
   selector: 'app-patient-departments',
@@ -21,7 +22,7 @@ export class PatientDepartmentsComponent implements OnInit {
 
   sidenav!: MatSidenav;
 
-  constructor(private patientService : PatientService, private router : Router, private observer: BreakpointObserver) { 
+  constructor(private patientService : PatientService, private router : Router, private observer: BreakpointObserver, private loginservice: LoginserviceService) { 
     this.departmentsLst = new Array<string>;
     this.selectedIndex = -1;
     // this.departmentsLst = ["allergist", "cardiologist", "chiropractor", " dentist", "pediatrician", "ophthalmologist"];
@@ -151,5 +152,11 @@ export class PatientDepartmentsComponent implements OnInit {
   w3_open() {
     var box = document.getElementsByClassName("w3-sidenav") as unknown as HTMLCollectionOf<HTMLElement>;
     box[0].style.display="block"
+  }
+
+  logout() {
+    // console.log('component');
+    this.loginservice.patient_logout();
+    this.router.navigate(['/Patient']);
   }
 }
