@@ -88,9 +88,10 @@ export class ViewDoctorsComponent implements OnInit {
 
   getYearsSince(target_date: Date): number {
     const now = new Date();
-    const years = now.getFullYear() - target_date.getFullYear();
-    const months = now.getMonth() - target_date.getMonth();
-    if (months < 0 || (months === 0 && now.getDate() < target_date.getDate())) {
+    var start = new Date(target_date);
+    const years = now.getFullYear() - start.getFullYear();
+    const months = now.getMonth() - start.getMonth();
+    if (months < 0 || (months === 0 && now.getDate() < start.getDate())) {
       return years - 1;
     }
     return years;

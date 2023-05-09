@@ -6,6 +6,7 @@ import { delay, filter } from 'rxjs/operators';
 import { NavigationEnd, Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { AdminService } from 'src/app/services/admin.service';
+import { LoginserviceService } from 'src/app/services/loginservice.service';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -20,7 +21,7 @@ export class AdminDashboardComponent {
     num_consult: number = -1;
     num_doc:number = -1
 
-    constructor(private router: Router, private observer: BreakpointObserver, private admin_service: AdminService) {
+    constructor(private router: Router, private observer: BreakpointObserver, private admin_service: AdminService, private loginservice: LoginserviceService) {
       this.getadminHomeStats();
     }
     w3_close() {
@@ -88,5 +89,10 @@ export class AdminDashboardComponent {
     });
   }
 
+  logout() {
+    // console.log('component');
+    this.loginservice.admin_logout();
+    this.router.navigate(['/Admin']);
+  }
 
 }

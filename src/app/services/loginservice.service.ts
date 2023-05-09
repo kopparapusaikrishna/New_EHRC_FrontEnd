@@ -60,7 +60,7 @@ export class LoginserviceService {
 
   admin_logout() {
     localStorage.removeItem('admin_token');
-    // localStorage.removeItem('currentUser');
+    localStorage.removeItem('admin_details');
   }
 
   isLoggedIn(): boolean {

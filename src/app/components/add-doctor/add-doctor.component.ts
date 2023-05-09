@@ -8,6 +8,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { delay, filter } from 'rxjs/operators';
 import { NavigationEnd, Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { LoginserviceService } from 'src/app/services/loginservice.service';
 
 @Component({
   selector: 'app-add-doctor',
@@ -23,7 +24,7 @@ export class AddDoctorComponent implements OnInit {
   icon="fa fa-fw fa-eye";
   doctorForm:FormGroup;
 
-  constructor(private router: Router, private adminService : AdminService, private observer: BreakpointObserver) { 
+  constructor(private router: Router, private adminService : AdminService, private observer: BreakpointObserver, private loginservice: LoginserviceService) { 
 
     this.status = "";
     this.admin_details = JSON.parse(localStorage.getItem("admin_details")!);
@@ -71,7 +72,7 @@ export class AddDoctorComponent implements OnInit {
           this.sidenav.close();
         }
       });
-}
+  }
 
   showpass(){
     if (this.type=="password"){
@@ -127,5 +128,11 @@ export class AddDoctorComponent implements OnInit {
 
   }
 
+
+  logout() {
+    // console.log('component');
+    this.loginservice.admin_logout();
+    this.router.navigate(['/Admin']);
+  }
 
 }

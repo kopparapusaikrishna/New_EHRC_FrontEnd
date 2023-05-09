@@ -16,61 +16,125 @@
 </head>
 <body background="../../../assets/profiles1.webp">
 
-    <nav class="navbar sticky-top navbar-expand-lg navbar-custom">
+    <!-- <nav class="navbar sticky-top navbar-expand-lg navbar-custom">
         <a class="navbar-brand" href="#">Tele Consultation Platform</a>
         <p class="name">AdminName</p>
-    </nav>
-    <div class="title">
-        <h2>Statistics</h2>
-    </div>
+    </nav> -->
+
+
+    <mat-toolbar class="mat-elevation-z8">
+        <button
+          mat-icon-button
+          *ngIf="sidenav.mode === 'over'"
+          (click)="sidenav.toggle()"
+        >
+          <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
+          <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+        </button>
+        <a >Tele Consultation Platform</a>
+        <p class="heading">{{admin_details.adminName}}</p>
+    </mat-toolbar>
+      
+    <mat-sidenav-container>
+      <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+        <img
+          class="avatar mat-elevation-z8"
+          src="../../../assets/Patient.jpeg"
+        />
     
-    <div class="canvas">
-        <h4>Consultations Per Department</h4>
-
-        <div class="inputs">
-            <form  class="center-form" (ngSubmit)="onSubmit()">
-                <div>
-                  <label for="dob" class="attr-name">Start Date: </label>
-                  <input type="date" id="dob" name="dob" [(ngModel)]="start_date" required>
-                </div>
-                <div>
-                    <label for="dob" class="attr-name">End Date: </label>
-                    <input type="date" id="dob" name="dob" [(ngModel)]="end_date" required>
-                  </div>
-                <div>
-                <button class="btn btn-primary" type="submit">Go</button>
-                </div>
-            </form>
-        </div>
-        <div *ngIf="c_bool">
-            <canvas baseChart
-            [type]="'pie'"
-            [datasets]="c_pieChartDatasets"
-            [labels]="c_pieChartlabel"
-            [options]="c_pieChartOptions"
-            [plugins]="c_pieChartPlugins"
-            [legend]="c_pieChartLegend" style="display: inline-block" >
-            </canvas>
-            <h5>No. of Consultations = {{num_consultants}}</h5>
+        <h4 class="name">{{admin_details.adminName}}</h4>
+    
+        <mat-divider></mat-divider>
+        
+        <button mat-button class="menu-button" routerLink="/admin-dashboard">
+          <mat-icon>dashboard</mat-icon>
+          <span>Dashboard</span>
+        </button>
+        <button mat-button class="menu-button" routerLink="/view-doctors">
+          <mat-icon>medical_services</mat-icon>
+          <span>Manage Doctors</span>
+        </button>
+        <button mat-button class="menu-button" routerLink="/view-admins">
+          <mat-icon>admin_panel_settings</mat-icon>
+          <span>Manage Admins</span>
+        </button>
+        <button mat-button class="menu-button" routerLink="/statistics" routerLinkActive="active">
+          <mat-icon>insert_chart_outlined</mat-icon>
+          <span>Statistics</span>
+        </button>
+        
+        <mat-divider></mat-divider>
+        
+        <button mat-button class="menu-button" (click)="logout()">
+          <mat-icon>exit_to_app</mat-icon>
+          <span>LogOut</span>
+        </button>
+    
+        <!-- <mat-divider></mat-divider>
+    
+        <button mat-button class="menu-button" routerLink="/help">
+          <mat-icon>help</mat-icon>
+          <span>Help</span>
+        </button> -->
+      </mat-sidenav>
+      <mat-sidenav-content  style = "background: url('../../../assets/profiles1.webp')">
+        <div class="title">
+            <h2>Statistics</h2>
         </div>
         
-    </div>
-
-    <div class="canvas">
-        <h4>No. of Doctors Per Department</h4>
-        <div *ngIf="d_bool">
-            <canvas baseChart
-            [type]="'pie'"
-            [datasets]="d_pieChartDatasets"
-            [labels]="d_pieChartlabel"
-            [options]="d_pieChartOptions"
-            [plugins]="d_pieChartPlugins"
-            [legend]="d_pieChartLegend" style="display: inline-block" >
-            </canvas>
-            <h5>Total No. of Doctors = {{num_doctors}}</h5>
+        <div class="canvas">
+            <h4>Consultations Per Department</h4>
+    
+            <div class="inputs">
+                <form  class="center-form" (ngSubmit)="onSubmit()">
+                    <div>
+                      <label for="dob" class="attr-name">Start Date: </label>
+                      <input type="date" id="dob" name="dob" [(ngModel)]="start_date" required>
+                    </div>
+                    <div>
+                        <label for="dob" class="attr-name">End Date: </label>
+                        <input type="date" id="dob" name="dob" [(ngModel)]="end_date" required>
+                      </div>
+                    <div>
+                    <button class="btn btn-primary" type="submit">Go</button>
+                    </div>
+                </form>
+            </div>
+            <div *ngIf="c_bool">
+                <canvas baseChart
+                [type]="'pie'"
+                [datasets]="c_pieChartDatasets"
+                [labels]="c_pieChartlabel"
+                [options]="c_pieChartOptions"
+                [plugins]="c_pieChartPlugins"
+                [legend]="c_pieChartLegend" style="display: inline-block" >
+                </canvas>
+                <h5>No. of Consultations = {{num_consultants}}</h5>
+            </div>
+            
         </div>
-        
-    </div>
+    
+        <div class="canvas">
+            <h4>No. of Doctors Per Department</h4>
+            <div *ngIf="d_bool">
+                <canvas baseChart
+                [type]="'pie'"
+                [datasets]="d_pieChartDatasets"
+                [labels]="d_pieChartlabel"
+                [options]="d_pieChartOptions"
+                [plugins]="d_pieChartPlugins"
+                [legend]="d_pieChartLegend" style="display: inline-block" >
+                </canvas>
+                <h5>Total No. of Doctors = {{num_doctors}}</h5>
+            </div>
+            
+        </div>
+      </mat-sidenav-content>
+    </mat-sidenav-container>  
+
+
+
+    
     
 
 

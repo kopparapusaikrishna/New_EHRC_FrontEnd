@@ -66,21 +66,24 @@
           <mat-icon>admin_panel_settings</mat-icon>
           <span>Manage Admins</span>
         </button>
-        <!-- <button mat-button class="menu-button" routerLink="/about">
-          <mat-icon>info</mat-icon>
-          <span>About</span>
-        </button> -->
+        <button mat-button class="menu-button" routerLink="/statistics">
+          <mat-icon>insert_chart_outlined</mat-icon>
+          <span>Statistics</span>
+        </button>
+
+        <mat-divider></mat-divider>
+
         <button mat-button class="menu-button" routerLink="/Admin">
           <mat-icon>exit_to_app</mat-icon>
           <span>LogOut</span>
         </button>
     
-        <mat-divider></mat-divider>
+        <!-- <mat-divider></mat-divider>
     
         <button mat-button class="menu-button" routerLink="/help">
           <mat-icon>help</mat-icon>
           <span>Help</span>
-        </button>
+        </button> -->
       </mat-sidenav>
       <mat-sidenav-content  style = "background: url('../../../assets/profiles1.webp')">
         <div class="doctors-list">
@@ -104,7 +107,7 @@
                         
                         <div class="h6-div"><h4 class="h6-details">{{doct.clinic_address}}</h4></div>
                         <div class="h6-div"><h4 class="h6-details">Ph.No: {{doct.phone_number}}</h4></div>
-                        <div class="h6-div"><h4 class="h6-details">15 Years of Experience</h4></div>
+                        <div class="h6-div"><h4 class="h6-details">{{getYearsSince(doct.doctor_start_date)}} Years Of Experience.</h4></div>
                         <br>
                     </div>
                     <br>

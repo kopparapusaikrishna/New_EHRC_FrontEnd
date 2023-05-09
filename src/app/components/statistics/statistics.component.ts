@@ -1,6 +1,13 @@
 import { Component, OnInit  } from '@angular/core';
 import { ChartOptions } from 'chart.js';
+import { LoginserviceService } from 'src/app/services/loginservice.service';
 import { StatsService } from 'src/app/services/stats.service';
+
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { MatSidenav } from '@angular/material/sidenav';
+import { delay, filter } from 'rxjs/operators';
+import { NavigationEnd, Router } from '@angular/router';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
 @Component({
   selector: 'app-statistics',
@@ -16,6 +23,9 @@ export class StatisticsComponent implements OnInit {
   public num_doctors = 0;
   public c_pieChartlabel: Array<string>;
   public c_values: Array<number>;
+
+  sidenav!: MatSidenav;
+  admin_details:any;
 
   public c_pieChartOptions: ChartOptions<'pie'> = {
     responsive: false,
@@ -43,7 +53,9 @@ export class StatisticsComponent implements OnInit {
     
   }
 
-  constructor(private statService: StatsService){
+  constructor(private statService: StatsService, private router: Router, private loginservice: LoginserviceService, private observer: BreakpointObserver){
+    this.admin_details = JSON.parse(localStorage.getItem("admin_details")!);
+    
     this.c_pieChartlabel = new Array<string>;
     this.c_values = new Array<number>;
 
@@ -53,6 +65,34 @@ export class StatisticsComponent implements OnInit {
     this.getDoctorsPerDepartment();
 
   }
+
+
+  ngAfterViewInit() {
+    this.observer
+      .observe(['(max-width: 800px)'])
+      .pipe(delay(1), untilDestroyed(this))
+      .subscribe((res) => {
+        if (res.matches) {
+          this.sidenav.mode = 'over';
+          this.sidenav.close();
+        } else {
+          this.sidenav.mode = 'side';
+          this.sidenav.open();
+        }
+      });
+
+    this.router.events
+      .pipe(
+        untilDestroyed(this),
+        filter((e) => e instanceof NavigationEnd)
+      )
+      .subscribe(() => {
+        if (this.sidenav.mode === 'over') {
+          this.sidenav.close();
+        }
+      });
+  }
+
 
   onSubmit(){
     console.log(this.start_date);
@@ -108,8 +148,13 @@ export class StatisticsComponent implements OnInit {
         console.log(e);
       }
     });
+  }
 
-    
+
+  logout() {
+    // console.log('component');
+    this.loginservice.admin_logout();
+    this.router.navigate(['/Admin']);
   }
 
 }

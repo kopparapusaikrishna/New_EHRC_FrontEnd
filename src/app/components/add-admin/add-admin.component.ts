@@ -8,6 +8,7 @@ import { delay, filter } from 'rxjs/operators';
 import { NavigationEnd, Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { LoginserviceService } from 'src/app/services/loginservice.service';
 
 @Component({
   selector: 'app-add-admin',
@@ -25,7 +26,7 @@ export class AddAdminComponent implements OnInit {
   type="password";
   icon="fa fa-fw fa-eye"
 
-  constructor(private adminService : AdminService, private router: Router, private observer: BreakpointObserver) {
+  constructor(private adminService : AdminService, private router: Router, private observer: BreakpointObserver, private loginservice: LoginserviceService) {
 
     this.status = "";
     this.admin_details = JSON.parse(localStorage.getItem("admin_details")!);
@@ -122,6 +123,12 @@ showpass(){
       });
     }
 
+  }
+
+  logout() {
+    // console.log('component');
+    this.loginservice.admin_logout();
+    this.router.navigate(['/Admin']);
   }
 
 }
