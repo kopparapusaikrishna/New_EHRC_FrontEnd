@@ -8,6 +8,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { delay, filter } from 'rxjs/operators';
 import { NavigationEnd, Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { LoginserviceService } from 'src/app/services/loginservice.service';
 
 @Component({
   selector: 'app-doctor-dashboard',
@@ -24,7 +25,7 @@ export class DoctorDashboardComponent implements OnInit {
   global_count:number = -1;
   local_count:number = -1;
 
-  constructor(private router: Router,private doctorService: DoctorService,private patientservice:PatientService, private observer: BreakpointObserver) { 
+  constructor(private router: Router,private doctorService: DoctorService,private patientservice:PatientService, private observer: BreakpointObserver, private loginservice: LoginserviceService) { 
     this.available = true;
     this.doctor_details = JSON.parse(localStorage.getItem("doctor_details")!);
     this.getPatientStats();
@@ -171,5 +172,11 @@ export class DoctorDashboardComponent implements OnInit {
   }
   showappointments(){
     this.showpreviousappointments=!this.showpreviousappointments;
+  }
+
+  logout() {
+    // console.log('component');
+    this.loginservice.doctor_logout();
+    this.router.navigate(['/Doctor']);
   }
 }
