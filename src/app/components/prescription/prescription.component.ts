@@ -1,26 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { DoctorService } from 'src/app/services/doctor.service';
 import { Router } from '@angular/router';
-import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
 import { Prescription } from 'src/app/models/prescription.model';
 import { FollowUp } from 'src/app/models/follow-up.model';
 import { PdfService } from 'src/app/services/pdf.service';
+import { FormGroup, FormControl, Validators, FormsModule } from '@angular/forms';
+
 @Component({
   selector: 'app-prescription',
   templateUrl: './prescription.component.html',
   styleUrls: ['./prescription.component.css']
 })
 export class PrescriptionComponent  implements OnInit {
-  weight: number = -1;
-  bp: string = '';
-  temperature: number = -1;
+
   prescription_list: Array<Prescription>;
   patient_details: any;
   doctor_id: any;
   patient_record_id: number = -1;
   prescription: Prescription = {};
-  follow_up:string = "Yes";
-  followup_date: string = '';
 
   doctor_details:any;
 
@@ -29,6 +26,8 @@ export class PrescriptionComponent  implements OnInit {
 
   showDiv:boolean = true;
   saved:boolean = false;
+  medicineForm:FormGroup;
+  patientForm: FormGroup;
 
   constructor(private router: Router, private doctorService: DoctorService, private pdfService: PdfService) { 
     this.doctor_details = JSON.parse(localStorage.getItem("doctor_details")!);
@@ -44,6 +43,23 @@ export class PrescriptionComponent  implements OnInit {
       isFollow: this.prev_appointment_id === -1,
       apppointment_id: this.prev_appointment_id
     };
+
+    this.medicineForm = new FormGroup({
+      name: new FormControl('', [Validators.required]),
+      power: new FormControl('', [Validators.required, Validators.pattern('^[0-9]*\.?[0-9]+$')]),
+      dosage: new FormControl('', [Validators.required]),
+      duration: new FormControl('', [Validators.required, Validators.pattern('^[1-9][0-9]*$')])
+    });
+
+    this.patientForm = new FormGroup({
+      weight: new FormControl('', [Validators.required, Validators.pattern('^[0-9]*\.?[0-9]+$')]),
+      temperature: new FormControl('', [Validators.required, Validators.pattern('^[0-9]*\.?[0-9]+$')]),
+      bp: new FormControl('', [Validators.required,Validators.pattern('^[1-9][0-9]{1,2}/[1-9][0-9]{1,2}$')]),
+      followup: new FormControl('', [Validators.required, Validators.pattern('^(Yes|No)$')]),
+      followUpDate: new FormControl('',[])
+    });
+
+
   }
 
   ngOnInit(): void {
@@ -78,6 +94,8 @@ export class PrescriptionComponent  implements OnInit {
 	}
 
   followExist(follow_up: string): boolean{
+    console.log(follow_up);
+    console.log(follow_up === "Yes");
     return follow_up === "Yes";
   }
 
@@ -97,46 +115,57 @@ export class PrescriptionComponent  implements OnInit {
     }
 
   onSubmit(){
-    console.log(this.prescription_list);
 
-    const data = {
-      weight: this.weight,
-      doctor_id: this.doctor_id,
-      bp: this.bp,
-      temperature: this.temperature,
-      prescription: this.convertPrescription(),
-      follow_up: this.follow_up,
-      followup_date: this.followup_date
+    if(this.patientForm.valid == false){
+      alert("Please enter the patient details correctly");
     }
-    console.log(data);
-
-    this.doctorService.addAppointment(data)
-    .subscribe({
-      next: (data: string) => {
-        console.log(data);
-      },
-      error: (e) => {
-        console.log(e);
+    else{
+      console.log(this.prescription_list);
+      console.log(this.patientForm.value);
+      const data = {
+        weight: this.patientForm.get('weight')?.value,
+        doctor_id: this.doctor_id,
+        bp: this.patientForm.get('bp')?.value,
+        temperature: this.patientForm.get('temperature')?.value,
+        prescription: this.convertPrescription(),
+        follow_up: this.patientForm.get('followup')?.value,
+        followup_date: this.patientForm.get('followUpDate')?.value
       }
-    });
+      console.log(data);
 
-
+      this.doctorService.addAppointment(data)
+      .subscribe({
+        next: (data: string) => {
+          console.log(data);
+        },
+        error: (e) => {
+          console.log(e);
+        }
+      });
+    }
   }
 
   addMedicine(){
-    const data: Prescription = {
-      medicine_dosage: this.prescription.medicine_dosage,
-      medicine_name: this.prescription.medicine_name,
-      medicine_power: this.prescription.medicine_power,
-      duration: this.prescription.duration
-    };
-    this.prescription = {}; 
-    this.prescription_list.push(data);
-    this.showDiv = false;
-    console.log(this.prescription_list);
-    setTimeout(() => {
-      this.showDiv = true;
-    }, 0);
+
+    if(this.medicineForm.valid == false){
+      alert("Please enter all fields correctly");
+    }
+
+    else{
+      const data: Prescription = {
+        medicine_dosage: this.medicineForm.get('name')?.value,
+        medicine_name: this.medicineForm.get('power')?.value,
+        medicine_power: this.medicineForm.get('dosage')?.value,
+        duration: this.medicineForm.get('duration')?.value
+      };
+      this.prescription = {}; 
+      this.prescription_list.push(data);
+      this.showDiv = false;
+      console.log(this.prescription_list);
+      setTimeout(() => {
+        this.showDiv = true;
+      }, 0);
+    }
   }
 
   delete(i: number){

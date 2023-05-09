@@ -129,7 +129,7 @@ export class DoctorDashboardComponent implements OnInit {
 
   getChannelName(){
     this.channel_name = 'ssss';
-    this.doctorService.getChannelName(this.doctor_details.doctorId,this.doctor_details.departmentName)
+    this.doctorService.getChannelName(this.doctor_details.doctorId,this.doctor_details.departmentName, this.available)
     .subscribe({
       next: (data:any) => {
         this.channel_name = data.channel_name;

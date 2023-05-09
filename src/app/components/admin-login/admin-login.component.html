@@ -30,12 +30,26 @@
 
     <div class="form-container" style="box-shadow: 10px;">
         <h2 class="form-title">Admin Login</h2>
-        <form >
-            <input type="email" placeholder="Enter email" name="username"  [(ngModel)]="model.username" required/>    
+        <form [formGroup]="myForm">
+            <input formControlName="username" type="email" placeholder="Enter email" name="username"  [(ngModel)]="model.username" required/>    
             
-              <input type={{type}} style="display: flex;" placeholder="Enter Password" name="password" [(ngModel)]="model.password" required/>  
+              <input formControlName="password" type={{type}} style="display: flex;" placeholder="Enter Password" name="password" [(ngModel)]="model.password" required/>  
               <span toggle="#password" class="field-icon toggle-password"><i class={{icon}} (click)="showpass()"></i></span>
-            
+
+
+              <div *ngIf="myForm.controls['username'].invalid && myForm.controls['username'].touched && myForm.controls['username'].errors?.['required']" class="alert alert-danger">
+                Email is required.
+              </div>
+  
+              <div *ngIf="myForm.controls['username'].invalid && myForm.controls['username'].touched && myForm.controls['username'].errors?.['pattern']" class="alert alert-danger">
+                Email Pattern not matched Make sure it is of form "abc@abc.abc"
+              </div>
+  
+              <div *ngIf="myForm.controls['password'].invalid && myForm.controls['password'].touched" class="alert alert-danger">
+                <div *ngIf="myForm.controls['password'].errors?.['required']">
+                Password is required.
+                </div>
+              </div>
             
             <div class="list">
               <button type="submit" class="login-btn" (click)="loginadmin()">Login</button>

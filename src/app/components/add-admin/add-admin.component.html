@@ -87,36 +87,54 @@
       <br>
       <h4 class="enter-all-fields"><b>Enter all the Fields</b></h4>
 
-      <form ngNativeValidate class="center-form" (ngSubmit)="onSubmit()">
+      <form [formGroup]="adminForm"  class="center-form" (ngSubmit)="onSubmit()">
           <div>
             <label for="name" class="attr-name">Name:</label>
-            <input type="text" id="name" name="name" [(ngModel)]="name" required title="Please enter a username">
+            <input formControlName="name" type="text" id="name" name="name" required title="Please enter a username">
+            <div *ngIf="adminForm.controls['name'].invalid && adminForm.controls['name'].touched || adminForm.controls['name'].errors?.['pattern']" class="alert alert-danger">
+              Name should not be empty and does not contain numbers
+            </div>
           </div>
           <div>
             <label for="phone" class="attr-name">Phone number:</label>
-            <input type="tel" id="phone" name="phone" required ngModel pattern="[0-9]{10}" title="Please enter a phone number">
+            <input formControlName="ph_no" type="tel" id="phone" name="phone" required title="Please enter a phone number">
+            <div *ngIf="adminForm.controls['ph_no'].invalid && adminForm.controls['ph_no'].touched && adminForm.controls['ph_no'].errors?.['pattern']" class="alert alert-danger">
+              Phone number should be of length 10 and contain only numbers
+            </div>
           </div>
           <div>
             <label for="dob" class="attr-name">Date of birth:</label>
-            <input type="date" id="dob" name="dob" [(ngModel)]="dob" required >
+            <input formControlName="dob" type="date" id="dob" name="dob" required >
+            <div *ngIf="adminForm.controls['dob'].invalid && adminForm.controls['dob'].touched || adminForm.controls['dob'].errors?.['pattern']" class="alert alert-danger">
+              Date of birth should not be empty
+            </div>
           </div>
           <div>
             <label for="gender" class="attr-name">Gender:</label>
-            <select id="gender" name="gender" [(ngModel)]="gender" required>
+            <select formControlName="gender" id="gender" name="gender" required>
               <option value="">Select gender</option>
               <option value="male">Male</option>
               <option value="female">Female</option>
               <option value="other">Other</option>
             </select>
+            <div *ngIf="adminForm.controls['gender'].invalid && adminForm.controls['gender'].touched || adminForm.controls['gender'].errors?.['pattern']" class="alert alert-danger">
+              Gender should not be empty
+            </div>
           </div>
           <div>
             <label for="email" class="attr-name">Email:</label>
-            <input type="email" id="email" name="email" [(ngModel)]="email_id" required>
+            <input formControlName="email_id" type="email" id="email" name="email" required>
+            <div *ngIf="adminForm.controls['email_id'].invalid && adminForm.controls['email_id'].touched || adminForm.controls['email_id'].errors?.['pattern']" class="alert alert-danger">
+              Email ID should be of the form abc@abc.com
+            </div>
           </div>
           <div>
             <label for="password" class="attr-name">Password:</label>
-            <input style="margin-right: -10px;" type={{type}} id="password" name="password" [(ngModel)]="password" required>
+            <input formControlName="password" style="margin-right: -10px;" type={{type}} id="password" name="password" required>
             <span toggle="#password" class="field-icon toggle-password"><i class={{icon}} (click)="showpass()"></i></span>
+          </div>
+          <div *ngIf="adminForm.controls['password'].invalid && adminForm.controls['password'].touched || adminForm.controls['password'].errors?.['pattern']" class="alert alert-danger">
+            Password should not be empty
           </div>
           <div class="add-admin-btn" style="padding: 0; text-align: center;">
           <button class="btn btn-primary btn-success add-admin" type="submit">Add Admin</button>

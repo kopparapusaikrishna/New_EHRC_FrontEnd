@@ -15,37 +15,31 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
   styleUrls: ['./add-doctor.component.css']
 })
 export class AddDoctorComponent implements OnInit {
-  name: string;
-  ph_no: string;
-  dob: Date;
-  gender: string;
-  clinic_address: string;
-  qualification: string;
-  doctor_start_date: Date;
-  dept_name: string;
-  email: string;
-  password: string;
-
   status: string;
 
   sidenav!: MatSidenav;
   admin_details:any;
   type="password";
-  icon="fa fa-fw fa-eye"
+  icon="fa fa-fw fa-eye";
+  doctorForm:FormGroup;
 
   constructor(private router: Router, private adminService : AdminService, private observer: BreakpointObserver) { 
-    this.name = "";
-    this.ph_no = "";
-    this.dob = new Date('0000-00-00');
-    this.gender = "";
-    this.clinic_address = "";
-    this.qualification = "";
-    this.doctor_start_date = new Date('0000-00-00');
-    this.dept_name = "";
-    this.email = "";
-    this.password = "";
+
     this.status = "";
     this.admin_details = JSON.parse(localStorage.getItem("admin_details")!);
+
+    this.doctorForm = new FormGroup({
+      name: new FormControl('',[Validators.required, Validators.pattern(/^[A-Za-z]+(?:\s[A-Za-z]+)*$/)]),
+      dob: new FormControl('', [Validators.required]),
+      gender: new FormControl('', [Validators.required]),
+      ph_no: new FormControl('', [Validators.required, Validators.pattern('^[0-9]{10}$')]),
+      email_id: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')]),
+      password: new FormControl('',[Validators.required]),
+      dept_name: new FormControl('',[Validators.required, Validators.pattern('^[A-Z][a-z]*$')]),
+      clinic_address: new FormControl('', [Validators.required]),
+      qualification: new FormControl('', Validators.required),
+      doctor_start_date: new FormControl('', Validators.required)
+    });
     
   }
 
@@ -79,74 +73,58 @@ export class AddDoctorComponent implements OnInit {
       });
 }
 
-showpass(){
-  if (this.type=="password"){
-     this.type="text";
-     this.icon="fa fa-fw fa-eye-slash"
+  showpass(){
+    if (this.type=="password"){
+      this.type="text";
+      this.icon="fa fa-fw fa-eye-slash"
+    }
+    else{
+    this.type="password";
+    this.icon="fa fa-fw fa-eye"
+    }
   }
-  else{
-   this.type="password";
-   this.icon="fa fa-fw fa-eye"
-   }
- }
-
-  emailForm = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email])
-  });
 
   onSubmit(): void {
-    console.log("Form submitted!");
-    console.log("Name: " + this.name);
-    console.log("Phone: " + this.ph_no);
-    console.log("DOB: " + this.dob);
-    console.log("Gender: " + this.gender);
-    console.log("Address: " + this.clinic_address);
-    console.log("Qualification: " + this.qualification);
-    console.log("Doctor Start date: " + this.doctor_start_date)
-    console.log("Department: " + this.dept_name);
-    console.log("Email: " + this.email);
-    console.log("Password: " + this.password);
 
     const doct: Doctor = {
       doctor_id: 0,
-      name: this.name,
-      dob: this.dob,
-      gender: this.gender,
-      doctor_start_date: this.doctor_start_date,
-      email_id: this.email,
-      password: this.password,
-      qualification: this.qualification,
-      department_name: this.dept_name,
-      phone_number: this.ph_no,
-      clinic_address: this.clinic_address
+      name: this.doctorForm.get('name')?.value,
+      dob: this.doctorForm.get('dob')?.value,
+      gender: this.doctorForm.get('gender')?.value,
+      doctor_start_date: this.doctorForm.get('doctor_start_date')?.value,
+      email_id: this.doctorForm.get('email_id')?.value,
+      password: this.doctorForm.get('password')?.value,
+      qualification: this.doctorForm.get('qualification')?.value,
+      department_name: this.doctorForm.get('dept_name')?.value,
+      phone_number: this.doctorForm.get('ph_no')?.value,
+      clinic_address: this.doctorForm.get('clinic_address')?.value
     };
 
-    this.adminService.postDoctorDetails(doct)
-    .subscribe({
-      next: (data:any) => {
-        this.status = data;
-        console.log(this.status);
-        // console.log(data);
-        if(this.status === "Success") {
-          alert(this.status);
-          this.name = "";
-          this.ph_no = "";
-          this.dob = new Date('0000-00-00');
-          this.gender = "";
-          this.clinic_address = "";
-          this.qualification = "";
-          this.doctor_start_date = new Date('0000-00-00');
-          this.dept_name = "";
-          this.email = "";
-          this.password = "";
-          this.status = "";
-        }
-        else {
-          alert(this.status);
-        }
-      },
-      error: (e) => console.error(e)
-    });
+    console.log(doct);
+
+    if(this.doctorForm.valid == false){
+      alert("Please enter all the fields correctly");
+    }
+
+    else{
+      this.adminService.postDoctorDetails(doct)
+      .subscribe({
+        next: (data:any) => {
+          this.status = data;
+          console.log(this.status);
+          // console.log(data);
+          if(this.status === "Success") {
+            alert(this.status);
+            this.doctorForm.reset();
+          }
+          else {
+            alert(this.status);
+          }
+        },
+        error: (e) => console.error(e)
+      });
+    }
+
   }
 
 
