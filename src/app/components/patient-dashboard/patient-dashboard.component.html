@@ -75,7 +75,7 @@
             <span>Help</span>
           </button> -->
         </mat-sidenav>
-        <mat-sidenav-content  style = "background: url('../../../assets/profiles1.webp')">
+        <mat-sidenav-content  style = "background: url('../../../assets/profiles3.webp')">
           <div class="quote">
             <h1>Welcome to medical consultation </h1>
             <h3>"Medicines cure diseases, but only doctors can cure patients." - Carl Jung.</h3>
@@ -85,18 +85,18 @@
             <div class="appointment ">
                 <h3>New Appointment</h3>
                 <div class="meet-btn">
-                    <button (click)="newAppointment()">Continue</button>
+                    <button class="btn btn-primary" (click)="newAppointment()">Continue</button>
                 </div>
             </div>
             <div class="follow-up">
                 <h3>Follow-up Appointment</h3>
                 <div class="meet-btn">
-                    <button (click)="getPreviousAppointments()">Continue</button>
+                    <button class="btn btn-primary" (click)="getPreviousAppointments()">Continue</button>
                 </div>
             </div>
         </div>
         <div class="previous">
-            <button (click)="getPreviousAppointments()">Previous Appointments</button>
+            <button class="btn btn-primary"  (click)="getPreviousAppointments()">Previous Appointments</button>
         </div>
         </mat-sidenav-content>
       </mat-sidenav-container>
