@@ -114,7 +114,7 @@ export class DoctorDashboardComponent implements OnInit {
   }
 
   endMyDay(){
-    var result = confirm("Are you sure you want to delete?");
+    var result = confirm("Are you sure you want to end your day?");
     this.toggleChange();
     if (result) {
       console.log(this.doctor_details.doctorId);
@@ -124,6 +124,7 @@ export class DoctorDashboardComponent implements OnInit {
           console.log(data);
           this.getPatientStats();
           this.endmyday = true;
+          
         },
         error: (e) => console.error(e)
       });

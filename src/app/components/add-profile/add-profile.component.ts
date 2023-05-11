@@ -57,7 +57,7 @@ export class AddProfileComponent implements OnInit {
           console.log(this.status);
 
           if(this.status == "Success") {
-            alert("this.status");
+            alert(this.status);
             this.ph_no="";
             this.patientForm.reset();
             this.router.navigate(['profiles']);

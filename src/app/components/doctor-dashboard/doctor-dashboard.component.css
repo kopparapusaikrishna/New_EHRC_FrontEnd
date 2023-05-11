@@ -158,6 +158,14 @@ p {
     color: white;
 }
 
+.visit-patient:disabled {
+    opacity: 1;
+    cursor: not-allowed;
+    color: black; /* change text color to gray */
+    background-color: #d1cece; /* change background color to light gray */
+    border-color: #ccc; /* change border color to gray */
+  }
+
 
 button.visit-patient {
     padding: 10px 20px;
