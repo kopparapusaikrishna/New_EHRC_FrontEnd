@@ -7,7 +7,7 @@ export const environment = {
   agora: {
     appId: '9eca7b526be94963a451b3ab0f54c2cc'
   },
-  baseUrl: 'https://b0f4-119-161-98-68.ngrok-free.app'
+  baseUrl: 'https://e57a-103-156-19-229.ngrok-free.app'
 };
 
 /*
