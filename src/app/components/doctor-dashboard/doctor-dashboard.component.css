@@ -32,7 +32,7 @@ a{
 }
 
 .container{
-    margin: 5% 25%;
+    margin: 5% 5%;
 
     border-color: rgba(228, 228, 228, 0.9);
     border-color: #271212;
@@ -63,6 +63,7 @@ a{
 }
 
 .end-day{
+    display: inline;
     background-color: red;
     color: white;
     border-color: red;
@@ -177,11 +178,11 @@ button.visit-patient {
     padding: 10px 20px;
     border: none;
     color: rgba(264, 264, 264, 0.9);
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: #077070e2;
 }
 
 .previous:hover{
-    background-color: rgba(0, 0, 0, 0.7);   
+    background-color: #088f8f;   
 }
 
 button.visit-patient:hover {
