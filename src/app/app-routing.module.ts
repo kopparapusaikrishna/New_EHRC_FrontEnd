@@ -27,25 +27,25 @@ import { StatisticsComponent } from './components/statistics/statistics.componen
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'doctor-dashboard', component: DoctorDashboardComponent/*,canActivate:[DoctorauthguardGuard]*/},
-  { path: 'patient-departments', component: PatientDepartmentsComponent/*,canActivate:[AuthGuard]*/},
-  { path: 'patient-dashboard', component: PatientDashboardComponent/*,canActivate: [AuthGuard]*/  },
-  { path: 'admin-dashboard', component: AdminDashboardComponent/*,canActivate:[AdminauthguardGuard]*/},
-  { path: 'view-doctors', component: ViewDoctorsComponent/*,canActivate:[AdminauthguardGuard]*/},
-  { path: 'view-admins', component: ViewAdminsComponent/*,canActivate:[AdminauthguardGuard]*/},
-  { path: 'add-admin', component: AddAdminComponent/*,canActivate:[AdminauthguardGuard]*/},
-  { path: 'add-doctor', component: AddDoctorComponent/*,canActivate:[AdminauthguardGuard]*/},
-  { path: 'profiles', component: UserProfilesComponent/*,canActivate:[AuthGuard]*/},
-  { path: 'add-profile', component: AddProfileComponent},
+  { path: 'doctor-dashboard', component: DoctorDashboardComponent,canActivate:[DoctorauthguardGuard]},
+  { path: 'patient-departments', component: PatientDepartmentsComponent,canActivate:[AuthGuard]},
+  { path: 'patient-dashboard', component: PatientDashboardComponent,canActivate: [AuthGuard]},
+  { path: 'admin-dashboard', component: AdminDashboardComponent,canActivate:[AdminauthguardGuard]},
+  { path: 'view-doctors', component: ViewDoctorsComponent,canActivate:[AdminauthguardGuard]},
+  { path: 'view-admins', component: ViewAdminsComponent,canActivate:[AdminauthguardGuard]},
+  { path: 'add-admin', component: AddAdminComponent,canActivate:[AdminauthguardGuard]},
+  { path: 'add-doctor', component: AddDoctorComponent,canActivate:[AdminauthguardGuard]},
+  { path: 'profiles', component: UserProfilesComponent,canActivate:[AuthGuard]},
+  { path: 'add-profile', component: AddProfileComponent, canActivate:[AuthGuard]},
   { path: 'Doctor', component:DoctorLoginComponent},
   { path: 'Patient', component:PatientLoginComponent},
   { path: 'Admin', component:AdminLoginComponent},
   { path: 'home', component: UserSelectComponent},
-  { path: 'patient-prev-appointments', component: PatientPreviousAppointmentsComponent},
-  { path: 'doctor-prev-appointments', component: DoctorPreviousAppointmentsComponent},
+  { path: 'patient-prev-appointments', component: PatientPreviousAppointmentsComponent, canActivate: [AuthGuard]},
+  { path: 'doctor-prev-appointments', component: DoctorPreviousAppointmentsComponent, canActivate: [DoctorauthguardGuard]},
   { path: 'meeting', component: MeetingComponent},
-  { path: 'prescription', component: PrescriptionComponent},
-  { path: 'statistics', component: StatisticsComponent }
+  { path: 'prescription', component: PrescriptionComponent, canActivate: [DoctorauthguardGuard]},
+  { path: 'statistics', component: StatisticsComponent, canActivate: [AdminauthguardGuard] }
 ];
 
 @NgModule({

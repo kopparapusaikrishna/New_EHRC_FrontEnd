@@ -6,11 +6,11 @@
     color: white;
     margin-top: 3%;
     border-color: #271212;
-    background-color:silver;
+    background-color:lightgray;
    color: black;
    border: none;
    width: 50%;
-    box-shadow: 15px 15px 15px 15px rgb(57, 55, 55);
+    box-shadow: 5px 5px 5px 5px rgb(57, 55, 55);
 }
 /* Styling for the checkboxes */
 

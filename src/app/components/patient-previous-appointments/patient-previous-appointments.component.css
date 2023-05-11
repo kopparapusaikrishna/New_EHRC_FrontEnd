@@ -58,8 +58,8 @@ a{
     border-style:solid ;
     border-width: 1px;
  
-    box-shadow: 15px 15px 15px 15px rgb(57, 55, 55); 
-    background-color: silver;
+    box-shadow: 5px 5px 5px 5px rgb(57, 55, 55); 
+    background-color: white;
 }
 
 .prev-appointments p{
