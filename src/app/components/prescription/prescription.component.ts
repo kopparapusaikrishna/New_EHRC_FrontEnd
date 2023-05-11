@@ -52,10 +52,10 @@ export class PrescriptionComponent  implements OnInit {
     });
 
     this.patientForm = new FormGroup({
-      weight: new FormControl('', [Validators.required, Validators.pattern('^[0-9]*\.?[0-9]+$')]),
-      temperature: new FormControl('', [Validators.required, Validators.pattern('^[0-9]*\.?[0-9]+$')]),
-      bp: new FormControl('', [Validators.required,Validators.pattern('^[1-9][0-9]{1,2}/[1-9][0-9]{1,2}$')]),
-      followup: new FormControl('', [Validators.required, Validators.pattern('^(Yes|No)$')]),
+      weight: new FormControl('', [ Validators.pattern('^[0-9]*\.?[0-9]+$')]),
+      temperature: new FormControl('', [ Validators.pattern('^[0-9]*\.?[0-9]+$')]),
+      bp: new FormControl('', [Validators.pattern('^[1-9][0-9]{1,2}/[1-9][0-9]{1,2}$')]),
+      followup: new FormControl('', [ Validators.pattern('^(Yes|No)$')]),
       followUpDate: new FormControl('',[])
     });
 

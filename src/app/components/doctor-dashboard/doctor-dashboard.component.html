@@ -102,7 +102,7 @@
         </div>
 
           <div>    
-          <button class="visit-patient" (click)="getChannelName()">Visit a patient</button>
+          <button class="visit-patient" (click)="getChannelName()" [disabled]="endmyday">Visit a patient</button>
           </div>
     
           <div class="details">

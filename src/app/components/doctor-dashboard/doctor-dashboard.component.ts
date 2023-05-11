@@ -21,6 +21,7 @@ export class DoctorDashboardComponent implements OnInit {
   doctor_details:any;
   channel_name:string = '';
   sidenav!: MatSidenav;
+  endmyday:boolean=false;
 
   global_count:number = -1;
   local_count:number = -1;
@@ -122,6 +123,7 @@ export class DoctorDashboardComponent implements OnInit {
         next: (data:any) => {
           console.log(data);
           this.getPatientStats();
+          this.endmyday = true;
         },
         error: (e) => console.error(e)
       });
